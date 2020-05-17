@@ -78,7 +78,7 @@ create table sponzorski_paket
             primary key,
     naziv_sponzorski_paket VARCHAR,
     stavke                 VARCHAR,
-    datum_stvaranja        DATE default current_date not null CHECK ( datum_stvaranja = current_date )
+    datum_stvaranja        DATE default current_date not null
 );
 
 
@@ -148,11 +148,11 @@ create table racun
     iznos_racun   NUMERIC(8, 2)                       not null CHECK ( iznos_racun >= 0 ),
     vrijeme_racun TIMESTAMP default current_timestamp not null,
     napomena      VARCHAR,
-    id_projekt    INT
+    id_projekt    INT       default null
         constraint racun_projekt_fk
             references projekt
             on delete set null,
-    id_okupljanje INT
+    id_okupljanje INT       default null
         constraint racun_okupljanje_fk
             references okupljanje
             on delete set null
@@ -315,20 +315,19 @@ create table organizira
 --TRIGGERI
 
 --Automatski upis datuma ažuriranja prilikom promjena u tablici STUDENT
+--drop function azuriranje_studenta() cascade;
 create function azuriranje_studenta() returns trigger
 as
 $$
 begin
-    UPDATE student
-    SET datum_azuriranja = current_date
-    WHERE NEW.id_student = student.id_student;
+    NEW.datum_azuriranja = current_date;
     RETURN NEW;
 
 end;
 $$ LANGUAGE plpgsql;
 
 create trigger update_student
-    after update
+    before update
     on student
     for each ROW
 execute procedure azuriranje_studenta();
@@ -337,10 +336,17 @@ execute procedure azuriranje_studenta();
 create function racun_iz_sponzorstva() returns trigger
 as
 $$
+DECLARE
+    partner_name VARCHAR;
+    projekt_name VARCHAR;
 begin
+    SELECT partner.naziv_partner INTO partner_name FROM partner WHERE partner.id_partner = NEW.id_partner;
+    SELECT projekt.naziv_projekt INTO projekt_name FROM projekt WHERE projekt.id_projekt = NEW.id_projekt;
+
     INSERT INTO racun(vrsta_racun, iznos_racun, napomena, id_projekt)
     VALUES ('PRIHOD', NEW.iznos,
-            'Račun od sponzorstva\nID sponzor: ' || NEW.id_partner || '\n ID projekt: ' || NEW.id_projekt,
+            'Račun od sponzorstva; SPONZOR: ' || partner_name || '(ID: ' || NEW.id_partner || ')' || '; PROJEKT: ' ||
+            projekt_name || '(ID: ' || NEW.id_projekt || ')',
             NEW.id_projekt);
     RETURN NEW;
 end;
