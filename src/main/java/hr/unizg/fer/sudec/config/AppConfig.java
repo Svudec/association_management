@@ -20,9 +20,7 @@ import java.util.Properties;
 @EnableWebMvc
 @EnableTransactionManagement
 @ComponentScan(basePackages = "hr.unizg.fer.sudec")
-@PropertySources({
-        @PropertySource("classpath:persistence-postgresql.properties"),
-        @PropertySource("classpath:hibernate.properties")})
+@PropertySource("classpath:postgresql-and-hibernate.properties")
 public class AppConfig {
 
     //Data from properties files
