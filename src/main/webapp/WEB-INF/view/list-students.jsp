@@ -11,6 +11,8 @@
 <html>
 <head>
     <title>Popis studenata</title>
+
+    <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 

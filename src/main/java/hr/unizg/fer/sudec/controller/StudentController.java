@@ -1,10 +1,11 @@
 package hr.unizg.fer.sudec.controller;
 
-import hr.unizg.fer.sudec.dao.StudentDAO;
 import hr.unizg.fer.sudec.entity.Student;
+import hr.unizg.fer.sudec.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -14,12 +15,12 @@ import java.util.List;
 public class StudentController {
 
     @Autowired
-    private StudentDAO studentDAO;
+    private StudentService studentService;
 
-    @RequestMapping("/list")
+    @GetMapping("/list")
     public String listStudents(Model model){
 
-        List<Student> students = studentDAO.getStudents();
+        List<Student> students = studentService.getStudents();
         model.addAttribute("students", students);
 
         return "list-students";
