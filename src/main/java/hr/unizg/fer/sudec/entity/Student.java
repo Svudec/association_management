@@ -1,5 +1,7 @@
 package hr.unizg.fer.sudec.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -25,9 +27,10 @@ public class Student {
     private String cellphone;
 
     @Column(name = "oib_student")
-    private Integer OIB;
+    private String oib;
 
     @Column(name = "datum_rodenja_student")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date birthDate;
 
     @Column(name = "prebivaliste_student")
@@ -37,7 +40,7 @@ public class Student {
     private String faculty;
 
     @Column(name = "godina_studija")
-    private Integer yearOfStudy;
+    private String yearOfStudy;
 
     @Column(name = "smjer_studija")
     private String studyField;
@@ -96,12 +99,12 @@ public class Student {
         this.cellphone = cellphone;
     }
 
-    public int getOIB() {
-        return OIB;
+    public String getOib() {
+        return oib;
     }
 
-    public void setOIB(int OIB) {
-        this.OIB = OIB;
+    public void setOib(String oib) {
+        this.oib = oib;
     }
 
     public Date getBirthDate() {
@@ -128,11 +131,11 @@ public class Student {
         this.faculty = faculty;
     }
 
-    public int getYearOfStudy() {
+    public String getYearOfStudy() {
         return yearOfStudy;
     }
 
-    public void setYearOfStudy(int yearOfStudy) {
+    public void setYearOfStudy(String yearOfStudy) {
         this.yearOfStudy = yearOfStudy;
     }
 
@@ -176,7 +179,7 @@ public class Student {
                 ", surname='" + surname + '\'' +
                 ", mail='" + mail + '\'' +
                 ", cellphone='" + cellphone + '\'' +
-                ", OIB=" + OIB +
+                ", OIB=" + oib +
                 ", birthDate=" + birthDate +
                 ", hometown='" + hometown + '\'' +
                 ", faculty='" + faculty + '\'' +

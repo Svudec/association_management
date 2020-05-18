@@ -30,11 +30,14 @@ public class StudentController {
 
         Student student = new Student();
         model.addAttribute("student", student);
+        model.addAttribute("disabled_edit", false);
+        model.addAttribute("saveButton", "visible");
+        model.addAttribute("editButton", "hidden");
 
         return "student-form";
     }
 
-    @PostMapping("/saveStudent")
+    @PostMapping("/save")
     public String saveStudent(@ModelAttribute("student") Student student){
 
         studentService.saveStudent(student);
@@ -47,6 +50,21 @@ public class StudentController {
 
         Student student = studentService.getStudent(id);
         model.addAttribute("student", student);
+        model.addAttribute("disabled_edit", true);
+        model.addAttribute("saveButton", "hidden");
+        model.addAttribute("editButton", "visible");
+
+        return "student-form";
+    }
+
+    @GetMapping("/edit")
+    public String editStudentDetails(@RequestParam("id") int id, Model model){
+
+        Student student = studentService.getStudent(id);
+        model.addAttribute("student", student);
+        model.addAttribute("disabled_edit", false);
+        model.addAttribute("saveButton", "visible");
+        model.addAttribute("editButton", "hidden");
 
         return "student-form";
     }
