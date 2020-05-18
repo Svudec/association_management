@@ -19,9 +19,17 @@ public class StudentDAOImpl implements StudentDAO{
     public List<Student> getStudents() {
 
         Session session = sessionFactory.getCurrentSession();
-
         Query<Student> studentQuery = session.createQuery("from Student", Student.class);
 
         return studentQuery.getResultList();
+    }
+
+    @Override
+    public void saveStudent(Student student) {
+
+        Session session = sessionFactory.getCurrentSession();
+
+        session.save(student);
+
     }
 }

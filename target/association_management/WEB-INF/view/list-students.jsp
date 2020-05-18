@@ -25,6 +25,9 @@
     <div id="container">
         <div id="content">
 
+            <input type="button" value="Dodaj studenta" onclick="window.location.href='showFormForAdd'; return false;"
+            class="add-button">
+
             <table>
                 <tr>
                     <th>Ime</th>
