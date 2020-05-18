@@ -33,14 +33,22 @@
                     <th>Ime</th>
                     <th>Prezime</th>
                     <th>Email</th>
+                    <th></th>
                 </tr>
 
                 <c:forEach var="tempStudent" items="${students}">
+
+                    <c:url var="detailsLink" value="/student/details">
+                        <c:param name="studentId" value="${tempStudent.id}"/>
+                    </c:url>
 
                     <tr>
                         <td>${tempStudent.name}</td>
                         <td>${tempStudent.surname}</td>
                         <td>${tempStudent.mail}</td>
+                        <td>
+                            <a href="${detailsLink}">Otvori profil</a>
+                        </td>
                     </tr>
 
                 </c:forEach>

@@ -29,6 +29,8 @@
 
         <form:form action="saveStudent" modelAttribute="student" method="post">
 
+            <form:hidden path="id"/>
+
             <table>
                 <tbody>
                 <tr>

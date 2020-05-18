@@ -53,6 +53,7 @@ public class Student {
 
     public Student (){
 
+        this.lastUpdated = new Date();
     }
 
     public int getId() {

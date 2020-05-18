@@ -5,10 +5,7 @@ import hr.unizg.fer.sudec.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -43,5 +40,14 @@ public class StudentController {
         studentService.saveStudent(student);
 
         return "redirect:/student/list";
+    }
+
+    @GetMapping("/details")
+    public String showStudentDetails(@RequestParam("studentId") int id, Model model){
+
+        Student student = studentService.getStudent(id);
+        model.addAttribute("student", student);
+
+        return "student-form";
     }
 }
