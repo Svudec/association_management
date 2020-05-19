@@ -36,16 +36,16 @@
                     <th></th>
                 </tr>
 
-                <c:forEach var="tempStudent" items="${students}">
+                <c:forEach var="tempTeam" items="${students}">
 
                     <c:url var="detailsLink" value="/student/details">
-                        <c:param name="studentId" value="${tempStudent.id}"/>
+                        <c:param name="studentId" value="${tempTeam.id}"/>
                     </c:url>
 
                     <tr>
-                        <td>${tempStudent.name}</td>
-                        <td>${tempStudent.surname}</td>
-                        <td>${tempStudent.mail}</td>
+                        <td>${tempTeam.name}</td>
+                        <td>${tempTeam.surname}</td>
+                        <td>${tempTeam.mail}</td>
                         <td>
                             <a href="${detailsLink}">Otvori profil</a>
                         </td>

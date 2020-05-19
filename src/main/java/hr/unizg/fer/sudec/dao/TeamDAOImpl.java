@@ -1,6 +1,6 @@
 package hr.unizg.fer.sudec.dao;
 
-import hr.unizg.fer.sudec.entity.Student;
+import hr.unizg.fer.sudec.entity.Team;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -10,33 +10,33 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class StudentDAOImpl implements StudentDAO{
+public class TeamDAOImpl implements TeamDAO{
 
     @Autowired
     private SessionFactory sessionFactory;
 
     @Override
-    public List<Student> getStudents() {
+    public List<Team> getTeams() {
 
         Session session = sessionFactory.getCurrentSession();
-        Query<Student> studentQuery = session.createQuery("from Student order by surname", Student.class);
+        Query<Team> teamQuery = session.createQuery("from Team ", Team.class);
 
-        return studentQuery.getResultList();
+        return teamQuery.getResultList();
     }
 
     @Override
-    public void saveStudent(Student student) {
+    public Team getTeam(int id) {
 
         Session session = sessionFactory.getCurrentSession();
 
-        session.saveOrUpdate(student);
+        return session.get(Team.class, id);
     }
 
     @Override
-    public Student getStudent(int id) {
+    public void saveTeam(Team team) {
 
         Session session = sessionFactory.getCurrentSession();
 
-        return session.get(Student.class, id);
+        session.saveOrUpdate(team);
     }
 }

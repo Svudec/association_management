@@ -3,6 +3,7 @@ package hr.unizg.fer.sudec.service;
 import hr.unizg.fer.sudec.entity.Student;
 
 import java.util.List;
+import java.util.Map;
 
 public interface StudentService {
 
@@ -11,4 +12,6 @@ public interface StudentService {
     void saveStudent(Student student);
 
     Student getStudent(int id);
+
+    Map<Integer, String> getStudentsIdFullNameMap();
 }

@@ -3,7 +3,9 @@ package hr.unizg.fer.sudec.entity;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "student")
@@ -54,9 +56,34 @@ public class Student {
     @Column(name = "je_aktivan_clan")
     private boolean isActiveMember;
 
+    @OneToMany(mappedBy = "leader", cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    private List<Team> leaderOfTeams;
+
+    @ManyToMany
+    @JoinTable(name = "je_clan", joinColumns = @JoinColumn(name = "id_student"), inverseJoinColumns = @JoinColumn(name = "id_tim"))
+    private List<Team> memberOfTeams;
+
     public Student (){
 
         this.lastUpdated = new Date();
+        this.leaderOfTeams = new ArrayList<>();
+        this.memberOfTeams = new ArrayList<>();
+    }
+
+    public List<Team> getMemberOfTeams() {
+        return memberOfTeams;
+    }
+
+    public void setMemberOfTeams(List<Team> memberOfTeams) {
+        this.memberOfTeams = memberOfTeams;
+    }
+
+    public List<Team> getLeaderOfTeams() {
+        return leaderOfTeams;
+    }
+
+    public void setLeaderOfTeams(List<Team> leaderOfTeams) {
+        this.leaderOfTeams = leaderOfTeams;
     }
 
     public int getId() {
@@ -189,5 +216,9 @@ public class Student {
                 ", isMember=" + isMember +
                 ", isActiveMember=" + isActiveMember +
                 '}';
+    }
+
+    public String getFullName(){
+        return name + " " + surname;
     }
 }

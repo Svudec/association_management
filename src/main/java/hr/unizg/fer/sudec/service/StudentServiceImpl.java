@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class StudentServiceImpl implements StudentService{
@@ -31,5 +33,19 @@ public class StudentServiceImpl implements StudentService{
     @Transactional
     public Student getStudent(int id) {
         return studentDAO.getStudent(id);
+    }
+
+    @Override
+    @Transactional
+    public Map<Integer, String> getStudentsIdFullNameMap() {
+
+        Map<Integer, String> output = new LinkedHashMap<>();
+        List<Student> students = getStudents();
+
+        for (Student student : students) {
+            output.put(student.getId(), student.getFullName());
+        }
+
+        return output;
     }
 }
