@@ -3,7 +3,7 @@ drop schema public cascade;
 create schema public;
 
 --enumeracije korištene u tablicama
-create type vrsta_dogadaja as enum ('Radionica', 'Razmjena', 'Napredna Radionica', 'Operacijski Događaj', 'Internacionalni Motivacijski Vikend');
+create type vrsta_dogadaja as enum ('RADIONICA', 'RAZMJENA', 'NAPREDNA_RADIONICA', 'OPERACIJSKI_DOGADAJ', 'MOTIVACIJSKI_VIKEND');
 create type vrsta_racuna as enum ('PRIHOD', 'RASHOD');
 
 --ENTITETI i INDEKSI
