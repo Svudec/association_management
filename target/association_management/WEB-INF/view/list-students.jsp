@@ -26,7 +26,9 @@
         <div id="content">
 
             <input type="button" value="Dodaj studenta" onclick="window.location.href='showFormForAdd'; return false;"
-            class="add-button">
+            class="add-button" style="${studentButton}">
+            <input type="button" value="Dodaj člana" onclick="window.location.href='formAddMember?TeamId=${param.get("TeamId")}'; return false;"
+                   class="add-button" style="${memberButton}">
 
             <table>
                 <tr>
@@ -36,18 +38,23 @@
                     <th></th>
                 </tr>
 
-                <c:forEach var="tempTeam" items="${students}">
+                <c:forEach var="tempStudent" items="${students}">
 
                     <c:url var="detailsLink" value="/student/details">
-                        <c:param name="studentId" value="${tempTeam.id}"/>
+                        <c:param name="studentId" value="${tempStudent.id}"/>
+                    </c:url>
+
+                    <c:url var="deleteMemberLink" value="/team/removeMember">
+                        <c:param name="TeamId" value="${param.get('TeamId')}"/>
+                        <c:param name="MemberId" value="${tempStudent.id}"/>
                     </c:url>
 
                     <tr>
-                        <td>${tempTeam.name}</td>
-                        <td>${tempTeam.surname}</td>
-                        <td>${tempTeam.mail}</td>
+                        <td>${tempStudent.name}</td>
+                        <td>${tempStudent.surname}</td>
+                        <td>${tempStudent.mail}</td>
                         <td>
-                            <a href="${detailsLink}">Otvori profil</a>
+                            <a href="${detailsLink}">Otvori profil</a> | <a href="${deleteMemberLink}" style="${memberButton}">Ukloni</a>
                         </td>
                     </tr>
 

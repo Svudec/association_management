@@ -36,18 +36,22 @@
                 <th></th>
             </tr>
 
-            <c:forEach var="tempTeam" items="${teams}">
+            <c:forEach var="tempStudent" items="${teams}">
 
-                <c:url var="detailsLink" value="/tim/details">
-                    <c:param name="timId" value="${tempTeam.id}"/>
+                <c:url var="detailsLink" value="/team/details">
+                    <c:param name="TeamId" value="${tempStudent.id}"/>
+                </c:url>
+
+                <c:url var="membersLink" value="/team/members">
+                    <c:param name="TeamId" value="${tempStudent.id}"/>
                 </c:url>
 
                 <tr>
-                    <td>${tempTeam.name}</td>
-                    <td>${tempTeam.leader.getFullName()}</td>
-                    <td>${teamService.getNumberOfMembers(tempTeam.id)}</td>
+                    <td>${tempStudent.name}</td>
+                    <td>${tempStudent.leader.getFullName()}</td>
+                    <td>${teamService.getNumberOfMembers(tempStudent.id)}</td>
                     <td>
-                        <a href="${detailsLink}">Detalji</a>
+                        <a href="${detailsLink}">Detalji</a> | <a href="${membersLink}">Članovi</a>
                     </td>
                 </tr>
 

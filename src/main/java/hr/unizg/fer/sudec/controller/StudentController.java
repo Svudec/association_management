@@ -21,6 +21,8 @@ public class StudentController {
 
         List<Student> students = studentService.getStudents();
         model.addAttribute("students", students);
+        model.addAttribute("studentButton", "");
+        model.addAttribute("memberButton", "display: none");
 
         return "list-students";
     }
@@ -38,9 +40,11 @@ public class StudentController {
     }
 
     @PostMapping("/save")
-    public String saveStudent(@ModelAttribute("student") Student student){
+    public String saveStudent(@ModelAttribute("student") Student student, Model model){
 
         studentService.saveStudent(student);
+        model.addAttribute("studentButton", "");
+        model.addAttribute("memberButton", "display: none");
 
         return "redirect:/student/list";
     }
