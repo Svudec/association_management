@@ -340,15 +340,19 @@ DECLARE
     partner_name VARCHAR;
     projekt_name VARCHAR;
 begin
-    SELECT partner.naziv_partner INTO partner_name FROM partner WHERE partner.id_partner = NEW.id_partner;
-    SELECT projekt.naziv_projekt INTO projekt_name FROM projekt WHERE projekt.id_projekt = NEW.id_projekt;
+	IF NEW.iznos = 0
+		THEN RETURN NEW;
+	ELSE
+        SELECT partner.naziv_partner INTO partner_name FROM partner WHERE partner.id_partner = NEW.id_partner;
+        SELECT projekt.naziv_projekt INTO projekt_name FROM projekt WHERE projekt.id_projekt = NEW.id_projekt;
 
-    INSERT INTO racun(vrsta_racun, iznos_racun, napomena, id_projekt)
-    VALUES ('PRIHOD', NEW.iznos,
-            'Račun od sponzorstva; SPONZOR: ' || partner_name || '(ID: ' || NEW.id_partner || ')' || '; PROJEKT: ' ||
-            projekt_name || '(ID: ' || NEW.id_projekt || ')',
-            NEW.id_projekt);
-    RETURN NEW;
+        INSERT INTO racun(vrsta_racun, iznos_racun, napomena, id_projekt)
+        VALUES ('PRIHOD', NEW.iznos,
+                'Račun od sponzorstva; SPONZOR: ' || partner_name || '(ID: ' || NEW.id_partner || ')' || '; PROJEKT: ' ||
+                projekt_name || '(ID: ' || NEW.id_projekt || ')',
+                NEW.id_projekt);
+        RETURN NEW;
+    END IF;
 end;
 $$ LANGUAGE plpgsql;
 

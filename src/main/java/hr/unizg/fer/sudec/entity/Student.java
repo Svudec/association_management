@@ -72,6 +72,14 @@ public class Student {
     @JoinTable(name = "putuje_na", joinColumns = @JoinColumn(name = "id_student"), inverseJoinColumns = @JoinColumn(name = "id_medunarodni_dogadaj"))
     private List<InternationalEvent> eventsParticipated;
 
+    @ManyToMany
+    @JoinTable(name = "prijava_na", joinColumns = @JoinColumn(name = "id_student"), inverseJoinColumns = @JoinColumn(name = "id_projekt"))
+    private List<Project> projectsParticipations;
+
+    @ManyToMany
+    @JoinTable(name = "je_organizator", joinColumns = @JoinColumn(name = "id_student"), inverseJoinColumns = @JoinColumn(name = "id_projekt"))
+    private List<Project> organizedProjects;
+
     public Student (){
 
         this.lastUpdated = new Date();
@@ -79,6 +87,24 @@ public class Student {
         this.memberOfTeams = new ArrayList<>();
         this.attendedGatherings = new ArrayList<>();
         this.eventsParticipated = new ArrayList<>();
+        this.projectsParticipations = new ArrayList<>();
+        this.organizedProjects = new ArrayList<>();
+    }
+
+    public List<Project> getProjectsParticipations() {
+        return projectsParticipations;
+    }
+
+    public void setProjectsParticipations(List<Project> projectsParticipations) {
+        this.projectsParticipations = projectsParticipations;
+    }
+
+    public List<Project> getOrganizedProjects() {
+        return organizedProjects;
+    }
+
+    public void setOrganizedProjects(List<Project> organizedProjects) {
+        this.organizedProjects = organizedProjects;
     }
 
     public List<InternationalEvent> getEventsParticipated() {

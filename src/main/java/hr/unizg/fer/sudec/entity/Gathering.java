@@ -41,9 +41,21 @@ public class Gathering {
     @JoinTable(name = "prisustvuje", joinColumns = @JoinColumn(name = "id_okupljanje"), inverseJoinColumns = @JoinColumn(name = "id_student"))
     private List<Student> attenders;
 
+    @OneToMany(mappedBy = "gatheringReceipt", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    private List<Receipt> gatheringReceipts;
+
     public Gathering() {
 
         this.attenders = new ArrayList<>();
+        this.gatheringReceipts = new ArrayList<>();
+    }
+
+    public List<Receipt> getGatheringReceipts() {
+        return gatheringReceipts;
+    }
+
+    public void setGatheringReceipts(List<Receipt> gatheringReceipts) {
+        this.gatheringReceipts = gatheringReceipts;
     }
 
     public List<Student> getAttenders() {
