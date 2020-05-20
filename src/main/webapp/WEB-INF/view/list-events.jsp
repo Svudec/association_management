@@ -33,7 +33,7 @@
                 <th>Naziv</th>
                 <th>Početak</th>
                 <th>Vrsta</th>
-                <th>Broj sudionika</th>
+                <th>Ukupno sudionika</th>
                 <th>Cijena(EUR)</th>
                 <th></th>
             </tr>

@@ -38,7 +38,7 @@
 
             <c:forEach var="tempBranch" items="${branches}">
 
-                <c:url var="eventsLink" value="/branch/events">
+                <c:url var="eventsLink" value="/event/listByBranch">
                     <c:param name="BranchId" value="${tempBranch.id}"/>
                 </c:url>
 

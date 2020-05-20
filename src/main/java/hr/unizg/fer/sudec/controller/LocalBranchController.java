@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -28,11 +27,4 @@ public class LocalBranchController {
         return "list-branches";
     }
 
-    @GetMapping("/events")
-    public String eventsOrganized(@RequestParam("BranchId") int id, Model model){
-
-        model.addAttribute("events", localBranchService.getEvents(id));
-
-        return "list-events";
-    }
 }
