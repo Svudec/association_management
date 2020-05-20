@@ -48,6 +48,7 @@ public class Student {
     private String studyField;
 
     @Column(name = "datum_azuriranja")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date lastUpdated;
 
     @Column(name = "je_clan")
@@ -63,11 +64,37 @@ public class Student {
     @JoinTable(name = "je_clan", joinColumns = @JoinColumn(name = "id_student"), inverseJoinColumns = @JoinColumn(name = "id_tim"))
     private List<Team> memberOfTeams;
 
+    @ManyToMany
+    @JoinTable(name = "prisustvuje", joinColumns = @JoinColumn(name = "id_student"), inverseJoinColumns = @JoinColumn(name = "id_okupljanje"))
+    private List<Gathering> attendedGatherings;
+
+    @ManyToMany
+    @JoinTable(name = "putuje_na", joinColumns = @JoinColumn(name = "id_student"), inverseJoinColumns = @JoinColumn(name = "id_medunarodni_dogadaj"))
+    private List<InternationalEvent> eventsParticipated;
+
     public Student (){
 
         this.lastUpdated = new Date();
         this.leaderOfTeams = new ArrayList<>();
         this.memberOfTeams = new ArrayList<>();
+        this.attendedGatherings = new ArrayList<>();
+        this.eventsParticipated = new ArrayList<>();
+    }
+
+    public List<InternationalEvent> getEventsParticipated() {
+        return eventsParticipated;
+    }
+
+    public void setEventsParticipated(List<InternationalEvent> eventsParticipated) {
+        this.eventsParticipated = eventsParticipated;
+    }
+
+    public List<Gathering> getAttendedGatherings() {
+        return attendedGatherings;
+    }
+
+    public void setAttendedGatherings(List<Gathering> attendedGatherings) {
+        this.attendedGatherings = attendedGatherings;
     }
 
     public List<Team> getMemberOfTeams() {

@@ -2,6 +2,8 @@ package hr.unizg.fer.sudec.config;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.hibernate.SessionFactory;
+import org.modelmapper.AbstractConverter;
+import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -20,6 +22,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Properties;
 
 @Configuration
@@ -112,7 +116,28 @@ public class AppConfig implements WebMvcConfigurer {
     //ModelMapper bean
     @Bean
     public ModelMapper modelMapper() {
-        return new ModelMapper();
+        ModelMapper myModelMapper = new ModelMapper();
+        Converter<String, Timestamp> myFormatTimestamp = new AbstractConverter<String, Timestamp>() {
+            @Override
+            protected Timestamp convert(String s) {
+                String[] date = s.split("T")[0].split("-");
+                String[] time = s.split("T")[1].split(":");
+
+                return Timestamp.valueOf(String.format("%4s-%2s-%2s %2s:%2s:00", date[0],date[1],date[2],time[0],time[1]));
+            }
+        };
+        Converter<Timestamp, String> myFormatTimestamp2 = new AbstractConverter<Timestamp, String>() {
+            @Override
+            protected String convert(Timestamp s) {
+
+                LocalDateTime out = s.toLocalDateTime();
+                return out.toString();
+            }
+        };
+
+        myModelMapper.addConverter(myFormatTimestamp);
+        myModelMapper.addConverter(myFormatTimestamp2);
+        return myModelMapper;
     }
 
 }

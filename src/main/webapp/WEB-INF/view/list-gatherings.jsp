@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: karlo
-  Date: 19-May-20
-  Time: 11:00
+  Date: 20-May-20
+  Time: 11:22
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -10,7 +10,7 @@
 
 <html>
 <head>
-    <title>Popis timova</title>
+    <title>Popis okupljanja</title>
 
     <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet" type="text/css">
 </head>
@@ -25,33 +25,33 @@
 <div id="container">
     <div id="content">
 
-        <input type="button" value="Napravi tim" onclick="window.location.href='showFormForAdd'; return false;"
+        <input type="button" value="Novo okupljanje" onclick="window.location.href='showFormForAdd'; return false;"
                class="add-button">
 
         <table>
             <tr>
                 <th>Naziv</th>
-                <th>Voditelj</th>
+                <th>Datum</th>
                 <th>Broj članova</th>
                 <th></th>
             </tr>
 
-            <c:forEach var="tempTeam" items="${teams}">
+            <c:forEach var="tempGathering" items="${gatherings}">
 
-                <c:url var="detailsLink" value="/team/details">
-                    <c:param name="TeamId" value="${tempTeam.id}"/>
+                <c:url var="detailsLink" value="/gathering/details">
+                    <c:param name="GatheringId" value="${tempGathering.id}"/>
                 </c:url>
 
-                <c:url var="membersLink" value="/team/members">
-                    <c:param name="TeamId" value="${tempTeam.id}"/>
+                <c:url var="membersLink" value="/gathering/members">
+                    <c:param name="GatheringId" value="${tempGathering.id}"/>
                 </c:url>
 
                 <tr>
-                    <td>${tempTeam.name}</td>
-                    <td>${tempTeam.leader.getFullName()}</td>
-                    <td>${teamService.getNumberOfMembers(tempTeam.id)}</td>
+                    <td>${tempGathering.name}</td>
+                    <td>${tempGathering.startTime}</td>
+                    <td>${gatheringService.getMembersNumber(tempGathering.id)}</td>
                     <td>
-                        <a href="${detailsLink}">Detalji</a> | <a href="${membersLink}">Članovi</a>
+                        <a href="${detailsLink}">Detalji</a> | <a href="${membersLink}">Sudionici</a>
                     </td>
                 </tr>
 

@@ -59,9 +59,7 @@ public class TeamServiceImpl implements TeamService{
     public void saveTeam(TeamDTO teamDTO) {
 
         Team team = getTeam(teamDTO.getId());
-        if(team == null){
-            team = new Team();
-        }
+        if(team == null) team = new Team();
 
         team.setLeader(studentService.getStudent(teamDTO.getLeaderId()));
         modelMapper.map(teamDTO, team);

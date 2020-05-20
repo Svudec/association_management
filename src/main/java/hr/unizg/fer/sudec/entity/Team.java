@@ -27,9 +27,21 @@ public class Team {
     @JoinTable(name = "je_clan", inverseJoinColumns = @JoinColumn(name = "id_student"), joinColumns = @JoinColumn(name = "id_tim"))
     private List<Student> members;
 
+    @OneToMany(mappedBy = "team", cascade={CascadeType.ALL})
+    private List<Gathering> gatherings;
+
     public Team() {
 
         this.members = new ArrayList<>();
+        this.gatherings = new ArrayList<>();
+    }
+
+    public List<Gathering> getGatherings() {
+        return gatherings;
+    }
+
+    public void setGatherings(List<Gathering> gatherings) {
+        this.gatherings = gatherings;
     }
 
     public List<Student> getMembers() {
