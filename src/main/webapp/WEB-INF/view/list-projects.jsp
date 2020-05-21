@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <html>
 <head>
@@ -36,8 +37,10 @@
 <div id="container">
     <div id="content">
 
+<security:authorize access="hasAnyRole('BOARD_MEMBER', 'ADMIN')">
         <input type="button" value="Novi projekt" onclick="window.location.href='showFormForAdd'; return false;"
                class="add-button">
+</security:authorize>
 
         <table>
             <tr>
@@ -60,7 +63,10 @@
                     <td>${tempProject.endDate.toLocaleString()}</td>
                     <td>${projectService.getParticipantsNumber(tempProject.id)}</td>
                     <td>
-                        <a href="${detailsLink}">Detalji</a>
+
+                        <security:authorize access="hasAnyRole('BOARD_MEMBER', 'ADMIN')">
+                            <a href="${detailsLink}">Detalji</a>
+                        </security:authorize>
                     </td>
                 </tr>
 

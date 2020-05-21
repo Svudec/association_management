@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <title>Forma za okupljanje</title>
@@ -38,10 +39,14 @@
 <div id="container">
     <h3>Forma za okupljanje</h3>
 
+<security:authorize access="hasAnyRole('BOARD_MEMBER', 'ADMIN')">
+
     <form:form action="edit" modelAttribute="gathering" method="get">
         <form:hidden path="id"/>
         <input type="submit" value="Uredi" style="visibility: ${editButton}" class="add-button"/>
     </form:form>
+
+</security:authorize>
 
 
     <form:form action="save" modelAttribute="gathering" method="post">

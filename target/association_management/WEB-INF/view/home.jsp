@@ -37,9 +37,30 @@
 </div>
 
 <h2>Korisnik: <security:authentication property="principal.username"/></h2>
-<h3>Uloge: <security:authentication property="principal.authorities"/></h3>
-        <br>
-    </p>
-    <hr>
+<h3>Uloga: <security:authentication property="principal.authorities"/></h3>
+<br/>
+
+<div><h4>Općenito</h4></div>
+<div id="container">
+
+<a href="${pageContext.request.contextPath}/student/list" class="homeButton">Studenti</a>
+    <a href="${pageContext.request.contextPath}/team/list" class="homeButton">Timovi</a>
+    <a href="${pageContext.request.contextPath}/gathering/list" class="homeButton">Okupljanja</a>
+</div>
+<br/>
+<div><h4>Međunarodna sfera</h4></div>
+<div>
+    <a href="${pageContext.request.contextPath}/event/list" class="homeButton">Internacionalna Putovanja</a>
+    <a href="${pageContext.request.contextPath}/branch/list" class="homeButton">Lokalni ogranci</a>
+</div>
+<br/>
+<div><h4>Projekti i financije</h4></div>
+<div>
+    <a href="${pageContext.request.contextPath}/project/list" class="homeButton">Projekti</a>
+<security:authorize access="hasAnyRole('BOARD_MEMBER', 'ADMIN')">
+    <a href="${pageContext.request.contextPath}/receipt/list" class="homeButton">Financije</a>
+</security:authorize>
+</div>
+
 </body>
 </html>

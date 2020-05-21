@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <html>
 <head>
@@ -36,8 +37,10 @@
 <div id="container">
     <div id="content">
 
-        <input type="button" value="Napravi tim" onclick="window.location.href='showFormForAdd'; return false;"
+        <security:authorize access="hasAnyRole('BOARD_MEMBER', 'ADMIN')">
+            <input type="button" value="Napravi tim" onclick="window.location.href='showFormForAdd'; return false;"
                class="add-button">
+        </security:authorize>
 
         <table>
             <tr>
@@ -62,7 +65,7 @@
                     <td>${tempTeam.leader.getFullName()}</td>
                     <td>${teamService.getNumberOfMembers(tempTeam.id)}</td>
                     <td>
-                        <a href="${detailsLink}">Detalji</a> | <a href="${membersLink}">Članovi</a>
+                        <a href="${detailsLink}">Detalji</a> <security:authorize access="hasAnyRole('BOARD_MEMBER', 'ADMIN')">| <a href="${membersLink}">Članovi</a></security:authorize>
                     </td>
                 </tr>
 

@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <html>
 <head>
@@ -36,10 +37,13 @@
     <div id="container">
         <div id="content">
 
-            <input type="button" value="Dodaj studenta" onclick="window.location.href='showFormForAdd'; return false;"
-            class="add-button" style="${studentButton}">
-            <input type="button" value="Dodaj člana" onclick="window.location.href='formAddMember?TeamId=${param.get("TeamId")}'; return false;"
+            <security:authorize access="hasAnyRole('BOARD_MEMBER', 'ADMIN')">
+                <input type="button" value="Dodaj studenta" onclick="window.location.href='showFormForAdd'; return false;"
+                class="add-button" style="${studentButton}">
+
+                <input type="button" value="Dodaj člana" onclick="window.location.href='formAddMember?TeamId=${param.get("TeamId")}'; return false;"
                    class="add-button" style="${memberButton}">
+            </security:authorize>
 
             <table>
                 <tr>
@@ -65,7 +69,9 @@
                         <td>${tempStudent.surname}</td>
                         <td>${tempStudent.mail}</td>
                         <td>
+                            <security:authorize access="hasAnyRole('BOARD_MEMBER', 'ADMIN')">
                             <a href="${detailsLink}">Otvori profil</a> | <a href="${deleteMemberLink}" style="${memberButton}">Ukloni</a>
+                            </security:authorize>
                         </td>
                     </tr>
 

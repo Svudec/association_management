@@ -34,12 +34,13 @@
 </div>
 
 <div id="container">
+    <div>
+        <h3>Trenutno stanje računa: ${receiptService.getAccountValue()}</h3>
+    </div>
     <div id="content">
 
         <input type="button" value="Napravi račun" onclick="window.location.href='showFormForAdd'; return false;"
                class="add-button">
-
-        <b>Trenutno stanje računa: ${receiptService.getAccountValue()}</b>
 
         <table>
             <tr>

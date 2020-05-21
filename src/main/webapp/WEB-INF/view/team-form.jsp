@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <title>Forma za tim</title>
@@ -38,11 +39,14 @@
 <div id="container">
     <h3>Forma za tim</h3>
 
-    <form:form action="edit" modelAttribute="team" method="get">
-        <form:hidden path="id"/>
-        <input type="submit" value="Uredi" style="visibility: ${editButton}" class="add-button"/>
-    </form:form>
+    <security:authorize access="hasAnyRole('BOARD_MEMBER', 'ADMIN')">
 
+        <form:form action="edit" modelAttribute="team" method="get">
+            <form:hidden path="id"/>
+            <input type="submit" value="Uredi" style="visibility: ${editButton}" class="add-button"/>
+        </form:form>
+
+    </security:authorize>
 
     <form:form action="save" modelAttribute="team" method="post">
 
@@ -56,7 +60,7 @@
             </tr>
             <tr>
                 <td><label>Opis:</label></td>
-                <td><form:input disabled="${disabled_edit}" path="description" /></td>
+                <td><form:textarea disabled="${disabled_edit}" path="description" /></td>
             </tr>
             <tr>
                 <td><label>Voditelj:</label></td>
