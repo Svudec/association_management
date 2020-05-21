@@ -41,11 +41,23 @@ public class Project {
     @JoinTable(name = "je_organizator", joinColumns = @JoinColumn(name = "id_projekt"), inverseJoinColumns = @JoinColumn(name = "id_student"))
     private List<Student> organizers;
 
+    @OneToMany(mappedBy = "primaryKey.project", cascade = CascadeType.ALL)
+    private List<Sponsorship> sponsorships;
+
     public Project(){
 
         this.projectReceipts = new ArrayList<>();
         this.participants = new ArrayList<>();
         this.organizers = new ArrayList<>();
+        this.sponsorships = new ArrayList<>();
+    }
+
+    public List<Sponsorship> getSponsorships() {
+        return sponsorships;
+    }
+
+    public void setSponsorships(List<Sponsorship> sponsorships) {
+        this.sponsorships = sponsorships;
     }
 
     public List<Student> getParticipants() {

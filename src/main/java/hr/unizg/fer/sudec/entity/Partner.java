@@ -1,6 +1,8 @@
 package hr.unizg.fer.sudec.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "partner")
@@ -26,8 +28,20 @@ public class Partner {
     @Column(name = "mail_partner")
     private String mail;
 
+    @OneToMany(mappedBy = "primaryKey.partner", cascade = CascadeType.ALL)
+    private List<Sponsorship> sponsorships;
+
     public Partner(){
 
+        this.sponsorships = new ArrayList<>();
+    }
+
+    public List<Sponsorship> getSponsorships() {
+        return sponsorships;
+    }
+
+    public void setSponsorships(List<Sponsorship> sponsorships) {
+        this.sponsorships = sponsorships;
     }
 
     public int getId() {
