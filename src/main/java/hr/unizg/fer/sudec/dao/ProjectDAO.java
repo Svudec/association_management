@@ -9,4 +9,6 @@ public interface ProjectDAO {
     Project getProject(int id);
 
     List<Project> getProjects();
+
+    void save(Project project);
 }

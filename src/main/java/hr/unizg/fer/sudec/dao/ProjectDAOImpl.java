@@ -27,8 +27,15 @@ public class ProjectDAOImpl implements ProjectDAO{
     public List<Project> getProjects() {
 
         Session session = sessionFactory.getCurrentSession();
-        Query<Project> projectQuery = session.createQuery("from Project order by name", Project.class);
+        Query<Project> projectQuery = session.createQuery("from Project order by startDate desc ", Project.class);
 
         return projectQuery.getResultList();
+    }
+
+    @Override
+    public void save(Project project) {
+
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(project);
     }
 }
