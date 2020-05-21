@@ -19,6 +19,16 @@
 </head>
 <body>
 
+<div class="navigation">
+
+    <!-- Logout button -->
+    <form:form action="${pageContext.request.contextPath}/logout" method="POST">
+
+        <input type="submit" value="Odjavi se" class="logout-button"/>
+    </form:form>
+
+</div>
+
 <div id="wrapper">
     <div id="header">
         <h2>Aplikacija za studentsku udrugu</h2>
