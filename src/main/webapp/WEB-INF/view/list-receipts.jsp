@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html>
 <head>
@@ -45,7 +46,7 @@
                 <th>Vrsta</th>
                 <th>Iznos</th>
                 <th>Vrijeme</th>
-                <th></th>
+                <th>Opis</th>
             </tr>
 
             <c:forEach var="tempReceipt" items="${receipts}">
@@ -54,6 +55,7 @@
                     <td>${tempReceipt.type}</td>
                     <td>${tempReceipt.value}</td>
                     <td>${tempReceipt.time.toLocaleString()}</td>
+                    <td>${tempReceipt.description}</td>
                 </tr>
 
             </c:forEach>

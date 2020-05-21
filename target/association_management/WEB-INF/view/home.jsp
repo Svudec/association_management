@@ -25,7 +25,7 @@
     <!-- Logout button -->
     <form:form action="${pageContext.request.contextPath}/logout" method="POST">
 
-        <input type="submit" value="Odjavi se" class="logout-button"/>
+        <input type="submit" value="Odjavi se" size="small" class="logout-button"/>
     </form:form>
 
 </div>
@@ -41,11 +41,5 @@
         <br>
     </p>
     <hr>
-
-    <!-- Logout button -->
-    <form:form action="${pageContext.request.contextPath}/logout" method="POST">
-
-        <input type="submit" value="Odjavi se" class="logout-button"/>
-    </form:form>
 </body>
 </html>
