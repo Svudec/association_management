@@ -62,7 +62,7 @@ create table partner
         constraint partner_pk
             primary key,
     naziv_partner      VARCHAR not null,
-    oib_partner        INT     not null,
+    oib_partner        VARCHAR not null,
     web_adresa_partner VARCHAR,
     mobitel_partner    VARCHAR,
     mail_partner       VARCHAR not null

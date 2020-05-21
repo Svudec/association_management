@@ -43,6 +43,7 @@ public class Receipt {
 
     public Receipt(){
 
+        this.time = new Timestamp(System.currentTimeMillis());
     }
 
     public Gathering getGatheringReceipt() {

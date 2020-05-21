@@ -30,9 +30,9 @@
 
         <table>
             <tr>
-                <th>Naziv</th>
-                <th>Početak</th>
-                <th>Vrsta</th>
+                <th>Naziv događanja</th>
+                <th>Početak događanja</th>
+                <th>Vrsta događanja</th>
                 <th>Ukupno sudionika</th>
                 <th>Cijena(EUR)</th>
                 <th></th>
@@ -50,7 +50,7 @@
 
                 <tr>
                     <td>${tempEvent.name}</td>
-                    <td>${tempEvent.startDate}</td>
+                    <td>${tempEvent.startDate.toLocaleString()}</td>
                     <td>${tempEvent.eventCategory}</td>
                     <td>${tempEvent.capacity}</td>
                     <td>${tempEvent.price}</td>

@@ -70,7 +70,7 @@
             </tbody>
         </table>
     <td/>
-    <td style="font-size: large">Naši sudionici</td>
+    <b>Naši sudionici</b>
     <td/>
         <div id="content">
 
