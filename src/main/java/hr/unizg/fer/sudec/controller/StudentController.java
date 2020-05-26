@@ -43,10 +43,12 @@ public class StudentController {
     public String saveStudent(@ModelAttribute("student") Student student, Model model){
 
         studentService.saveStudent(student);
-        model.addAttribute("studentButton", "");
-        model.addAttribute("memberButton", "display: none");
+        model.addAttribute("student", student);
+        model.addAttribute("disabled_edit", true);
+        model.addAttribute("saveButton", "hidden");
+        model.addAttribute("editButton", "visible");
 
-        return "redirect:/student/list";
+        return "student-form";
     }
 
     @GetMapping("/details")

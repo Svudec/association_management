@@ -3,6 +3,7 @@ package hr.unizg.fer.sudec.entity;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -42,7 +43,7 @@ public class Student {
     private String faculty;
 
     @Column(name = "godina_studija")
-    private String yearOfStudy;
+    private Integer yearOfStudy;
 
     @Column(name = "smjer_studija")
     private String studyField;
@@ -89,6 +90,22 @@ public class Student {
         this.eventsParticipated = new ArrayList<>();
         this.projectsParticipations = new ArrayList<>();
         this.organizedProjects = new ArrayList<>();
+    }
+
+    public void removeEmptyStrings(){
+        Field[] fields = Student.class.getDeclaredFields();
+
+        for (Field field : fields) {
+            field.setAccessible(true);
+
+            try {
+                if(field.getType().equals(String.class) && ((String) field.get(this)).isEmpty())
+                    field.set(this, null);
+
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public List<Project> getProjectsParticipations() {
@@ -211,11 +228,11 @@ public class Student {
         this.faculty = faculty;
     }
 
-    public String getYearOfStudy() {
+    public Integer getYearOfStudy() {
         return yearOfStudy;
     }
 
-    public void setYearOfStudy(String yearOfStudy) {
+    public void setYearOfStudy(Integer yearOfStudy) {
         this.yearOfStudy = yearOfStudy;
     }
 

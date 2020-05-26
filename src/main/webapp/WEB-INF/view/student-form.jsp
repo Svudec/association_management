@@ -41,6 +41,8 @@
         <form:form action="edit" modelAttribute="student" method="get">
             <form:hidden path="id"/>
             <input type="submit" value="Uredi" style="visibility: ${editButton}" class="add-button"/>
+            <input type="button" value="Popis studenata" onclick="window.location.href='list'; return false;"
+                   class="add-button">
         </form:form>
 
 
