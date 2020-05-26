@@ -437,86 +437,359 @@ VALUES ('ut erat. Sed',
 
 --Random generirani partneri
 INSERT INTO "partner" (naziv_partner, oib_partner, web_adresa_partner, mobitel_partner, mail_partner)
-VALUES ('Porttitor Tellus Non Foundation', '3588',
-        'lacinia vitae, sodales at, velit. Pellentesque ultricies dignissim lacus. Aliquam', '04 65 23 74 27',
-        'et@Pellentesque.ca'),
-       ('Lacus Varius LLC', '5704', 'Nullam velit dui,', '09 24 95 35 07', 'dui.Suspendisse.ac@nec.net'),
-       ('Non Justo Proin PC', '2254', 'elementum, dui quis', '05 61 76 51 80',
-        'Vivamus.molestie.dapibus@Etiambibendum.ca'),
-       ('Nibh Aliquam Consulting', '1075', 'sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus',
-        '02 09 95 65 15', 'Vestibulum@etarcu.com'),
-       ('Augue Eu Corp.', '6979', 'iaculis enim, sit amet ornare lectus justo', '08 52 81 44 18', 'Morbi@interdum.com'),
-       ('Nascetur Ridiculus Mus Consulting', '3689', 'auctor. Mauris vel turpis.', '01 06 86 47 80',
-        'risus@ametnulla.edu'),
-       ('Sagittis Semper Corporation', '6493', 'elementum, lorem ut', '08 81 62 56 01', 'tincidunt@elit.ca'),
-       ('Sociis Natoque Penatibus Inc.', '3291', 'Curabitur sed tortor. Integer aliquam adipiscing lacus.',
-        '04 79 88 30 73', 'elit.pharetra.ut@enimMauris.ca'),
-       ('Amet Lorem Industries', '1293', 'Duis at lacus. Quisque purus sapien, gravida non,', '02 76 05 28 12',
-        'eu@egetmetuseu.net'),
-       ('Cursus Non PC', '6545', 'bibendum', '06 46 28 49 21', 'pede@lorem.org'),
-       ('Et Ultrices Industries', '9062', 'consectetuer ipsum nunc id enim. Curabitur massa. Vestibulum',
-        '04 71 28 57 01', 'amet.orci@Nunc.ca'),
-       ('Metus Eu Incorporated', '6480', 'dolor sit', '04 80 71 20 98', 'ultrices.a@nibhsitamet.com'),
-       ('Arcu Nunc Institute', '1245', 'sed dolor. Fusce mi lorem, vehicula et,', '08 48 96 12 43',
-        'morbi.tristique.senectus@luctus.com'),
-       ('Fusce Inc.', '2997', 'Sed nunc est, mollis non, cursus non, egestas', '09 86 43 38 02',
-        'eu.euismod.ac@dictum.com'),
-       ('Lacus Quisque Purus LLP', '8785', 'magna a tortor. Nunc commodo auctor velit. Aliquam nisl. Nulla',
-        '09 52 61 88 37', 'id@egetipsumSuspendisse.com'),
-       ('Eu Foundation', '5674', 'fermentum metus. Aenean sed pede nec ante', '06 20 87 75 42', 'Etiam.laoreet@erat.ca'),
-       ('Fusce Diam Incorporated', '9427', 'malesuada id, erat. Etiam vestibulum massa rutrum', '03 56 83 25 44',
-        'magnis.dis@tincidunt.net'),
-       ('Congue Company', '5082', 'mollis non, cursus non,', '09 57 41 23 19', 'Proin.mi@Naminterdumenim.edu'),
-       ('Blandit Mattis Cras Consulting', '8303', 'Donec tempus, lorem fringilla ornare placerat, orci lacus',
-        '05 09 52 39 46', 'id.nunc.interdum@Nulladignissim.edu'),
-       ('Felis Limited', '7544', 'Curabitur', '02 36 36 11 56', 'mattis.Cras@Duisvolutpatnunc.ca'),
-       ('Nunc Ac Sem Industries', '6589', 'ornare lectus justo eu', '08 02 49 21 94', 'iaculis.quis.pede@velit.org'),
-       ('Nulla Dignissim PC', '6331', 'urna. Nunc quis arcu', '07 36 92 12 59', 'massa.non@Maecenas.com'),
-       ('Non Enim Corporation', '7545', 'dolor sit amet, consectetuer', '04 30 02 27 98',
-        'magna@enimcondimentumeget.edu'),
-       ('Arcu Vel Quam Company', '6316', 'dolor dolor, tempus non, lacinia', '04 23 57 72 31',
-        'viverra.Donec@enimgravidasit.org'),
-       ('Nec Mauris Inc.', '6081', 'nulla', '04 92 59 72 94', 'natoque@necmetus.net'),
-       ('Orci Luctus Et Associates', '6301', 'lacus', '03 23 31 47 89', 'malesuada@tristique.net'),
-       ('Eu LLP', '3870', 'vitae odio sagittis', '08 45 10 82 40', 'Aliquam.rutrum@euerosNam.ca'),
-       ('Quis Arcu Limited', '8016', 'at lacus. Quisque purus sapien,', '09 97 77 44 04', 'Sed.id.risus@Proinvelnisl.ca'),
-       ('Urna Ltd', '3654', 'velit eget laoreet posuere, enim nisl elementum', '06 15 57 85 87',
-        'in.aliquet@penatibuset.org'),
-       ('Neque Non Quam Limited', '9776', 'enim consequat purus. Maecenas libero est,', '06 06 19 38 68',
-        'arcu@ullamcorpermagna.co.uk'),
-       ('Eu Metus In Institute', '9731', 'nec ligula consectetuer rhoncus.', '09 96 18 28 95',
-        'pellentesque.massa@ultrices.edu'),
-       ('Erat Neque Non LLP', '7387', 'pede,', '06 71 97 01 33', 'Suspendisse@In.org'),
-       ('Arcu Vestibulum Ante Associates', '2423', 'semper pretium neque. Morbi quis urna.', '05 54 54 26 25',
-        'sapien@euismodmauris.edu'),
-       ('Nec Metus Facilisis Foundation', '9389', 'nec, eleifend non, dapibus rutrum, justo. Praesent luctus. Curabitur',
-        '04 79 14 87 10', 'ut.erat.Sed@CuraePhasellusornare.edu'),
-       ('Rhoncus Donec Institute', '3740', 'sagittis', '01 36 13 10 82', 'Mauris.eu@fermentumconvallisligula.co.uk'),
-       ('Molestie In Limited', '4571', 'a,', '02 42 03 95 59', 'iaculis@velitSedmalesuada.com'),
-       ('Senectus Et Incorporated', '7570', 'quis lectus. Nullam suscipit, est ac', '03 56 66 03 10',
-        'ac@Sedegetlacus.ca'),
-       ('Cras Foundation', '1439', 'pede. Nunc sed orci lobortis augue scelerisque mollis.', '09 49 38 18 99',
-        'magna.tellus@Integersemelit.edu'),
-       ('Laoreet Consulting', '4853', 'et malesuada fames ac turpis egestas. Aliquam', '05 72 54 48 25',
-        'Cras.lorem.lorem@ultricesVivamusrhoncus.net'),
-       ('Et Magna Incorporated', '2351', 'ridiculus mus. Proin vel arcu', '01 12 41 50 02', 'mi@ascelerisquesed.edu'),
-       ('Aliquam Rutrum Lorem Corp.', '2527',
-        'laoreet ipsum. Curabitur consequat, lectus sit amet luctus vulputate, nisi', '07 42 15 76 82',
-        'nec.enim@aliquetvel.net'),
-       ('Dignissim Magna LLP', '4319', 'non,', '07 31 69 43 23', 'sapien.Aenean@at.com'),
-       ('Luctus Industries', '8446', 'tincidunt adipiscing. Mauris', '02 26 49 55 16',
-        'montes.nascetur@Suspendissenonleo.edu'),
-       ('In Limited', '5860', 'Nunc ullamcorper, velit in', '05 99 68 36 94', 'egestas.Duis@Phasellus.com'),
-       ('Nunc Lectus Pede Industries', '5904', 'sem molestie sodales. Mauris blandit enim consequat purus. Maecenas',
-        '05 70 46 72 12', 'amet@ridiculus.com'),
-       ('Tempor Diam Foundation', '3543', 'eget magna. Suspendisse tristique neque', '02 80 78 53 57',
-        'sem.molestie@adipiscingelitCurabitur.org'),
-       ('Ut Institute', '9327', 'non, lacinia at,', '01 57 85 62 80', 'montes@nec.org'),
-       ('Sagittis Nullam Company', '2593', 'sed dictum eleifend, nunc risus varius orci, in', '09 49 35 93 32',
-        'eget.mollis.lectus@iaculislacuspede.ca'),
-       ('Sed Dui Corp.', '7661', 'pharetra sed, hendrerit', '05 28 00 86 20', 'sagittis.augue.eu@gravida.org'),
-       ('Dictum Ultricies Ligula Consulting', '8506', 'velit. Pellentesque ultricies dignissim lacus. Aliquam rutrum',
-        '07 77 68 83 73', 'amet@justoPraesentluctus.ca');
+VALUES ('Photojam', 19501365, 'sogou.com/mauris/vulputate/elementum/nullam.aspx', '+502 131 406 0513',
+        'rbedenham0@weibo.com')
+     , ('Ailane', 34458992, 'bloglovin.com/erat/vestibulum/sed/magna/at/nunc/commodo.xml', '+598 898 990 7238',
+        'wgodbold1@exblog.jp')
+     , ('Aimbu', 54600823, 'smh.com.au/molestie/sed.jpg', '+33 114 477 8458', 'mrandal2@cam.ac.uk')
+     , ('Abatz', 44286904, 'amazon.co.jp/diam.xml', '+49 777 243 5781', 'tcudde3@a8.net')
+     , ('Zoomcast', 76147533, 'reference.com/at/nulla/suspendisse/potenti/cras.html', '+62 485 325 3220',
+        'klearmond4@go.com')
+     , ('Thoughtbridge', 38286680, 'bluehost.com/nec/molestie.png', '+30 454 205 4294', 'bnovichenko5@amazonaws.com')
+     , ('Oyondu', 24463120, 'blogs.com/iaculis/congue/vivamus/metus/arcu.xml', '+62 613 830 2471',
+        'rmarkos6@blogspot.com')
+     , ('Skipfire', 14225799, 'oakley.com/platea/dictumst/morbi/vestibulum/velit/id/pretium.aspx', '+54 146 227 0058',
+        'hcampe7@jigsy.com')
+     , ('Aibox', 21766609, 'mayoclinic.com/quam/pede/lobortis/ligula/sit.png', '+7 688 589 9715',
+        'aseivertsen8@bizjournals.com')
+     , ('Quimm', 89938845, 'wsj.com/lacus/purus/aliquet.jpg', '+1 702 140 9571', 'hgrob9@cdbaby.com')
+     , ('Rhyloo', 99948158, 'utexas.edu/felis/fusce/posuere/felis/sed/lacus.json', '+33 765 561 7422',
+        'anewcomba@ycombinator.com')
+     , ('Reallinks', 54878006, 'oracle.com/potenti.jsp', '+351 308 886 4476', 'dezzellb@technorati.com')
+     , ('Devify', 29115998, 'youku.com/pede/malesuada/in/imperdiet/et.xml', '+48 178 574 9660',
+        'jlivardc@cloudflare.com')
+     , ('Edgepulse', 43031599, 'state.gov/quisque/erat/eros/viverra/eget/congue.jpg', '+226 861 211 0396',
+        'dthompstoned@ocn.ne.jp')
+     , ('Ooba', 25924591, 'mtv.com/ac/leo.png', '+7 827 481 9642', 'mbabidgee@sciencedaily.com')
+     , ('Skyba', 97057235, 'cdbaby.com/nunc/viverra/dapibus/nulla/suscipit/ligula/in.xml', '+46 623 108 6429',
+        'ebrentf@lycos.com')
+     , ('Devpoint', 92843037, 'boston.com/venenatis/lacinia/aenean.aspx', '+86 289 311 3432',
+        'hstewartsong@vkontakte.ru')
+     , ('Skynoodle', 72740634, 'archive.org/in/est/risus.png', '+62 872 980 4632', 'gbaikeh@last.fm')
+     , ('Plajo', 35849857, '163.com/praesent/blandit/lacinia.html', '+46 239 601 0913', 'jyegorkini@sphinn.com')
+     , ('Skyvu', 46940090, 'blogtalkradio.com/sodales/sed/tincidunt.json', '+371 748 263 3964', 'dostj@clickbank.net')
+     , ('Jetwire', 61154074, 'goo.gl/massa/id/nisl/venenatis/lacinia.html', '+1 824 213 0586',
+        'abottomerk@usatoday.com')
+     , ('Tazz', 67064398, 'virginia.edu/et/ultrices/posuere/cubilia/curae/duis.js', '+62 291 974 8245',
+        'rwoodmanl@washington.edu')
+     , ('Yotz', 34128792, 'creativecommons.org/curae.json', '+230 892 869 9782', 'lgioanm@exblog.jp')
+     , ('Agivu', 76867898, 'wix.com/ultrices.js', '+48 606 733 6737', 'fyellowleen@ucoz.ru')
+     , ('Eabox', 85552918, 'cyberchimps.com/tellus/nulla/ut/erat.jsp', '+86 459 204 8440', 'bjosupeito@indiatimes.com')
+     , ('Flipopia', 13987327, 'yellowbook.com/nunc.html', '+33 507 301 3627', 'mbroaderp@163.com')
+     , ('Omba', 86920569, 'bbc.co.uk/parturient/montes/nascetur/ridiculus.png', '+7 653 778 3253', 'aespinhaq@51.la')
+     , ('Buzzshare', 16533256, 'myspace.com/augue/a/suscipit/nulla/elit.png', '+36 293 542 6305',
+        'brubinowiczr@ibm.com')
+     , ('Brainbox', 95313282, 'apache.org/sed/nisl/nunc/rhoncus.jpg', '+54 916 706 9964', 'bjanczyks@sphinn.com')
+     , ('Gigashots', 84833618, 'sohu.com/pellentesque/eget/nunc/donec/quis/orci/eget.xml', '+62 650 722 4313',
+        'mwithert@rambler.ru')
+     , ('Wikivu', 62981779, 'cam.ac.uk/duis/bibendum/morbi/non.html', '+86 515 571 6155', 'ssargintu@last.fm')
+     , ('Meejo', 71744563, 'toplist.cz/porta/volutpat/erat/quisque/erat/eros/viverra.json', '+7 912 241 6757',
+        'gpilleyv@google.fr')
+     , ('Linkbridge', 71463634, 'irs.gov/donec/ut/mauris/eget/massa/tempor/convallis.xml', '+387 891 925 4279',
+        'bklaessonw@php.net')
+     , ('Skimia', 38347398, 'elegantthemes.com/in/consequat/ut.html', '+380 199 671 4188', 'mteaguex@timesonline.co.uk')
+     , ('Dynava', 64980773, 'mysql.com/ligula.xml', '+7 341 272 0863', 'clapleyy@goo.ne.jp')
+     , ('Shufflester', 90642480, 'businessweek.com/duis/bibendum/morbi.aspx', '+86 677 978 4133',
+        'bmallinderz@themeforest.net')
+     , ('Riffwire', 46409137, 'last.fm/magnis/dis/parturient.json', '+970 882 239 0703', 'rranyard10@elegantthemes.com')
+     , ('Mydo', 92649954, 'home.pl/iaculis.json', '+63 493 663 1468', 'djarmain11@google.co.uk')
+     , ('Fivespan', 44243549, 'elpais.com/sit/amet/erat/nulla/tempus/vivamus/in.html', '+33 450 803 0192',
+        'ssutty12@umich.edu')
+     , ('Kazu', 55108579, 'linkedin.com/cum/sociis/natoque/penatibus.xml', '+224 615 642 2796', 'dlathaye13@amazon.de')
+     , ('Skinte', 57057584, 'netlog.com/justo/nec.aspx', '+886 663 534 8979', 'jfeighry14@google.co.uk')
+     , ('Digitube', 96569709, 'deliciousdays.com/viverra/pede/ac/diam/cras/pellentesque/volutpat.jpg',
+        '+62 692 178 2362', 'npolye15@google.com')
+     , ('Eidel', 19890977, 'blogtalkradio.com/proin/leo/odio/porttitor/id.jsp', '+86 462 990 0040', 'jneeves16@mit.edu')
+     , ('Livefish', 51997614, 'google.cn/pellentesque/ultrices/mattis/odio/donec/vitae/nisi.html', '+86 880 507 9937',
+        'vsteer17@51.la')
+     , ('Zooveo', 31733978, 'ebay.com/pede/libero/quis/orci/nullam/molestie/nibh.jsp', '+230 503 146 4703',
+        'dpickworth18@cdbaby.com')
+     , ('Blognation', 42059474, 'dion.ne.jp/quam/sapien.html', '+386 713 421 6802', 'imcardell19@statcounter.com')
+     , ('Devpulse', 49508460, 'scientificamerican.com/et/ultrices/posuere/cubilia.jsp', '+81 922 580 4310',
+        'aohartnett1a@ted.com')
+     , ('Voomm', 61477160, 'uol.com.br/vel/accumsan.jpg', '+48 310 326 3759', 'lruperto1b@gmpg.org')
+     , ('Rhynyx', 72403571, 'abc.net.au/sem/sed/sagittis.jsp', '+98 242 168 0020', 'lbraybrookes1c@taobao.com')
+     , ('Skimia', 38719447, 'wired.com/sagittis/dui/vel/nisl.html', '+234 644 221 8803', 'cdallaway1d@purevolume.com')
+     , ('Yakijo', 41198883, 'facebook.com/justo/etiam/pretium.jsp', '+60 348 784 1480', 'tstartin1e@booking.com')
+     , ('Aibox', 57579406, 'amazon.com/nam/ultrices/libero/non/mattis/pulvinar/nulla.html', '+51 146 688 6648',
+        'dnairns1f@ebay.com')
+     , ('Jaxnation', 80782048, 'howstuffworks.com/ipsum/primis/in.aspx', '+383 897 464 8514',
+        'fmales1g@list-manage.com')
+     , ('Rhyzio', 75179586, 'dailymotion.com/sem/fusce/consequat/nulla/nisl/nunc.json', '+55 307 157 9319',
+        'abrilleman1h@time.com')
+     , ('Browsetype', 14655876, 'psu.edu/congue/eget/semper.xml', '+7 764 396 3286', 'lcrookston1i@1688.com')
+     , ('Mybuzz', 79648353, 'feedburner.com/tincidunt.json', '+385 205 542 4624', 'jeadington1j@un.org')
+     , ('Wordtune', 47606735, 'skype.com/curae/duis/faucibus.js', '+86 670 170 8949', 'ccremen1k@a8.net')
+     , ('Twitterlist', 57699079, 'tuttocitta.it/volutpat/convallis/morbi/odio/odio/elementum.html', '+374 221 429 6973',
+        'alarner1l@narod.ru')
+     , ('Wordify', 52347814, 'tumblr.com/a.html', '+62 247 559 4061', 'skimbell1m@aol.com')
+     , ('Topiclounge', 56385261, 'homestead.com/nunc/viverra.jpg', '+63 757 464 1831', 'cspykings1n@businessweek.com')
+     , ('Agivu', 91399059, 'nifty.com/dictumst/aliquam/augue/quam/sollicitudin/vitae/consectetuer.aspx',
+        '+86 463 553 1897', 'amacer1o@biblegateway.com')
+     , ('Agivu', 56413548, 'usatoday.com/eu/mi/nulla/ac/enim.jpg', '+62 465 971 6587', 'cmisselbrook1p@china.com.cn')
+     , ('Kamba', 64218834, 'github.io/consectetuer/adipiscing/elit/proin/interdum/mauris/non.jpg', '+86 551 502 3146',
+        'jcastaner1q@oakley.com')
+     , ('Riffpath', 96175125, 'google.co.uk/felis/sed/interdum/venenatis/turpis.xml', '+46 455 517 1314',
+        'tenrdigo1r@domainmarket.com')
+     , ('Feedmix', 85163823, 'w3.org/fusce/posuere.json', '+53 271 517 2741', 'ngrinley1s@usgs.gov')
+     , ('Omba', 90210493, 'archive.org/sapien/iaculis/congue/vivamus/metus.jsp', '+33 986 629 9761',
+        'cloveredge1t@goo.ne.jp')
+     , ('Fatz', 11030688, 'amazon.co.uk/id/turpis/integer/aliquet/massa/id/lobortis.jsp', '+1 202 982 6538',
+        'eoverland1u@nifty.com')
+     , ('Topiczoom', 60657856, 'nhs.uk/magna/vulputate/luctus.png', '+1 801 504 6706', 'wivanenko1v@soundcloud.com')
+     , ('Feedmix', 79825686, 'cbc.ca/non/ligula/pellentesque.xml', '+1 202 592 5343', 'pluckman1w@ox.ac.uk')
+     , ('Tagtune', 66530370, 'taobao.com/at/turpis/donec.png', '+62 366 584 1561', 'gstock1x@shop-pro.jp')
+     , ('Bubblemix', 37595824, 'comsenz.com/lectus.js', '+86 953 927 0181', 'kcourse1y@printfriendly.com')
+     , ('Twinder', 23162378, 'webmd.com/metus.jsp', '+62 458 959 2471', 'plamdin1z@earthlink.net')
+     , ('Thoughtworks', 59468607, 'bandcamp.com/proin/leo/odio/porttitor/id.js', '+60 674 695 3432',
+        'eheatly20@foxnews.com')
+     , ('Fivebridge', 29628925, 'virginia.edu/vulputate.jpg', '+86 393 812 1522', 'ehastler21@wikispaces.com')
+     , ('Babbleblab', 28774951, 'canalblog.com/pulvinar/sed.js', '+46 425 336 3535', 'gdilston22@geocities.jp')
+     , ('Brightbean', 59437576, 'unblog.fr/condimentum/neque/sapien/placerat.aspx', '+86 684 225 5695',
+        'aclemo23@sciencedaily.com')
+     , ('Chatterpoint', 11117311, 'hp.com/suspendisse/potenti/cras/in.png', '+236 632 734 9246', 'uvan24@amazon.de')
+     , ('Nlounge', 33856334, 'unc.edu/in.xml', '+86 199 194 0320', 'mdemaine25@sciencedaily.com')
+     , ('Skalith', 69919408, 'comcast.net/etiam/faucibus.js', '+7 163 392 4640', 'rfrancais26@squarespace.com')
+     , ('Fivespan', 77143148, 'springer.com/cras/pellentesque/volutpat/dui.js', '+51 143 967 5691',
+        'apietsma27@omniture.com')
+     , ('Gabspot', 32891549, 'prweb.com/eros.html', '+502 847 347 2092', 'cgrimsley28@twitpic.com')
+     , ('Tazz', 97036131, 'howstuffworks.com/sem.jpg', '+33 996 348 1515', 'fmcgavin29@typepad.com')
+     , ('Aivee', 72747752, 'umich.edu/vel/ipsum/praesent.png', '+81 115 850 7716', 'jvasyatkin2a@utexas.edu')
+     , ('Flipopia', 31464054, 'businesswire.com/sed/tincidunt/eu/felis/fusce.jpg', '+48 410 577 3594',
+        'jollenbuttel2b@businessweek.com')
+     , ('Yodel', 90690486, 'scribd.com/at/dolor/quis/odio/consequat/varius.html', '+62 812 783 3191',
+        'ivonderempten2c@usa.gov')
+     , ('Abatz', 46195937, 'xrea.com/quis/orci/eget.js', '+1 865 766 0978', 'egradly2d@china.com.cn')
+     , ('Brainlounge', 36040213, 'goo.ne.jp/accumsan/odio/curabitur/convallis/duis/consequat/dui.js',
+        '+86 416 386 4569', 'mgowing2e@1688.com')
+     , ('Bubblemix', 28039957, 'economist.com/cras.json', '+86 509 157 1560', 'ichstney2f@bbb.org')
+     , ('Linkbridge', 94455064, 'zdnet.com/nibh/in/lectus/pellentesque.html', '+52 123 459 8797',
+        'vclissold2g@disqus.com')
+     , ('Ooba', 10301644, 'dion.ne.jp/sem/mauris/laoreet/ut/rhoncus.xml', '+212 692 749 4629',
+        'bbalnave2h@theglobeandmail.com')
+     , ('Skynoodle', 78141587, 'myspace.com/posuere.aspx', '+62 184 608 4905', 'bjealous2i@mozilla.org')
+     , ('Livetube', 89162994, 'blogspot.com/lectus/suspendisse/potenti.jsp', '+86 721 415 3306',
+        'adohmer2j@scientificamerican.com')
+     , ('Yodel', 53011489, 'indiatimes.com/mattis/egestas.json', '+51 915 647 6006', 'glimprecht2k@ted.com')
+     , ('Bubbletube', 30780045, 'unc.edu/erat/vestibulum/sed/magna/at.json', '+86 715 127 0281',
+        'vpentycross2l@sourceforge.net')
+     , ('Divanoodle', 98826134, 'pagesperso-orange.fr/at/lorem/integer/tincidunt/ante/vel/ipsum.png',
+        '+86 371 340 3967', 'hmatzel2m@51.la')
+     , ('Wikizz', 81091970, 'freewebs.com/est/phasellus/sit/amet.html', '+86 257 318 2838', 'csproul2n@unesco.org')
+     , ('Avaveo', 60133832, 'ibm.com/adipiscing/molestie/hendrerit.aspx', '+51 724 506 1373', 'zdudeney2o@flickr.com')
+     , ('Podcat', 93929648, 'youtube.com/aliquet/massa/id.aspx', '+351 112 406 5956', 'tpenwarden2p@newsvine.com')
+     , ('Dablist', 94351582, 'zimbio.com/adipiscing/lorem/vitae/mattis/nibh.png', '+351 564 762 5400',
+        'ejaqueme2q@themeforest.net')
+     , ('Meembee', 98922095, 'bandcamp.com/a/ipsum/integer/a/nibh.json', '+351 617 240 0033', 'mrasper2r@archive.org')
+     , ('Tavu', 58443141, 'trellian.com/augue.jsp', '+92 969 675 3777', 'crushbury2s@reuters.com')
+     , ('Cogidoo', 80513693, 'wisc.edu/porttitor/lacus/at/turpis.xml', '+62 486 551 7395', 'dleebeter2t@virginia.edu')
+     , ('Voomm', 98984771, 'joomla.org/praesent.xml', '+351 750 453 0675', 'scalladine2u@networkadvertising.org')
+     , ('Yakidoo', 63313262, 'ihg.com/volutpat/sapien.aspx', '+62 856 704 8078', 'cthurling2v@engadget.com')
+     , ('Zoonoodle', 38767862, 'photobucket.com/nulla/mollis.json', '+60 580 192 3069', 'hbrownrigg2w@51.la')
+     , ('Thoughtstorm', 41349510, 'ucsd.edu/eget/rutrum/at/lorem/integer.js', '+51 640 520 4708',
+        'ccultcheth2x@networksolutions.com')
+     , ('Kaymbo', 79900287, 'npr.org/platea/dictumst.jsp', '+62 827 226 4589', 'rcollecott2y@mozilla.com')
+     , ('Eire', 29771821, 'army.mil/mi/sit/amet/lobortis/sapien.aspx', '+507 657 722 6789', 'aettles2z@amazon.com')
+     , ('Topicstorm', 48568116, 'paginegialle.it/turpis/sed/ante/vivamus/tortor/duis/mattis.jsp', '+63 585 762 9734',
+        'dfoucard30@independent.co.uk')
+     , ('Livefish', 95238473, 'studiopress.com/justo/maecenas.jpg', '+7 284 274 8477', 'dlinsey31@istockphoto.com')
+     , ('Gabcube', 66702934, 'wp.com/vel/augue/vestibulum.xml', '+228 515 623 9917', 'cgrunnell32@aboutads.info')
+     , ('Meejo', 89421434, 'xing.com/venenatis/lacinia/aenean.png', '+57 413 116 4295', 'dbentame33@ucoz.com')
+     , ('Teklist', 39320214, 'csmonitor.com/eleifend/quam/a/odio/in/hac.jpg', '+86 230 411 0598',
+        'demberton34@odnoklassniki.ru')
+     , ('Photojam', 24686243, 'disqus.com/congue/etiam/justo/etiam/pretium.jpg', '+1 361 532 2233',
+        'acowup35@washingtonpost.com')
+     , ('Skyvu', 19176562, 'csmonitor.com/integer/non/velit/donec/diam/neque/vestibulum.jpg', '+62 647 813 4369',
+        'opaiton36@msu.edu')
+     , ('Meevee', 74782583, 'omniture.com/amet/consectetuer/adipiscing/elit.aspx', '+66 231 657 5236',
+        'bcastagnaro37@moonfruit.com')
+     , ('Avamba', 17418019, 'zimbio.com/elit/sodales/scelerisque.jsp', '+506 797 509 2285',
+        'amorecombe38@sourceforge.net')
+     , ('Devcast', 66838713, 'admin.ch/nam/dui/proin/leo.aspx', '+86 537 142 6865', 'kmcgrail39@springer.com')
+     , ('Kimia', 86105878, 'census.gov/sit/amet/sem/fusce/consequat.jpg', '+507 136 287 4102', 'rheale3a@walmart.com')
+     , ('Izio', 13967716, 'cnet.com/ut/dolor.xml', '+93 107 347 8491', 'lohlsen3b@youku.com')
+     , ('Leexo', 77032260, 'topsy.com/mi/sit/amet/lobortis/sapien/sapien.json', '+7 352 114 2878',
+        'ofarndale3c@hexun.com')
+     , ('Skajo', 51377944, 'alibaba.com/tellus/in/sagittis/dui/vel.js', '+27 283 826 0601', 'bpottie3d@cmu.edu')
+     , ('Demizz', 50933269, 'usda.gov/magna.html', '+996 336 686 3468', 'oleverentz3e@nydailynews.com')
+     , ('Voonyx', 34686410, 'google.com/adipiscing/molestie/hendrerit/at/vulputate/vitae/nisl.aspx',
+        '+966 761 968 2111', 'dokynsillaghe3f@wikispaces.com')
+     , ('Oyoloo', 88428780, 'usgs.gov/justo.js', '+972 876 356 4482', 'jsavaage3g@edublogs.org')
+     , ('Zazio', 21015670, 'sun.com/aliquam/quis.aspx', '+374 407 516 3810', 'mlieber3h@fc2.com')
+     , ('Mydo', 50429116, 'reuters.com/a/suscipit.xml', '+66 580 123 0495', 'hrahill3i@tripod.com')
+     , ('Avamba', 14505381, 'ox.ac.uk/eget/elit/sodales/scelerisque/mauris.xml', '+62 301 104 1373',
+        'rturrill3j@netlog.com')
+     , ('Minyx', 48893109, 'storify.com/primis/in/faucibus/orci.json', '+86 414 143 5544',
+        'mmcmarquis3k@ezinearticles.com')
+     , ('Talane', 49133079, 'a8.net/nonummy/maecenas/tincidunt/lacus.js', '+1 770 294 2482', 'mrugg3l@nytimes.com')
+     , ('Avavee', 76058948, 'pen.io/curae.jpg', '+30 944 117 1764', 'odetoc3m@samsung.com')
+     , ('Twinder', 13848560, 'freewebs.com/felis/sed/lacus/morbi.xml', '+86 956 903 9746', 'sbiddles3n@behance.net')
+     , ('Jabbertype', 88538408, 'netlog.com/integer/a/nibh/in/quis/justo.jsp', '+234 526 195 1455', 'dtoping3o@360.cn')
+     , ('Meedoo', 52760599, 'people.com.cn/imperdiet/et.jpg', '+63 838 223 1635', 'abaughan3p@webnode.com')
+     , ('Zoozzy', 52091452, 'youku.com/duis/ac/nibh/fusce.png', '+62 406 814 9244', 'hsummerly3q@bbb.org')
+     , ('Feedbug', 20404406, 'oaic.gov.au/scelerisque/mauris/sit/amet/eros/suspendisse/accumsan.jpg',
+        '+86 869 484 9017', 'bbridgewood3r@soundcloud.com')
+     , ('Brainverse', 63885345, 'twitter.com/etiam/pretium.aspx', '+420 658 569 1042', 'alord3s@usda.gov')
+     , ('Npath', 96915513, 'guardian.co.uk/ultrices/vel/augue.jsp', '+420 683 285 2543', 'oanderer3t@nature.com')
+     , ('Livepath', 34389267, 'nytimes.com/velit/vivamus/vel/nulla.jsp', '+972 894 553 9375',
+        'kshinton3u@infoseek.co.jp')
+     , ('Gigazoom', 17277535, 'sfgate.com/lectus/pellentesque/eget/nunc/donec/quis/orci.jsp', '+240 631 295 5846',
+        'mfoucher3v@angelfire.com')
+     , ('Kanoodle', 21391889, 'slideshare.net/in/magna/bibendum/imperdiet/nullam.html', '+86 151 150 9190',
+        'nchataignier3w@cbc.ca')
+     , ('Riffpedia', 52693710, 'answers.com/id/pretium/iaculis.html', '+992 346 342 7692', 'dalvaro3x@patch.com')
+     , ('Brightbean', 93278573, 'state.tx.us/nulla/sed/accumsan/felis/ut/at/dolor.jpg', '+86 822 842 3620',
+        'aabramovitz3y@123-reg.co.uk')
+     , ('Minyx', 87953414, 'networksolutions.com/in.png', '+52 447 143 2770', 'rgammell3z@123-reg.co.uk')
+     , ('Skyvu', 43969269, 'dion.ne.jp/ut/nunc/vestibulum/ante/ipsum/primis/in.png', '+591 808 216 1385',
+        'hfyall40@aol.com')
+     , ('Tazzy', 38627511, 'icq.com/leo.png', '+1 898 722 8100', 'rhulbert41@cbslocal.com')
+     , ('Brightdog', 30338678, 'businessweek.com/risus/dapibus/augue/vel.jsp', '+385 776 991 5058',
+        'nlawfull42@uiuc.edu')
+     , ('LiveZ', 23121258, 'china.com.cn/aliquam/lacus.png', '+55 470 832 6574', 'cdibdall43@desdev.cn')
+     , ('Rhynyx', 65423887, 'sciencedirect.com/quisque/id/justo/sit/amet/sapien.jsp', '+351 527 870 7499',
+        'gtortoishell44@boston.com')
+     , ('Einti', 69341969, 'dedecms.com/at/nunc/commodo/placerat.jsp', '+86 286 940 9033',
+        'sizakson45@simplemachines.org')
+     , ('Tagpad', 64327091, 'hao123.com/suscipit/nulla/elit/ac/nulla/sed/vel.png', '+51 768 675 5107',
+        'mlegges46@deliciousdays.com')
+     , ('Feedbug', 72291079, 'home.pl/suscipit.aspx', '+86 965 505 2326', 'vcoventry47@google.co.uk')
+     , ('Skimia', 92869993, 'devhub.com/at/velit/eu/est.xml', '+234 646 952 3243', 'rboullin48@bloglovin.com')
+     , ('Miboo', 34782758, 'creativecommons.org/enim/in/tempor/turpis/nec.html', '+86 448 503 7604',
+        'cwilkie49@abc.net.au')
+     , ('Demimbu', 82231153, 'walmart.com/diam/in/magna.jpg', '+7 627 121 2105', 'bsumpter4a@vistaprint.com')
+     , ('Lajo', 82592669, 'free.fr/dictumst/etiam/faucibus/cursus.xml', '+63 583 137 9285', 'jcade4b@baidu.com')
+     , ('Realpoint', 43077414, 'dmoz.org/semper/est/quam/pharetra/magna/ac/consequat.aspx', '+63 118 671 9480',
+        'jmacaree4c@mapy.cz')
+     , ('Quinu', 28249811, 'quantcast.com/neque/duis.png', '+54 879 639 5835', 'jlawlie4d@mozilla.org')
+     , ('Twitterbridge', 91183448, 'printfriendly.com/quis/lectus/suspendisse.xml', '+355 262 380 4972',
+        'fnewis4e@imdb.com')
+     , ('Blognation', 75627822, 'timesonline.co.uk/justo/pellentesque/viverra/pede.xml', '+62 677 662 5353',
+        'cbau4f@washingtonpost.com')
+     , ('Teklist', 13453920, 'gravatar.com/accumsan.jpg', '+60 530 443 9179', 'lwadelin4g@meetup.com')
+     , ('Yozio', 28497243, 'virginia.edu/et/ultrices.jsp', '+370 855 602 7507', 'rpouton4h@angelfire.com')
+     , ('Mudo', 10609352, 'narod.ru/magna/bibendum/imperdiet.xml', '+64 373 857 2826',
+        'tmitham4i@networkadvertising.org')
+     , ('Voomm', 69793270, 'europa.eu/amet/lobortis/sapien/sapien.js', '+62 651 794 4222',
+        'talywin4j@cargocollective.com')
+     , ('Topiczoom', 69414595, 'google.com.br/interdum/eu/tincidunt/in.aspx', '+46 257 772 2865',
+        'ysemechik4k@purevolume.com')
+     , ('Edgewire', 56579024, 'devhub.com/amet/nunc/viverra/dapibus.png', '+45 869 492 2812',
+        'gtrill4l@printfriendly.com')
+     , ('Gevee', 21484967, 'state.tx.us/imperdiet/nullam/orci/pede/venenatis/non.jsp', '+351 368 690 1983',
+        'mtabner4m@wiley.com')
+     , ('Demizz', 52057931, 'gravatar.com/non/mi.js', '+52 679 322 4548', 'dkeasley4n@economist.com')
+     , ('Zava', 40332118, 'netlog.com/ac/enim/in/tempor/turpis.js', '+961 206 520 3146', 'akeppie4o@guardian.co.uk')
+     , ('Blogspan', 24123988, 'theguardian.com/morbi/non/lectus/aliquam.html', '+223 277 464 5485',
+        'llembke4p@shutterfly.com')
+     , ('Vipe', 73354390, 'exblog.jp/in/felis/donec/semper/sapien/a/libero.png', '+30 982 107 6419',
+        'bmatches4q@dailymotion.com')
+     , ('Livepath', 41405074, 'ed.gov/ultricies.js', '+1 621 389 8967', 'mbaston4r@360.cn')
+     , ('Fatz', 26486132, 'dropbox.com/magna.html', '+62 558 927 9435', 'jpedlar4s@cdbaby.com')
+     , ('Gabtune', 50027352, 'bluehost.com/congue/elementum/in/hac.png', '+63 193 779 7419', 'hcarrell4t@live.com')
+     , ('Yambee', 12186058, 'nsw.gov.au/cubilia/curae.aspx', '+63 930 906 8508', 'bjohananov4u@aboutads.info')
+     , ('Bubblebox', 57398498, 'berkeley.edu/morbi/non/quam/nec/dui/luctus/rutrum.aspx', '+52 620 587 0822',
+        'darsey4v@vk.com')
+     , ('Midel', 91407674, 'dedecms.com/magna.png', '+62 664 378 4346', 'agittis4w@va.gov')
+     , ('Shuffledrive', 71748583, '360.cn/enim/in/tempor/turpis/nec/euismod/scelerisque.xml', '+63 143 105 1178',
+        'sbarks4x@businessinsider.com')
+     , ('Oodoo', 12574542, 'unc.edu/consequat/ut/nulla/sed/accumsan/felis/ut.xml', '+244 847 805 1875',
+        'mmclean4y@bbc.co.uk')
+     , ('Divanoodle', 70564949, 'ucla.edu/lacus/morbi.jsp', '+86 105 410 0554', 'rgremain4z@biblegateway.com')
+     , ('Youbridge', 97151709, 'yellowpages.com/pretium/iaculis/justo/in/hac.aspx', '+81 463 772 1180',
+        'rbice50@about.com')
+     , ('Youfeed', 65828468, 'webs.com/suspendisse/ornare/consequat.xml', '+1 384 279 9802', 'tdoige51@aboutads.info')
+     , ('Oyope', 83783512, 'surveymonkey.com/neque/libero.png', '+55 139 974 6628', 'dedgecombe52@addtoany.com')
+     , ('Zoovu', 16583042, 'google.com.hk/ligula/suspendisse/ornare/consequat/lectus/in.js', '+86 112 368 7676',
+        'shodges53@parallels.com')
+     , ('Photospace', 84123757, '360.cn/id/ornare.jpg', '+62 192 296 1951', 'nkorda54@ucsd.edu')
+     , ('Skyble', 31812611, 'tripadvisor.com/ante/ipsum.json', '+1 113 431 0930', 'ftulloch55@hexun.com')
+     , ('Agivu', 94969113, 'diigo.com/sed/interdum/venenatis.jpg', '+7 508 716 4349', 'jflaxon56@amazon.co.jp')
+     , ('Browsecat', 11478855, 'netvibes.com/suspendisse/potenti/cras.js', '+7 744 724 0848', 'apoulden57@youtu.be')
+     , ('Yadel', 88827443, 'newsvine.com/etiam.jsp', '+55 636 599 8737', 'iwhitlaw58@cocolog-nifty.com')
+     , ('Jabbercube', 92767579, 'narod.ru/sed/ante.jsp', '+351 552 642 1227', 'kbang59@i2i.jp')
+     , ('Livetube', 48345720, 'sakura.ne.jp/non/mattis/pulvinar.html', '+995 597 151 3061', 'egarie5a@chronoengine.com')
+     , ('Jetpulse', 18507391, 'paypal.com/risus/auctor.html', '+54 846 337 5098', 'ssyseland5b@gravatar.com')
+     , ('Agimba', 62335906, 'theguardian.com/diam/nam/tristique/tortor/eu.html', '+1 895 353 5301', 'jdyte5c@yelp.com')
+     , ('Kwimbee', 93700986, 'scribd.com/dapibus/at/diam/nam/tristique/tortor/eu.json', '+60 229 354 2010',
+        'hwrotham5d@dmoz.org')
+     , ('Feedmix', 68741275, 'fda.gov/adipiscing.js', '+86 629 143 2907', 'dmoro5e@quantcast.com')
+     , ('Kimia', 82586225, '163.com/sapien/cum.png', '+86 496 941 3655', 'cgullivan5f@npr.org')
+     , ('Thoughtstorm', 15813465, 'dagondesign.com/turpis/integer.js', '+46 388 869 1015', 'lscholfield5g@nhs.uk')
+     , ('Roomm', 31462354, 'theguardian.com/at/ipsum/ac/tellus/semper.xml', '+62 539 480 3849', 'ggregol5h@skype.com')
+     , ('Trilia', 20072419, 'google.de/augue.js', '+33 757 144 7608', 'rbartel5i@wikipedia.org')
+     , ('Eazzy', 25633426, 'plala.or.jp/leo/rhoncus/sed.jpg', '+63 548 172 3410', 'ctomaschke5j@de.vu')
+     , ('Shufflebeat', 35375990, 'google.de/libero/rutrum/ac/lobortis/vel/dapibus.html', '+1 836 965 9651',
+        'bfanti5k@gmpg.org')
+     , ('Thoughtstorm', 71810631, 'soundcloud.com/arcu/adipiscing/molestie/hendrerit.js', '+234 148 690 8217',
+        'qroughsedge5l@360.cn')
+     , ('Zoonder', 42588427, 'sogou.com/orci/pede/venenatis.jpg', '+1 408 845 0915', 'barrundale5m@shop-pro.jp')
+     , ('Tazz', 14255242, 'msu.edu/posuere/cubilia/curae/mauris/viverra.jpg', '+51 641 134 8877',
+        'cvines5n@comcast.net')
+     , ('Jaxnation', 21152394, 'github.io/nisl/aenean.js', '+62 329 670 7996', 'gfinding5o@artisteer.com')
+     , ('Avamm', 71143777, 'google.cn/magna/bibendum/imperdiet/nullam/orci/pede.jsp', '+62 632 586 2364',
+        'truddin5p@live.com')
+     , ('Bluejam', 22104773, 'hugedomains.com/platea/dictumst/etiam/faucibus/cursus/urna/ut.jsp', '+62 715 981 1209',
+        'nquenby5q@cam.ac.uk')
+     , ('Nlounge', 36267566, 'bbc.co.uk/quam/fringilla/rhoncus.xml', '+86 207 253 2618', 'evalasek5r@parallels.com')
+     , ('Eazzy', 34231089, 'fotki.com/aenean/lectus/pellentesque/eget/nunc/donec.aspx', '+228 245 788 6289',
+        'ggoodall5s@pbs.org')
+     , ('Eire', 75580382, 'stumbleupon.com/sit.json', '+48 706 691 2102', 'smccurlye5t@google.nl')
+     , ('Tagtune', 67260462, 'msn.com/nascetur.json', '+86 301 303 5650', 'ddelcastello5u@irs.gov')
+     , ('Kamba', 51890793, 'narod.ru/orci/nullam/molestie/nibh/in.jpg', '+60 746 872 5057', 'igiberd5v@samsung.com')
+     , ('Voolia', 35544060, 'smh.com.au/morbi/non/quam/nec/dui/luctus.xml', '+86 252 768 6401', 'eadamolli5w@msn.com')
+     , ('Npath', 69027999, 'mlb.com/aliquet/ultrices/erat/tortor/sollicitudin/mi/sit.png', '+1 806 188 6437',
+        'dtunnicliff5x@upenn.edu')
+     , ('Topicshots', 12536965, 'addthis.com/maecenas/pulvinar.jpg', '+234 921 720 6603', 'yharkes5y@youtube.com')
+     , ('Edgeclub', 78878799, 'purevolume.com/suspendisse/ornare/consequat.json', '+86 175 711 7403',
+        'ntomasino5z@issuu.com')
+     , ('Jaxnation', 71818963, 'globo.com/lectus.aspx', '+54 536 456 3808', 'jgriffe60@chicagotribune.com')
+     , ('Edgetag', 54099867, 'furl.net/platea/dictumst.js', '+976 982 179 2641', 'nswancock61@adobe.com')
+     , ('Livetube', 82855216, 'bandcamp.com/posuere/cubilia.xml', '+52 815 930 9893', 'tpatridge62@51.la')
+     , ('Yotz', 56281055, 'com.com/non/interdum/in/ante/vestibulum/ante.json', '+86 195 897 0055',
+        'rduncombe63@reference.com')
+     , ('Kwimbee', 21417909, 'blogs.com/elit/sodales/scelerisque/mauris/sit/amet.json', '+1 212 399 0872',
+        'chadgraft64@clickbank.net')
+     , ('Npath', 85077384, 'google.com/nibh/in/lectus/pellentesque/at/nulla/suspendisse.jpg', '+86 689 493 0901',
+        'rluckes65@salon.com')
+     , ('Yacero', 27250581, 'huffingtonpost.com/elementum/ligula/vehicula/consequat/morbi/a.jsp', '+351 437 401 3321',
+        'tgainforth66@bing.com')
+     , ('Roombo', 41024214, 'nydailynews.com/morbi/quis.xml', '+86 607 929 3249', 'acalles67@bloomberg.com')
+     , ('Voolia', 50287017, 'meetup.com/amet/turpis/elementum/ligula/vehicula.jsp', '+62 800 171 7946',
+        'clindro68@google.com.au')
+     , ('Myworks', 13179359, 'amazon.co.uk/at/velit.jpg', '+66 243 112 9957', 'aorford69@bizjournals.com')
+     , ('Meeveo', 39560480, 'lycos.com/at/turpis/donec.png', '+86 290 110 7833', 'rconnor6a@craigslist.org')
+     , ('Buzzbean', 15560748, 'gnu.org/in/faucibus/orci.xml', '+7 854 916 9182', 'mastlatt6b@yandex.ru')
+     , ('Rooxo', 24077115, 'webnode.com/urna/ut/tellus/nulla.js', '+48 237 387 2323', 'wlefebre6c@boston.com')
+     , ('Fivespan', 46004742, 'tiny.cc/at/ipsum/ac/tellus.png', '+63 783 477 9676', 'gmowbray6d@google.fr')
+     , ('Trilia', 12473385, 'themeforest.net/in.png', '+850 483 942 8878', 'mwimpenny6e@wikia.com')
+     , ('Livefish', 92264792, 'xing.com/tempus/sit/amet/sem/fusce/consequat.aspx', '+86 520 426 7231',
+        'hfiggess6f@apache.org')
+     , ('Jabberstorm', 69346426, 'mac.com/volutpat/dui/maecenas/tristique.js', '+52 648 707 7707',
+        'gstainfield6g@bandcamp.com')
+     , ('Twiyo', 61822116, 'opera.com/est/donec.aspx', '+57 923 218 2062', 'rdavydkov6h@exblog.jp')
+     , ('Edgeblab', 91159556, 'ed.gov/semper/sapien/a/libero/nam.json', '+86 255 874 7860', 'bcrichmer6i@pcworld.com')
+     , ('Miboo', 95537498, 'sun.com/lectus.png', '+62 408 943 7294', 'sdomoni6j@indiegogo.com')
+     , ('Voolia', 21092871, 'webmd.com/erat/nulla/tempus/vivamus/in.json', '+86 279 886 7364',
+        'komannion6k@virginia.edu')
+     , ('Realmix', 89506549, 'list-manage.com/pellentesque/eget/nunc.jsp', '+46 851 479 1326',
+        'cgillean6l@constantcontact.com')
+     , ('Teklist', 13389252, 'skype.com/et/tempus/semper/est.js', '+353 265 970 1242', 'bvina6m@answers.com')
+     , ('Demivee', 85707065, 'over-blog.com/ipsum/primis.json', '+254 526 359 7829', 'lcarlet6n@meetup.com')
+     , ('Jamia', 66858980, 'webnode.com/nisl/venenatis/lacinia.html', '+86 101 113 9983', 'agerritzen6o@usa.gov')
+     , ('Feedspan', 85589987, 'vkontakte.ru/ante.aspx', '+55 616 304 3374', 'tsherrott6p@phoca.cz')
+     , ('Babbleblab', 65106615, 'boston.com/non/velit/donec/diam/neque/vestibulum/eget.xml', '+86 106 529 4386',
+        'acapelow6q@pcworld.com')
+     , ('Jayo', 98993681, 'yandex.ru/sed.js', '+351 617 233 2272', 'cshinefield6r@senate.gov')
+     , ('Photobug', 54145953, 'state.gov/vestibulum/vestibulum.html', '+1 542 435 7106', 'dhasell6s@wp.com')
+     , ('Voonte', 60308085, 'jigsy.com/montes/nascetur/ridiculus/mus.aspx', '+86 728 528 1554',
+        'sbeales6t@dailymail.co.uk')
+     , ('Wikivu', 59753464, 'cornell.edu/congue/vivamus/metus.png', '+220 236 250 3724', 'rcastledine6u@webs.com')
+     , ('Browsedrive', 24208576, 'hubpages.com/id/nulla/ultrices/aliquet.js', '+46 995 106 3304',
+        'babethell6v@youku.com')
+     , ('Leexo', 69075304, 'cnn.com/purus/sit/amet.png', '+1 765 986 5008', 'dcrush6w@smugmug.com')
+     , ('Jaxnation', 14883003, 'rediff.com/sociis/natoque/penatibus/et/magnis/dis.json', '+63 805 371 3038',
+        'ddemanuele6x@youtube.com');
 
 --Random generirani sponzorski paketi
 INSERT INTO "sponzorski_paket" (naziv_sponzorski_paket, stavke, datum_stvaranja)
@@ -1276,7 +1549,7 @@ VALUES ('Knittelfeld', 'metus vitae velit egestas lacinia. Sed congue, elit sed 
        ('Stade', 'convallis erat, eget tincidunt dui augue eu tellus. Phasellus elit pede, malesuada', 49),
        ('Lamont', 'hendrerit. Donec porttitor', 28),
        ('Shipshaw', 'quis accumsan convallis, ante lectus convallis est, vitae', 20),
-       ('Fresia', 'nascetur ridiculus mus. Aenean eget magna. Suspendisse tristique', 1),
+       ('Fresia Nuova', 'nascetur ridiculus mus. Aenean eget magna. Suspendisse tristique', 1),
        ('West Jakarta',
         'Nulla tincidunt, neque vitae semper egestas, urna justo faucibus lectus, a sollicitudin orci sem eget', 47),
        ('Fontanafredda', 'non, egestas a, dui. Cras pellentesque. Sed', 45),

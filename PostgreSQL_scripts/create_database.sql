@@ -12,31 +12,32 @@ create table student
     id_student            SERIAL
         constraint student_pk
             primary key,
-    ime_student           VARCHAR                      not null,
-    prezime_student       VARCHAR                      not null,
-    mail_student          VARCHAR                      not null,
-    mobitel_student       VARCHAR,
-    oib_student           VARCHAR,
+    ime_student           VARCHAR                      not null CHECK ( trim(ime_student) NOT LIKE ''),
+    prezime_student       VARCHAR                      not null CHECK ( trim(prezime_student) NOT LIKE ''),
+    mail_student          VARCHAR                      not null CHECK ( mail_student LIKE '_%@_%._%'),
+    mobitel_student       VARCHAR CHECK ( mobitel_student SIMILAR TO '([0-9]|\+|\(|\)|\s)+'),
+    oib_student           VARCHAR UNIQUE CHECK ( oib_student SIMILAR TO '[0-9]+'),
     datum_rodenja_student DATE,
-    prebivaliste_student  VARCHAR,
-    fakultet_student      VARCHAR,
-    godina_studija        VARCHAR,
-    smjer_studija         VARCHAR,
+    prebivaliste_student  VARCHAR CHECK ( trim(prebivaliste_student) NOT LIKE ''),
+    fakultet_student      VARCHAR CHECK ( trim(fakultet_student) NOT LIKE ''),
+    godina_studija        INTEGER CHECK ( godina_studija < 6),
+    smjer_studija         VARCHAR CHECK ( trim(smjer_studija) NOT LIKE ''),
     datum_azuriranja      DATE    default current_date not null,
     je_clan               BOOLEAN default true         not null,
     je_aktivan_clan       BOOLEAN default false        not null
 );
-create unique index student_mailstudent_uindex
-    on student (mail_student);
-
+create index index_prezime_student
+    on student (prezime_student);
+create unique index index_oib_student
+    on student (oib_student);
 
 create table tim
 (
     id_tim      SERIAL
         constraint tim_pk
             primary key,
-    naziv_tim   VARCHAR not null,
-    opis_tim    VARCHAR,
+    naziv_tim   VARCHAR not null CHECK ( trim(naziv_tim) NOT LIKE ''),
+    opis_tim    VARCHAR CHECK ( trim(opis_tim) NOT LIKE ''),
     id_voditelj int
         constraint tim_voditelj_fk
             references student
@@ -49,8 +50,8 @@ create table projekt
     id_projekt        SERIAL
         constraint projekt_pk
             primary key,
-    naziv_projekt     VARCHAR not null,
-    opis_projekt      VARCHAR,
+    naziv_projekt     VARCHAR not null CHECK ( trim(naziv_projekt) NOT LIKE ''),
+    opis_projekt      VARCHAR CHECK ( trim(opis_projekt) NOT LIKE ''),
     pocetak_projekt   DATE    not null,
     zavrsetak_projekt DATE    not null CHECK ( zavrsetak_projekt > pocetak_projekt )
 );
@@ -61,23 +62,20 @@ create table partner
     id_partner         SERIAL
         constraint partner_pk
             primary key,
-    naziv_partner      VARCHAR not null,
-    oib_partner        VARCHAR not null,
-    web_adresa_partner VARCHAR,
-    mobitel_partner    VARCHAR,
-    mail_partner       VARCHAR not null
+    naziv_partner      VARCHAR not null CHECK ( trim(naziv_partner) NOT LIKE ''),
+    oib_partner        VARCHAR not null CHECK ( oib_partner SIMILAR TO '[0-9]+'),
+    web_adresa_partner VARCHAR CHECK ( web_adresa_partner SIMILAR TO '[^\s(["<,>]*\.[^\s[",><]*'),
+    mobitel_partner    VARCHAR CHECK ( mobitel_partner SIMILAR TO '([0-9]|\+|\(|\)|\s)+'),
+    mail_partner       VARCHAR not null CHECK ( mail_partner LIKE '_%@_%._%')
 );
-create unique index partner_mailpartner_uindex
-    on partner (mail_partner);
-
 
 create table sponzorski_paket
 (
     id_sponzorski_paket    SERIAL
         constraint sponzorski_paket_pk
             primary key,
-    naziv_sponzorski_paket VARCHAR,
-    stavke                 VARCHAR,
+    naziv_sponzorski_paket VARCHAR CHECK ( trim(naziv_sponzorski_paket) NOT LIKE ''),
+    stavke                 VARCHAR CHECK ( trim(stavke) NOT LIKE ''),
     datum_stvaranja        DATE default current_date not null
 );
 
@@ -87,8 +85,8 @@ create table okupljanje
     id_okupljanje        SERIAL
         constraint okupljanje_pk
             primary key,
-    naziv_okupljanje     VARCHAR,
-    opis_okupljanje      VARCHAR,
+    naziv_okupljanje     VARCHAR CHECK ( trim(naziv_okupljanje) NOT LIKE ''),
+    opis_okupljanje      VARCHAR CHECK ( trim(opis_okupljanje) NOT LIKE ''),
     pocetak_okupljanje   TIMESTAMP not null,
     zavrsetak_okupljanje TIMESTAMP not null CHECK ( zavrsetak_okupljanje > pocetak_okupljanje ),
     je_formalno          BOOLEAN   not null,
@@ -105,13 +103,13 @@ create table medunarodni_dogadaj
     id_medunarodni_dogadaj        SERIAL
         constraint medunarodni_dogadaj_pk
             primary key,
-    naziv_medunarodni_dogadaj     VARCHAR        not null,
-    opis_medunarodni_dogadaj      VARCHAR,
+    naziv_medunarodni_dogadaj     VARCHAR        not null CHECK ( trim(naziv_medunarodni_dogadaj) NOT LIKE ''),
+    opis_medunarodni_dogadaj      VARCHAR CHECK ( trim(opis_medunarodni_dogadaj) NOT LIKE ''),
     pocetak_medunarodni_dogadaj   DATE           not null,
     zavrsetak_medunarodni_dogadaj DATE           not null CHECK ( zavrsetak_medunarodni_dogadaj > pocetak_medunarodni_dogadaj ),
     vrsta_medunarodni_dogadaj     vrsta_dogadaja not null,
-    kapacitet                     INT,
-    cijena                        NUMERIC(8, 2)
+    kapacitet                     INT CHECK ( kapacitet > 0 ),
+    cijena                        NUMERIC(12, 2) CHECK ( cijena >= 0 )
 );
 
 
@@ -120,23 +118,25 @@ create table drzava
     id_drzava    SERIAL
         constraint drzava_pk
             primary key,
-    naziv_drzava VARCHAR not null
+    naziv_drzava VARCHAR not null CHECK ( trim(naziv_drzava) NOT LIKE '' ) UNIQUE
 );
-
+create index index_naziv_drzava
+    on drzava (naziv_drzava);
 
 create table lokalni_ogranak
 (
     id_lokalni_ogranak    SERIAL
         constraint lokalni_ogranak_pk
             primary key,
-    naziv_lokalni_ogranak VARCHAR not null,
-    opis_lokalni_ogranak  VARCHAR,
+    naziv_lokalni_ogranak VARCHAR not null CHECK ( trim(naziv_lokalni_ogranak) NOT LIKE '' ) UNIQUE,
+    opis_lokalni_ogranak  VARCHAR CHECK ( trim(opis_lokalni_ogranak) NOT LIKE '' ),
     id_drzava             INT     not null
         constraint lokalni_ogranak_drzava_fk
             references drzava
             on delete restrict
 );
-
+create index index_naziv_ogranak
+    on lokalni_ogranak (naziv_lokalni_ogranak);
 
 
 create table racun
@@ -145,9 +145,9 @@ create table racun
         constraint racun_pk
             primary key,
     vrsta_racun   vrsta_racuna                        not null,
-    iznos_racun   NUMERIC(8, 2)                       not null CHECK ( iznos_racun >= 0 ),
+    iznos_racun   NUMERIC(12, 2)                      not null CHECK ( iznos_racun >= 0 ),
     vrijeme_racun TIMESTAMP default current_timestamp not null,
-    napomena      VARCHAR,
+    napomena      VARCHAR CHECK ( trim(napomena) NOT LIKE '' ),
     id_projekt    INT       default null
         constraint racun_projekt_fk
             references projekt
@@ -157,6 +157,8 @@ create table racun
             references okupljanje
             on delete set null
 );
+create index index_vrijeme_racun
+    on racun (vrijeme_racun DESC);
 
 -- tablice users i authorities su kreirane ovim shemama kako bi funkcionirale s Java Spring Security
 create table users
@@ -272,7 +274,7 @@ create table sponzorira
         constraint sponzorskiPaket_sponzorira_fk
             references sponzorski_paket
             on delete set null,
-    iznos               NUMERIC(8, 2) not null,
+    iznos               NUMERIC(12, 2) not null CHECK ( iznos >= 0 ),
     napomena            VARCHAR,
     constraint sponzorira_pk
         primary key (id_projekt, id_partner)
