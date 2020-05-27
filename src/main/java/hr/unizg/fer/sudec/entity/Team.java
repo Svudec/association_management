@@ -1,6 +1,7 @@
 package hr.unizg.fer.sudec.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,7 @@ public class Team {
     private int id;
 
     @Column(name = "naziv_tim")
+    @NotNull(message = "Obavezno polje")
     private String name;
 
     @Column(name = "opis_tim")

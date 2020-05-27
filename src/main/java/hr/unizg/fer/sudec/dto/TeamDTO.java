@@ -1,10 +1,16 @@
 package hr.unizg.fer.sudec.dto;
 
+import javax.validation.constraints.NotNull;
+
 public class TeamDTO {
 
     private int id;
+
+    @NotNull(message = "Obavezno polje")
     private String name;
+
     private String description;
+
     private int leaderId;
 
     @Override

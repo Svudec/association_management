@@ -60,11 +60,17 @@
             <tbody>
             <tr>
                 <td><label>Naziv:</label></td>
-                <td><form:input disabled="${disabled_edit}" path="name" /></td>
+                <td>
+                    <form:input disabled="${disabled_edit}" path="name" />
+                    <form:errors path="name" cssClass="error" />
+                </td>
             </tr>
             <tr>
                 <td><label>Opis:</label></td>
-                <td><form:textarea disabled="${disabled_edit}" path="description" /></td>
+                <td>
+                    <form:textarea disabled="${disabled_edit}" path="description" />
+                    <form:errors path="description" cssClass="error" />
+                </td>
             </tr>
             <tr>
                 <td><label>Voditelj:</label></td>

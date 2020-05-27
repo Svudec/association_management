@@ -54,20 +54,21 @@ public class StudentController {
     @PostMapping("/save")
     public String saveStudent(@Valid @ModelAttribute("student") Student student, BindingResult bindingResult, Model model){
 
-        if (bindingResult.hasErrors())
+        if (bindingResult.hasErrors()){
+
+            model.addAttribute("disabled_edit", false);
+            model.addAttribute("saveButton", "visible");
+            model.addAttribute("editButton", "hidden");
+
             return "student-form";
+        }
 
         if(studentService.getStudent(student.getId()) == null)
             studentService.saveStudent(student);
         else
             studentService.editStudent(student);
 
-        model.addAttribute("student", student);
-        model.addAttribute("disabled_edit", true);
-        model.addAttribute("saveButton", "hidden");
-        model.addAttribute("editButton", "visible");
-
-        return "student-form";
+        return "redirect:/student/list";
     }
 
     @GetMapping("/details")

@@ -7,10 +7,14 @@ import hr.unizg.fer.sudec.entity.Team;
 import hr.unizg.fer.sudec.service.StudentService;
 import hr.unizg.fer.sudec.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
@@ -23,6 +27,14 @@ public class TeamController {
 
     @Autowired
     private StudentService studentService;
+
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder){
+
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+
+        dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+    }
 
     @GetMapping("/list")
     public String listTeams(Model model){
@@ -49,18 +61,21 @@ public class TeamController {
     }
 
     @PostMapping("/save")
-    public String saveTeam(@ModelAttribute("team") TeamDTO team, Model model){
+    public String saveTeam(@Valid @ModelAttribute("team") TeamDTO team, BindingResult bindingResult, Model model){
+
+        if(bindingResult.hasErrors()){
+
+            model.addAttribute("disabled_edit", false);
+            model.addAttribute("saveButton", "visible");
+            model.addAttribute("editButton", "hidden");
+            model.addAttribute("students", studentService.getStudentsIdFullNameMap());
+
+            return "team-form";
+        }
 
         teamService.saveTeam(team);
 
-        model.addAttribute("team", team);
-        model.addAttribute("disabled_edit", true);
-        model.addAttribute("saveButton", "hidden");
-        model.addAttribute("editButton", "visible");
-
-        model.addAttribute("students", studentService.getStudentsIdFullNameMap());
-
-        return "team-form";
+        return "redirect:/team/list";
     }
 
     @GetMapping("/details")
