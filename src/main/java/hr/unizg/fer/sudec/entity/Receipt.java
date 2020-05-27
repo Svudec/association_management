@@ -6,6 +6,9 @@ import org.hibernate.annotations.TypeDef;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
 @Entity
@@ -21,13 +24,18 @@ public class Receipt {
     @Column(name = "vrsta_racun", columnDefinition = "vrsta_racuna")
     @Enumerated(EnumType.STRING)
     @Type(type = "pgsql_enum")
+    @NotNull(message = "Obavezno polje")
     private ReceiptType type;
 
     @Column(name = "iznos_racun")
+    @NotNull(message = "Obavezno polje")
+    @DecimalMin(value = "0", inclusive = false, message = "Mora biti veći od 0")
+    @DecimalMax(value = "10000000", message = "Mora biti manji od 10 000 000")
     private Float value;
 
     @Column(name = "vrijeme_racun")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @NotNull(message = "Obavezno polje")
     private Timestamp time;
 
     @Column(name = "napomena")

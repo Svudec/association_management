@@ -6,13 +6,14 @@ import hr.unizg.fer.sudec.service.GatheringService;
 import hr.unizg.fer.sudec.service.ProjectService;
 import hr.unizg.fer.sudec.service.ReceiptService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -27,6 +28,14 @@ public class ReceiptController {
 
     @Autowired
     private GatheringService gatheringService;
+
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder){
+
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+
+        dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+    }
 
     @GetMapping("/list")
     public String listReceipts(Model model){
@@ -50,7 +59,15 @@ public class ReceiptController {
     }
 
     @PostMapping("/save")
-    public String saveReceipt(@ModelAttribute("receipt") ReceiptDTO dto){
+    public String saveReceipt(@Valid @ModelAttribute("receipt") ReceiptDTO dto, BindingResult bindingResult, Model model){
+
+        if(bindingResult.hasErrors()){
+
+            model.addAttribute("projects", projectService.getProjects());
+            model.addAttribute("gatherings", gatheringService.getGatherings());
+
+            return "receipt-form";
+        }
 
         receiptService.saveReceipt(dto);
 

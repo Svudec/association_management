@@ -58,7 +58,17 @@
             </tr>
             <tr>
                 <td><label>Iznos:</label></td>
-                <td><form:input type="number" step="0.01" path="value" /></td>
+                <td>
+                    <form:input type="number" step="0.01" path="value" />
+                    <form:errors path="value" cssClass="error" />
+                </td>
+            </tr>
+            <tr>
+                <td><label>Napomena:</label></td>
+                <td>
+                    <form:input type="textarea" path="description" />
+                    <form:errors path="description" cssClass="error" />
+                </td>
             </tr>
             <tr>
                 <td><label>Projekt:</label></td>
