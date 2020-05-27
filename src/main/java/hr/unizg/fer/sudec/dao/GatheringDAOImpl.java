@@ -19,7 +19,7 @@ public class GatheringDAOImpl implements GatheringDAO{
     public List<Gathering> getGatherings() {
 
         Session session = sessionFactory.getCurrentSession();
-        Query<Gathering> query = session.createQuery("from Gathering ", Gathering.class);
+        Query<Gathering> query = session.createQuery("from Gathering order by startTime desc ", Gathering.class);
 
         return query.getResultList();
     }

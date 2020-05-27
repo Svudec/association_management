@@ -3,10 +3,14 @@ package hr.unizg.fer.sudec.controller;
 import hr.unizg.fer.sudec.entity.Project;
 import hr.unizg.fer.sudec.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -15,6 +19,14 @@ public class ProjectController {
 
     @Autowired
     private ProjectService projectService;
+
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder){
+
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+
+        dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+    }
 
     @GetMapping("/list")
     public String listProjects(Model model){
@@ -36,15 +48,14 @@ public class ProjectController {
     }
 
     @PostMapping("/save")
-    public String saveProject(@ModelAttribute("project") Project project, Model model){
+    public String saveProject(@Valid @ModelAttribute("project") Project project, BindingResult bindingResult, Model model){
+
+        if(bindingResult.hasErrors())
+            return "project-form";
 
         projectService.saveProject(project);
 
-        model.addAttribute("project", project);
-        model.addAttribute("sponsorships", projectService.getProjectSponsorships(project.getId()));
-        model.addAttribute("participants", projectService.getParticipants(project.getId()));
-
-        return "project-details";
+        return "redirect:/project/list";
     }
 
     @GetMapping("/details")

@@ -49,19 +49,31 @@
             <tbody>
             <tr>
                 <td><label>Naziv:</label></td>
-                <td><form:input path="name" /></td>
+                <td>
+                    <form:input path="name" />
+                    <form:errors path="name" cssClass="error" />
+                </td>
             </tr>
             <tr>
                 <td><label>Opis:</label></td>
-                <td><form:input path="description" /></td>
+                <td>
+                    <form:input path="description" />
+                    <form:errors path="description" cssClass="error" />
+                </td>
             </tr>
             <tr>
                 <td><label>Početak:</label></td>
-                <td><form:input type="date" path="startDate" /></td>
+                <td>
+                    <form:input type="date" path="startDate" />
+                    <form:errors path="startDate" cssClass="error" />
+                </td>
             </tr>
             <tr>
                 <td><label>Završetak:</label></td>
-                <td><form:input type="date" path="endDate" /></td>
+                <td>
+                    <form:input type="date" path="endDate" />
+                    <form:errors path="endDate" cssClass="error" />
+                </td>
             </tr>
 
             <tr>

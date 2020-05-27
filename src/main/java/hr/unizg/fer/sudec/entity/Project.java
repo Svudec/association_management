@@ -3,6 +3,7 @@ package hr.unizg.fer.sudec.entity;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,6 +18,7 @@ public class Project {
     private int id;
 
     @Column(name = "naziv_projekt")
+    @NotNull(message = "Obavezno polje")
     private String name;
 
     @Column(name = "opis_projekt")
@@ -24,10 +26,12 @@ public class Project {
 
     @Column(name = "pocetak_projekt")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @NotNull(message = "Obavezno polje")
     private Date startDate;
 
     @Column(name = "zavrsetak_projekt")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @NotNull(message = "Obavezno polje")
     private Date endDate;
 
     @OneToMany(mappedBy = "projectReceipt", cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
