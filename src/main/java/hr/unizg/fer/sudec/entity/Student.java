@@ -99,7 +99,7 @@ public class Student {
             field.setAccessible(true);
 
             try {
-                if(field.getType().equals(String.class) && ((String) field.get(this)).isEmpty())
+                if(field.getType().equals(String.class) && ((String) field.get(this)).replaceAll("\\s", "").isEmpty())
                     field.set(this, null);
 
             } catch (IllegalAccessException e) {

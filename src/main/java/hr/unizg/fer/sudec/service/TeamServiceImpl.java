@@ -62,6 +62,7 @@ public class TeamServiceImpl implements TeamService{
         if(team == null) team = new Team();
 
         team.setLeader(studentService.getStudent(teamDTO.getLeaderId()));
+        teamDTO.removeEmptyStrings();
         modelMapper.map(teamDTO, team);
 
         teamDAO.saveTeam(team);

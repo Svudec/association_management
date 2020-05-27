@@ -39,14 +39,18 @@
 <div id="container">
     <h3>Forma za tim</h3>
 
-    <security:authorize access="hasAnyRole('BOARD_MEMBER', 'ADMIN')">
+    <form:form action="edit" modelAttribute="team" method="get">
 
-        <form:form action="edit" modelAttribute="team" method="get">
+        <security:authorize access="hasAnyRole('BOARD_MEMBER', 'ADMIN')">
             <form:hidden path="id"/>
             <input type="submit" value="Uredi" style="visibility: ${editButton}" class="add-button"/>
-        </form:form>
-
     </security:authorize>
+
+        <input type="button" value="Popis timova" onclick="window.location='/team/list'; return false;"
+               class="add-button">
+    </form:form>
+
+
 
     <form:form action="save" modelAttribute="team" method="post">
 

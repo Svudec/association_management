@@ -49,11 +49,19 @@ public class TeamController {
     }
 
     @PostMapping("/save")
-    public String saveTeam(@ModelAttribute("team") TeamDTO team){
+    public String saveTeam(@ModelAttribute("team") TeamDTO team, Model model){
 
         teamService.saveTeam(team);
 
-        return "redirect:/team/list";
+        TeamDTO teamDTO = teamService.getTeamDTO(team.getId());
+        model.addAttribute("team", teamDTO);
+        model.addAttribute("disabled_edit", true);
+        model.addAttribute("saveButton", "hidden");
+        model.addAttribute("editButton", "visible");
+
+        model.addAttribute("students", studentService.getStudentsIdFullNameMap());
+
+        return "team-form";
     }
 
     @GetMapping("/details")
