@@ -59,6 +59,12 @@
                                     </div>
                                 </c:if>
 
+                                <c:if test="${registration}">
+                                    <div class="alert alert-success col-xs-offset-1 col-xs-10">
+                                        Registracija uspješna
+                                    </div>
+                                </c:if>
+
                             </div>
                         </div>
                     </div>
@@ -88,6 +94,10 @@
 
             </div>
 
+        </div>
+
+        <div>
+            <a href="${pageContext.request.contextPath}/register/showRegistrationForm" class="btn btn-primary" role="button" aria-pressed="true">Registracija</a>
         </div>
 
     </div>

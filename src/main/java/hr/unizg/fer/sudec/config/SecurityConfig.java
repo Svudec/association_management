@@ -1,8 +1,10 @@
 package hr.unizg.fer.sudec.config;
 
+import hr.unizg.fer.sudec.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -18,10 +20,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private DataSource securityDataSource;
 
+    @Autowired
+    private StudentService studentService;
+
+    @Autowired
+    private CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-        auth.jdbcAuthentication().dataSource(securityDataSource);
+        auth.authenticationProvider(authenticationProvider());
     }
 
     @Override
@@ -46,7 +54,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                     .loginPage("/showLoginPage")
                     .loginProcessingUrl("/authenticateTheUser")
-                .permitAll()
+                    .successHandler(customAuthenticationSuccessHandler)
+                    .permitAll()
                 .and()
                 .logout().permitAll();
     }
@@ -57,17 +66,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    /*
+
     //authenticationProvider bean definition
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
 
         DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
 
-        auth.setUserDetailsService(userService);
+        auth.setUserDetailsService(studentService);
         auth.setPasswordEncoder(passwordEncoder());
         return auth;
     }
-     */
+
 
 }

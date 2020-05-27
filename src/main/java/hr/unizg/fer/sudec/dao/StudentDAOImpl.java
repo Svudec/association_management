@@ -39,4 +39,21 @@ public class StudentDAOImpl implements StudentDAO{
 
         return session.get(Student.class, id);
     }
+
+    @Override
+    public Student findByUsername(String username) {
+
+        Session session = sessionFactory.getCurrentSession();
+        Query<Student> studentQuery = session.createQuery("from Student where username =:uName", Student.class);
+        studentQuery.setParameter("uName", username.trim());
+
+        Student student = null;
+        try {
+            student = studentQuery.getSingleResult();
+        } catch (Exception e) {
+            student = null;
+        }
+
+        return student;
+    }
 }

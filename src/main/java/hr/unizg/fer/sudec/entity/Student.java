@@ -70,6 +70,18 @@ public class Student {
     @NotNull(message = "Obavezno polje")
     private boolean isActiveMember;
 
+    @Column(name = "korisnicko_ime", unique = true)
+    @NotNull(message = "Obavezno polje")
+    private String username;
+
+    @Column(name = "lozinka")
+    @NotNull(message = "Obavezno polje")
+    private String password;
+
+    @ManyToMany
+    @JoinTable(name = "korisnik_uloga", joinColumns = @JoinColumn(name = "id_korisnik"), inverseJoinColumns = @JoinColumn(name = "id_uloga"))
+    private List<Role> roles;
+
     @OneToMany(mappedBy = "leader", cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private List<Team> leaderOfTeams;
 
@@ -102,6 +114,31 @@ public class Student {
         this.eventsParticipated = new ArrayList<>();
         this.projectsParticipations = new ArrayList<>();
         this.organizedProjects = new ArrayList<>();
+        this.roles = new ArrayList<>();
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public List<Project> getProjectsParticipations() {

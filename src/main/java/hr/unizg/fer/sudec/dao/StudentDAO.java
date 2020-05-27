@@ -11,4 +11,6 @@ public interface StudentDAO {
     void saveStudent(Student student);
 
     Student getStudent(int id);
+
+    Student findByUsername(String username);
 }
