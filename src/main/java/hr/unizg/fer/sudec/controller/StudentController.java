@@ -42,7 +42,10 @@ public class StudentController {
     @PostMapping("/save")
     public String saveStudent(@ModelAttribute("student") Student student, Model model){
 
-        studentService.saveStudent(student);
+        if(studentService.getStudent(student.getId()) == null)
+            studentService.saveStudent(student);
+        else
+            studentService.editStudent(student);
         model.addAttribute("student", student);
         model.addAttribute("disabled_edit", true);
         model.addAttribute("saveButton", "hidden");

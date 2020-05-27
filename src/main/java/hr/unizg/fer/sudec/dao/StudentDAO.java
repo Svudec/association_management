@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface StudentDAO {
 
-    public List<Student> getStudents();
+    List<Student> getStudents();
 
-    public void saveStudent(Student student);
+    void saveStudent(Student student);
 
     Student getStudent(int id);
 }

@@ -30,6 +30,15 @@ public class StudentServiceImpl implements StudentService{
     @Transactional
     public void saveStudent(Student student) {
 
+        student.removeEmptyStrings();
+
+        studentDAO.saveStudent(student);
+    }
+
+    @Override
+    @Transactional
+    public void editStudent(Student student) {
+
         Student original = getStudent(student.getId());
 
         student.removeEmptyStrings();

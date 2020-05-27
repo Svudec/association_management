@@ -11,6 +11,8 @@ public interface StudentService {
 
     void saveStudent(Student student);
 
+    void editStudent(Student student);
+
     Student getStudent(int id);
 
     Map<Integer, String> getStudentsIdFullNameMap();
