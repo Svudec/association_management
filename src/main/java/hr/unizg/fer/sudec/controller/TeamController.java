@@ -53,8 +53,7 @@ public class TeamController {
 
         teamService.saveTeam(team);
 
-        TeamDTO teamDTO = teamService.getTeamDTO(team.getId());
-        model.addAttribute("team", teamDTO);
+        model.addAttribute("team", team);
         model.addAttribute("disabled_edit", true);
         model.addAttribute("saveButton", "hidden");
         model.addAttribute("editButton", "visible");

@@ -46,7 +46,7 @@
             <input type="submit" value="Uredi" style="visibility: ${editButton}" class="add-button"/>
     </security:authorize>
 
-        <input type="button" value="Popis timova" onclick="window.location='/team/list'; return false;"
+        <input type="button" value="Početna stranica" onclick="window.location='/'; return false;"
                class="add-button">
     </form:form>
 
