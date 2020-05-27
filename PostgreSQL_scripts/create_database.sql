@@ -12,19 +12,21 @@ create table student
     id_student            SERIAL
         constraint student_pk
             primary key,
-    ime_student           VARCHAR                      not null CHECK ( trim(ime_student) NOT LIKE ''),
-    prezime_student       VARCHAR                      not null CHECK ( trim(prezime_student) NOT LIKE ''),
-    mail_student          VARCHAR                      not null CHECK ( mail_student LIKE '_%@_%._%'),
+    ime_student           VARCHAR CHECK ( trim(ime_student) NOT LIKE '')                                 not null,
+    prezime_student       VARCHAR CHECK ( trim(prezime_student) NOT LIKE '')                             not null,
+    mail_student          VARCHAR CHECK ( mail_student LIKE '_%@_%._%')                                  not null,
     mobitel_student       VARCHAR CHECK ( mobitel_student SIMILAR TO '([0-9]|\+|\(|\)|\s)+'),
     oib_student           VARCHAR UNIQUE CHECK ( oib_student SIMILAR TO '[0-9]+'),
-    datum_rodenja_student DATE    CHECK ( datum_rodenja_student < current_date ),
+    datum_rodenja_student DATE CHECK ( datum_rodenja_student < current_date ),
     prebivaliste_student  VARCHAR CHECK ( trim(prebivaliste_student) NOT LIKE ''),
     fakultet_student      VARCHAR CHECK ( trim(fakultet_student) NOT LIKE ''),
     godina_studija        INTEGER CHECK ( godina_studija < 6 AND godina_studija > 0),
     smjer_studija         VARCHAR CHECK ( trim(smjer_studija) NOT LIKE ''),
-    datum_azuriranja      DATE    default current_date not null,
-    je_clan               BOOLEAN default true         not null,
-    je_aktivan_clan       BOOLEAN default false        not null
+    datum_azuriranja      DATE    default current_date                                                   not null,
+    je_clan               BOOLEAN default true                                                           not null,
+    je_aktivan_clan       BOOLEAN default false                                                          not null,
+    korisnicko_ime        VARCHAR UNIQUE                                                                 not null,
+    lozinka               VARCHAR default '$2y$12$Tw3uvmXE6aEDUo8w2PXBve.eeVLZlU1AGMsWSso00L2gZ0XO9CkaK' not null
 );
 create index index_prezime_student
     on student (prezime_student);
@@ -161,24 +163,30 @@ create index index_vrijeme_racun
     on racun (vrijeme_racun DESC);
 
 -- tablice users i authorities su kreirane ovim shemama kako bi funkcionirale s Java Spring Security
-create table users
+
+create table uloga
 (
-    username VARCHAR(50) not null
-        constraint users_pk
+    id_uloga    SERIAL
+        constraint uloga_pk
             primary key,
-    password VARCHAR(68) not null,
-    enabled  BOOLEAN     not null
+    naziv_uloga VARCHAR default NULL
 );
 
-create table authorities
+
+create table korisnik_uloga
 (
-    username  VARCHAR(50) not null
-        constraint authorities_users_username_fk
-            references users (username),
-    authority VARCHAR(50) not null,
-    constraint authorities_idx
-        unique (username, authority)
+    id_korisnik INTEGER not null
+        constraint korisnik_uloga_to_student_fk
+            references student
+            on delete cascade,
+    id_uloga    INTEGER not null
+        constraint korisnik_uloga_to_uloga_fk
+            references uloga (id_uloga)
+            on delete cascade,
+    constraint korisnik_uloga_pk
+        primary key (id_korisnik, id_uloga)
 );
+
 
 --tablice veza (relacija)
 create table prisustvuje

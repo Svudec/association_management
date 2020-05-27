@@ -1,262 +1,394 @@
 --Dodajem tri 'default' korisnika s različitim ulogama
 --Lozinka za sve racune: 1234
-INSERT INTO users(username, password, enabled)
-VALUES ('korisnik', '$2y$12$4PMIL20BinxS91w9F71I1OUmYcCK56i63sIL/tcmKAUFi6QGbFAGC', true),
-       ('board', '$2y$12$RgKUnLWUt5/e/qRkaNflgOA6nYJJIN1nZKggnSA.WJf5UED.UpLIG', true),
-       ('admin', '$2y$12$oocJTgydtJE9nyBTmcCU3..8GuKPOKxMGjM4krR/IA1VnpDPcp.Au', true);
+---INSERT INTO users(username, password, enabled)
 
-INSERT INTO authorities(username, authority)
-VALUES ('korisnik', 'ROLE_USER'),
-       ('board', 'ROLE_USER'),
-       ('board', 'ROLE_BOARD_MEMBER'),
-       ('admin', 'ROLE_USER'),
-       ('admin', 'ROLE_ADMIN');
+INSERT INTO uloga(id_uloga, naziv_uloga)
+VALUES (1, 'ROLE_USER'),
+       (2, 'ROLE_BOARD_MEMBER'),
+       (3, 'ROLE_ADMIN');
 
 --Random generirani obavezni podatci za student
-INSERT INTO "student" (ime_student, prezime_student, mail_student, je_clan, je_aktivan_clan)
-VALUES ('Nita', 'Mueller', 'Sed.nulla.ante@justofaucibus.edu', 'false', 'false'),
-       ('Gloria', 'Strong', 'elit.fermentum.risus@infaucibus.edu', 'false', 'false'),
-       ('Stacey', 'Grant', 'est.congue@posuerecubilia.net', 'true', 'true'),
-       ('Adrian', 'Diaz', 'ante@ac.edu', 'false', 'false'),
-       ('Ethan', 'Benton', 'In@liberoDonec.ca', 'false', 'false'),
-       ('Jermaine', 'Wilkerson', 'convallis.est@non.edu', 'true', 'true'),
-       ('Connor', 'Pruitt', 'velit.Pellentesque.ultricies@scelerisquesedsapien.org', 'true', 'false'),
-       ('Diana', 'Eaton', 'non.sapien@sedsemegestas.org', 'true', 'false'),
-       ('Diana', 'Britt', 'molestie.orci@Fusce.org', 'true', 'true'),
-       ('Robert', 'Sellers', 'ante.Vivamus@egetmagna.edu', 'false', 'false'),
-       ('Xena', 'Gaines', 'tincidunt@Nam.org', 'false', 'false'),
-       ('Chandler', 'Fox', 'Nunc@aliquam.edu', 'false', 'false'),
-       ('Aladdin', 'Wade', 'non.sapien.molestie@Nunclaoreet.com', 'false', 'false'),
-       ('Kellie', 'Rhodes', 'ut@congue.org', 'true', 'false'),
-       ('Driscoll', 'Nielsen', 'vehicula@rhoncusNullam.com', 'false', 'false'),
-       ('Hasad', 'Peterson', 'vel@loremtristique.co.uk', 'false', 'false'),
-       ('Diana', 'Solomon', 'a.facilisis@lorem.org', 'true', 'true'),
-       ('Katell', 'Lester', 'tincidunt@aarcuSed.org', 'true', 'false'),
-       ('Quamar', 'Wall', 'sociis.natoque@turpisAliquamadipiscing.ca', 'true', 'true'),
-       ('Deacon', 'Sandoval', 'at.augue@venenatislacusEtiam.com', 'false', 'false'),
-       ('Virginia', 'Raymond', 'convallis.dolor@mauris.org', 'false', 'false'),
-       ('Peter', 'Atkins', 'ac.turpis@diam.com', 'false', 'false'),
-       ('Lucas', 'Stanley', 'nibh.lacinia.orci@et.ca', 'true', 'false'),
-       ('Aquila', 'Calhoun', 'ante.iaculis@atpretiumaliquet.co.uk', 'false', 'false'),
-       ('Hyatt', 'Fischer', 'vel@pretiumetrutrum.org', 'false', 'false'),
-       ('Teagan', 'Garza', 'facilisis@cursuseteros.edu', 'true', 'true'),
-       ('Virginia', 'Finch', 'purus.gravida.sagittis@urnaNullam.co.uk', 'true', 'false'),
-       ('Georgia', 'Hoffman', 'mollis.vitae@magnaaneque.co.uk', 'true', 'true'),
-       ('Joshua', 'Delacruz', 'enim.gravida@tempuseu.ca', 'true', 'false'),
-       ('Guy', 'Mccormick', 'Donec.nibh.enim@Donecconsectetuer.edu', 'false', 'false'),
-       ('Colette', 'Marsh', 'faucibus@Integersemelit.org', 'true', 'true'),
-       ('Elaine', 'Beard', 'purus@acorciUt.edu', 'false', 'false'),
-       ('Henry', 'Velez', 'Morbi.vehicula.Pellentesque@Crasconvallisconvallis.org', 'false', 'false'),
-       ('Gisela', 'Medina', 'ante@estacmattis.co.uk', 'false', 'false'),
-       ('Jermaine', 'Duffy', 'odio.Nam.interdum@euismod.net', 'true', 'true'),
-       ('Hiroko', 'Cervantes', 'placerat.eget@ligulaconsectetuer.ca', 'true', 'false'),
-       ('Lucius', 'Giles', 'eu@laciniaorciconsectetuer.ca', 'false', 'false'),
-       ('Reuben', 'Strickland', 'morbi@lobortis.net', 'false', 'false'),
-       ('Hasad', 'Davis', 'ridiculus.mus@nunc.co.uk', 'true', 'false'),
-       ('Teagan', 'Mosley', 'enim.Mauris@disparturient.co.uk', 'false', 'false'),
-       ('Neville', 'Bolton', 'id.blandit.at@eratvitaerisus.co.uk', 'true', 'false'),
-       ('Cooper', 'Pace', 'a.feugiat.tellus@iaculisenimsit.com', 'false', 'false'),
-       ('Jenette', 'Floyd', 'vitae.orci.Phasellus@congue.ca', 'true', 'true'),
-       ('Selma', 'Roach', 'at.pretium.aliquet@Integervitae.co.uk', 'false', 'false'),
-       ('Chelsea', 'Jenkins', 'ipsum.primis@consectetueradipiscingelit.com', 'false', 'false'),
-       ('Caryn', 'Kirk', 'fringilla@etmagnis.edu', 'true', 'true'),
-       ('Carl', 'Melton', 'vulputate.risus.a@ligulaelit.co.uk', 'true', 'false'),
-       ('Oprah', 'Delgado', 'orci@laciniavitae.edu', 'false', 'false'),
-       ('Tucker', 'Bowers', 'aliquet.sem@DonecegestasDuis.co.uk', 'false', 'false'),
-       ('Beverly', 'Cervantes', 'lacus.Aliquam.rutrum@euismodestarcu.net', 'true', 'false'),
-       ('Benedict', 'Workman', 'est.vitae@consectetueradipiscingelit.com', 'true', 'true'),
-       ('Burton', 'Gonzalez', 'pellentesque.tellus.sem@Pellentesque.net', 'true', 'true'),
-       ('Lacy', 'Heath', 'pede@Curabitur.com', 'false', 'false'),
-       ('Kennedy', 'Nielsen', 'Donec.nibh.enim@NullainterdumCurabitur.net', 'true', 'false'),
-       ('Moana', 'West', 'Quisque.ornare@ipsumsodalespurus.ca', 'false', 'false'),
-       ('Tucker', 'Cook', 'leo.Morbi@rutrumnon.ca', 'false', 'false'),
-       ('Josiah', 'Decker', 'metus.urna.convallis@Namacnulla.com', 'false', 'false'),
-       ('Brendan', 'Downs', 'rutrum.magna@mollisPhasellus.co.uk', 'true', 'true'),
-       ('Lilah', 'Andrews', 'lectus.quis@nunc.edu', 'true', 'false'),
-       ('Chester', 'Wynn', 'nunc.est@egestasAliquamfringilla.edu', 'false', 'false'),
-       ('Haley', 'Kinney', 'Morbi.sit.amet@turpis.com', 'true', 'true'),
-       ('Josiah', 'Durham', 'gravida@vitaediamProin.ca', 'true', 'false'),
-       ('Aquila', 'Christensen', 'risus.Quisque@luctusetultrices.ca', 'true', 'false'),
-       ('Adam', 'Russo', 'amet.risus@Donecporttitor.org', 'false', 'false'),
-       ('Anne', 'Cooley', 'semper.rutrum@Aliquameratvolutpat.edu', 'false', 'false'),
-       ('Fiona', 'Atkinson', 'eu.dui.Cum@tincidunt.org', 'false', 'false'),
-       ('Lavinia', 'Alvarado', 'rutrum.magna.Cras@porttitorscelerisqueneque.edu', 'true', 'true'),
-       ('Axel', 'Warren', 'Duis@milorem.edu', 'true', 'true'),
-       ('Gage', 'Jackson', 'morbi@metusfacilisis.edu', 'false', 'false'),
-       ('Bert', 'Melendez', 'lectus@interdum.com', 'true', 'false'),
-       ('Orla', 'Carrillo', 'aliquet.lobortis@aliquet.co.uk', 'false', 'false'),
-       ('Ethan', 'Michael', 'neque@insodaleselit.org', 'false', 'false'),
-       ('William', 'Richmond', 'Nullam.velit@lobortisClassaptent.edu', 'false', 'false'),
-       ('Alexa', 'Sweeney', 'tellus@Ut.org', 'true', 'true'),
-       ('Quamar', 'Tran', 'sociis.natoque.penatibus@Vestibulumante.com', 'false', 'false'),
-       ('Sonya', 'Mckenzie', 'nisi.Mauris.nulla@libero.ca', 'true', 'false'),
-       ('Dane', 'Salas', 'eu.erat@dictum.net', 'true', 'false'),
-       ('Hall', 'Martin', 'lacus.Quisque@atiaculisquis.com', 'false', 'false'),
-       ('Aretha', 'Mcgee', 'mi@etnetuset.org', 'true', 'false'),
-       ('Bertha', 'Mosley', 'est.Nunc@aliquetodio.ca', 'false', 'false'),
-       ('Patience', 'Caldwell', 'purus.in.molestie@a.net', 'false', 'false'),
-       ('Kylee', 'Foster', 'eu@vestibulumMaurismagna.net', 'false', 'false'),
-       ('Castor', 'Blackburn', 'massa.non@magna.org', 'false', 'false'),
-       ('Hedwig', 'Wade', 'arcu@mattissemper.org', 'true', 'true'),
-       ('Fuller', 'Pratt', 'Proin@ametconsectetueradipiscing.net', 'false', 'false'),
-       ('Davis', 'Burks', 'nec.ligula@magnaPhasellus.org', 'true', 'true'),
-       ('Miranda', 'Hendricks', 'pulvinar.arcu@tortorat.com', 'true', 'false'),
-       ('Robert', 'Wallace', 'lorem.fringilla@Sed.edu', 'false', 'false'),
-       ('Hillary', 'Carpenter', 'sagittis.semper@odio.net', 'false', 'false'),
-       ('Whitney', 'Nixon', 'vehicula.aliquet@insodaleselit.ca', 'false', 'false'),
-       ('Darius', 'Ramos', 'neque.pellentesque.massa@nuncid.com', 'false', 'false'),
-       ('Aristotle', 'Lester', 'ligula.consectetuer.rhoncus@consequat.co.uk', 'false', 'false'),
-       ('Len', 'Herrera', 'eu.tellus@Curabitursedtortor.ca', 'true', 'true'),
-       ('Quemby', 'Walls', 'vitae@mus.co.uk', 'true', 'true'),
-       ('Rose', 'Blackburn', 'Aenean.massa@elitpellentesquea.edu', 'false', 'false'),
-       ('Selma', 'Douglas', 'mauris.erat@mienim.net', 'false', 'false'),
-       ('Cathleen', 'Chandler', 'vulputate@Vivamus.net', 'true', 'false'),
-       ('Colt', 'Herman', 'dui.Fusce@nuncinterdumfeugiat.org', 'false', 'false'),
-       ('Anjolie', 'Whitney', 'purus.ac@CraspellentesqueSed.org', 'true', 'false'),
-       ('Denise', 'Spencer', 'tincidunt.aliquam.arcu@Crassed.co.uk', 'false', 'false');
+insert into student (ime_student, prezime_student, mail_student, je_clan, je_aktivan_clan, korisnicko_ime)
+values ('Dionysus', 'Alway', 'dalway0@miitbeian.gov.cn', false, true, 'user')
+     , ('Aurea', 'Cornelisse', 'acornelisse1@ihg.com', false, false, 'board')
+     , ('Emmery', 'Lindback', 'elindback2@timesonline.co.uk', false, true, 'admin')
+     , ('Harbert', 'Rosenzwig', 'hrosenzwig3@yolasite.com', true, true, 'hrosenzwig3')
+     , ('Chan', 'Guarnier', 'cguarnier4@chron.com', true, false, 'cguarnier4')
+     , ('Jard', 'Cicccitti', 'jcicccitti5@arstechnica.com', true, true, 'jcicccitti5')
+     , ('Margo', 'Whistance', 'mwhistance6@bluehost.com', false, false, 'mwhistance6')
+     , ('Sidney', 'Garlant', 'sgarlant7@163.com', true, false, 'sgarlant7')
+     , ('Millard', 'Rothman', 'mrothman8@alibaba.com', true, false, 'mrothman8')
+     , ('Kaiser', 'Anyene', 'kanyene9@pcworld.com', true, true, 'kanyene9')
+     , ('Merci', 'Hinrichsen', 'mhinrichsena@addtoany.com', true, true, 'mhinrichsena')
+     , ('Joella', 'Cleare', 'jcleareb@cdc.gov', false, false, 'jcleareb')
+     , ('Sander', 'Chomicki', 'schomickic@purevolume.com', true, false, 'schomickic')
+     , ('Janelle', 'Froschauer', 'jfroschauerd@uiuc.edu', true, true, 'jfroschauerd')
+     , ('Arin', 'Yeiles', 'ayeilese@shutterfly.com', false, true, 'ayeilese')
+     , ('Bethanne', 'Thewys', 'bthewysf@google.com', true, true, 'bthewysf')
+     , ('Perle', 'Woolf', 'pwoolfg@delicious.com', false, true, 'pwoolfg')
+     , ('Moises', 'Elsy', 'melsyh@paginegialle.it', true, true, 'melsyh')
+     , ('Jeannette', 'Ellcome', 'jellcomei@dion.ne.jp', true, true, 'jellcomei')
+     , ('Romy', 'Georgeou', 'rgeorgeouj@t-online.de', true, false, 'rgeorgeouj')
+     , ('Thain', 'Troke', 'ttrokek@feedburner.com', true, false, 'ttrokek')
+     , ('Kristos', 'Lermouth', 'klermouthl@epa.gov', true, true, 'klermouthl')
+     , ('Crawford', 'Cowie', 'ccowiem@nbcnews.com', false, false, 'ccowiem')
+     , ('Raimundo', 'Inglefield', 'ringlefieldn@jimdo.com', false, false, 'ringlefieldn')
+     , ('Michell', 'Appleton', 'mappletono@tripod.com', true, false, 'mappletono')
+     , ('Jessamine', 'Sidary', 'jsidaryp@businesswire.com', false, false, 'jsidaryp')
+     , ('Coralie', 'Matthensen', 'cmatthensenq@mail.ru', true, true, 'cmatthensenq')
+     , ('Bowie', 'Crat', 'bcratr@tmall.com', false, true, 'bcratr')
+     , ('Vitoria', 'Avramovsky', 'vavramovskys@jigsy.com', true, true, 'vavramovskys')
+     , ('Darwin', 'Tidman', 'dtidmant@clickbank.net', false, false, 'dtidmant')
+     , ('Lynn', 'Baert', 'lbaertu@wunderground.com', false, true, 'lbaertu')
+     , ('Bendite', 'Graeme', 'bgraemev@cnn.com', false, true, 'bgraemev')
+     , ('Norine', 'Puckring', 'npuckringw@utexas.edu', false, true, 'npuckringw')
+     , ('Leonhard', 'Scogin', 'lscoginx@mac.com', false, false, 'lscoginx')
+     , ('Ransom', 'Fernihough', 'rfernihoughy@europa.eu', false, false, 'rfernihoughy')
+     , ('Nedda', 'Casford', 'ncasfordz@state.gov', false, true, 'ncasfordz')
+     , ('Collin', 'Lupson', 'clupson10@yolasite.com', false, true, 'clupson10')
+     , ('Merl', 'Bullcock', 'mbullcock11@whitehouse.gov', false, true, 'mbullcock11')
+     , ('Budd', 'Bril', 'bbril12@nba.com', false, false, 'bbril12')
+     , ('Boigie', 'Antonoczyk', 'bantonoczyk13@lulu.com', false, true, 'bantonoczyk13')
+     , ('Reeba', 'Kivits', 'rkivits14@drupal.org', false, false, 'rkivits14')
+     , ('Jammie', 'Alfuso', 'jalfuso15@whitehouse.gov', true, false, 'jalfuso15')
+     , ('Jim', 'Goulborn', 'jgoulborn16@moonfruit.com', false, false, 'jgoulborn16')
+     , ('Johna', 'Brokenshaw', 'jbrokenshaw17@wordpress.org', true, false, 'jbrokenshaw17')
+     , ('Gawain', 'Sreenan', 'gsreenan18@sfgate.com', true, false, 'gsreenan18')
+     , ('Cori', 'Mangeot', 'cmangeot19@wunderground.com', true, false, 'cmangeot19')
+     , ('Allys', 'Flieg', 'aflieg1a@furl.net', false, true, 'aflieg1a')
+     , ('Arvy', 'Cobon', 'acobon1b@biblegateway.com', false, false, 'acobon1b')
+     , ('Miller', 'Tarply', 'mtarply1c@unicef.org', false, false, 'mtarply1c')
+     , ('Andra', 'Gunther', 'agunther1d@surveymonkey.com', false, false, 'agunther1d')
+     , ('Melantha', 'Coupland', 'mcoupland1e@smh.com.au', false, true, 'mcoupland1e')
+     , ('Jeanna', 'Gwinnell', 'jgwinnell1f@telegraph.co.uk', true, true, 'jgwinnell1f')
+     , ('Heida', 'Whittuck', 'hwhittuck1g@usda.gov', true, false, 'hwhittuck1g')
+     , ('Erhart', 'Okroy', 'eokroy1h@gov.uk', false, true, 'eokroy1h')
+     , ('Cob', 'Ferens', 'cferens1i@biblegateway.com', true, false, 'cferens1i')
+     , ('Lorine', 'Drivers', 'ldrivers1j@scribd.com', true, true, 'ldrivers1j')
+     , ('Whitman', 'Laval', 'wlaval1k@blogspot.com', false, true, 'wlaval1k')
+     , ('Mikael', 'Cranefield', 'mcranefield1l@opensource.org', true, false, 'mcranefield1l')
+     , ('Guillema', 'Burvill', 'gburvill1m@seesaa.net', false, false, 'gburvill1m')
+     , ('Edmon', 'Coppin', 'ecoppin1n@xinhuanet.com', true, false, 'ecoppin1n')
+     , ('Merilyn', 'Scambler', 'mscambler1o@hao123.com', false, false, 'mscambler1o')
+     , ('Alden', 'Carletti', 'acarletti1p@youtube.com', true, true, 'acarletti1p')
+     , ('Murdoch', 'Bonallack', 'mbonallack1q@comsenz.com', false, false, 'mbonallack1q')
+     , ('Gualterio', 'Crocket', 'gcrocket1r@goodreads.com', true, true, 'gcrocket1r')
+     , ('George', 'Schwier', 'gschwier1s@123-reg.co.uk', true, true, 'gschwier1s')
+     , ('Salvador', 'Woolnough', 'swoolnough1t@odnoklassniki.ru', false, true, 'swoolnough1t')
+     , ('Rowan', 'Coarser', 'rcoarser1u@toplist.cz', false, false, 'rcoarser1u')
+     , ('Gino', 'Camamill', 'gcamamill1v@yale.edu', false, true, 'gcamamill1v')
+     , ('Kaleb', 'Dwire', 'kdwire1w@i2i.jp', true, false, 'kdwire1w')
+     , ('Theresina', 'Dudden', 'tdudden1x@hhs.gov', false, false, 'tdudden1x')
+     , ('Antonella', 'MacAne', 'amacane1y@ask.com', true, true, 'amacane1y')
+     , ('Joela', 'Pett', 'jpett1z@instagram.com', true, false, 'jpett1z')
+     , ('Dalli', 'Caile', 'dcaile20@berkeley.edu', true, true, 'dcaile20')
+     , ('Hubey', 'Wilcocke', 'hwilcocke21@spiegel.de', true, true, 'hwilcocke21')
+     , ('Alberta', 'Wennington', 'awennington22@noaa.gov', false, true, 'awennington22')
+     , ('Malory', 'Milbourne', 'mmilbourne23@vk.com', true, false, 'mmilbourne23')
+     , ('Alwin', 'Marcussen', 'amarcussen24@pen.io', true, false, 'amarcussen24')
+     , ('Carce', 'Pulver', 'cpulver25@hc360.com', false, false, 'cpulver25')
+     , ('Caritta', 'Pomfret', 'cpomfret26@360.cn', true, false, 'cpomfret26')
+     , ('Belle', 'Tatam', 'btatam27@51.la', false, false, 'btatam27')
+     , ('Carol-jean', 'Crandon', 'ccrandon28@feedburner.com', false, false, 'ccrandon28')
+     , ('Sawyer', 'Butt Gow', 'sbuttgow29@wunderground.com', false, true, 'sbuttgow29')
+     , ('Georas', 'Alywen', 'galywen2a@themeforest.net', false, false, 'galywen2a')
+     , ('Balduin', 'Bilofsky', 'bbilofsky2b@icio.us', false, true, 'bbilofsky2b')
+     , ('Stefa', 'Snar', 'ssnar2c@t-online.de', false, false, 'ssnar2c')
+     , ('Gaelan', 'Morrill', 'gmorrill2d@linkedin.com', true, false, 'gmorrill2d')
+     , ('Elle', 'McCowen', 'emccowen2e@wsj.com', false, false, 'emccowen2e')
+     , ('Der', 'Thurstance', 'dthurstance2f@tripadvisor.com', false, true, 'dthurstance2f')
+     , ('Burlie', 'Virgin', 'bvirgin2g@php.net', false, true, 'bvirgin2g')
+     , ('Guillema', 'MacDearmid', 'gmacdearmid2h@dyndns.org', false, true, 'gmacdearmid2h')
+     , ('Welsh', 'McClelland', 'wmcclelland2i@hao123.com', true, true, 'wmcclelland2i')
+     , ('Nataniel', 'Ren', 'nren2j@answers.com', true, true, 'nren2j')
+     , ('Morgun', 'Rubertelli', 'mrubertelli2k@ning.com', true, false, 'mrubertelli2k')
+     , ('Kaspar', 'Eggins', 'keggins2l@forbes.com', true, true, 'keggins2l')
+     , ('Romona', 'Ranald', 'rranald2m@simplemachines.org', false, false, 'rranald2m')
+     , ('Alessandro', 'Webben', 'awebben2n@senate.gov', true, false, 'awebben2n')
+     , ('Karly', 'Bacher', 'kbacher2o@hao123.com', false, false, 'kbacher2o')
+     , ('Garrard', 'Szwarc', 'gszwarc2p@hp.com', true, true, 'gszwarc2p')
+     , ('Wyatt', 'Beneteau', 'wbeneteau2q@gov.uk', false, true, 'wbeneteau2q')
+     , ('Ramsey', 'Midgley', 'rmidgley2r@seattletimes.com', false, true, 'rmidgley2r');
+
 
 --Random generirani studenti sa svim podatcima
-INSERT INTO "student" (mobitel_student, oib_student, datum_rodenja_student, prebivaliste_student, fakultet_student,
-                       godina_studija, smjer_studija, datum_azuriranja, ime_student, prezime_student, mail_student,
-                       je_clan, je_aktivan_clan)
-VALUES ('(0958) 25106210', '95833', '1996-02-28T18:24:26-08:00', 'Bathgate', 'arcu. Nunc mauris.', '4',
-        'convallis erat, eget tincidunt dui', '2017-07-24T22:42:22-07:00', 'Jasmine', 'Kaufman',
-        'arcu.Vivamus.sit@Crasdictum.ca', 'true', 'false'),
-       ('(039944) 039621', '57130', '1997-08-27T07:47:08-07:00', 'Lexington', 'Curabitur consequat, lectus sit amet',
-        '3',
-        'sodales purus,', '2019-05-08T07:50:30-07:00', 'Lana', 'Edwards', 'mollis@liberoduinec.org', 'true', 'false'),
-       ('(01340) 4382817', '13276', '1996-10-27T09:56:59-08:00', 'Völklingen', 'a sollicitudin orci sem eget', '5',
-        'Nulla',
-        '2019-11-10T04:17:56-08:00', 'Deirdre', 'Doyle', 'Morbi@natoquepenatibuset.net', 'true', 'false'),
-       ('(033) 52137272', '56512', '1996-03-20T03:26:18-08:00', 'Solok', 'luctus aliquet odio. Etiam ligula', '3',
-        'aliquam', '2020-01-17T16:32:35-08:00', 'Abra', 'Foster', 'mollis.Phasellus@interdum.co.uk', 'true', 'false'),
-       ('(083) 65008689', '35470', '1999-01-11T23:12:16-08:00', 'Birmingham', 'turpis nec mauris blandit mattis.', '4',
-        'odio, auctor vitae, aliquet nec, imperdiet nec, leo.', '2016-08-11T08:51:20-07:00', 'Nash', 'Hess',
-        'aliquet.sem@dapibusligula.com', 'true', 'false'),
-       ('(0015) 11875570', '67268', '2000-03-12T12:43:52-08:00', 'Hermosillo', 'faucibus ut,', '1', 'pede',
-        '2019-09-06T02:16:37-07:00', 'Thor', 'Stone', 'erat.in@tinciduntaliquamarcu.co.uk', 'true', 'false'),
-       ('(0769) 30090161', '4434', '1997-11-21T13:28:20-08:00', 'Saint-Prime', 'odio. Etiam', '3',
-        'et tristique pellentesque, tellus', '2018-09-26T17:32:43-07:00', 'Eve', 'Lucas',
-        'nascetur@orciPhasellusdapibus.com', 'true', 'false'),
-       ('(0171) 55415356', '54676', '2000-09-14T15:53:25-07:00', 'Presles', 'erat neque', '2',
-        'molestie orci tincidunt adipiscing. Mauris molestie', '2018-03-03T07:11:46-08:00', 'Zane', 'Lewis',
-        'Nam@Aeneangravidanunc.com', 'true', 'false'),
-       ('(00411) 3187290', '87894', '1995-12-11T09:00:31-08:00', 'TrognŽe', 'non, sollicitudin a,', '5',
-        'sed pede. Cum sociis natoque penatibus', '2018-12-26T21:27:09-08:00', 'Philip', 'Goff', 'In@milacinia.com',
-        'true', 'false'),
-       ('(0221) 84391945', '41696', '1996-06-29T08:41:11-07:00', 'Haasdonk', 'eget, dictum placerat, augue. Sed', '3',
-        'est arcu ac orci. Ut semper pretium neque.', '2018-06-02T03:39:03-07:00', 'Fleur', 'Booker',
-        'arcu.vel.quam@eleifendnuncrisus.org', 'true', 'false'),
-       ('(030637) 915180', '9799', '1998-01-29T14:51:16-08:00', 'Chimbote', 'Maecenas ornare egestas ligula. Nullam',
-        '5',
-        'lectus convallis est,', '2016-03-15T01:47:31-07:00', 'Tarik', 'Glenn', 'dui.Fusce@ullamcorper.com', 'true',
-        'false'),
-       ('(08941) 6783713', '41800', '2000-04-29T20:36:59-07:00', 'West Jordan', 'non lorem', '1',
-        'a feugiat tellus lorem eu metus.', '2018-05-22T10:22:28-07:00', 'Maggy', 'Hinton',
-        'arcu.Vivamus.sit@loremluctusut.com', 'true', 'false'),
-       ('(04385) 6479886', '1571', '1997-04-11T13:03:17-07:00', 'Wiekevorst', 'tempor bibendum. Donec felis orci,', '5',
-        'vitae, erat. Vivamus nisi. Mauris nulla.', '2018-05-19T06:27:29-07:00', 'Ivory', 'Frederick',
-        'Curabitur@sedturpis.com', 'true', 'false'),
-       ('(0477) 56558172', '25567', '1996-11-21T07:20:49-08:00', 'Valuyki', 'scelerisque dui.', '2',
-        'dui. Suspendisse ac metus vitae velit', '2019-06-11T21:42:59-07:00', 'Kirestin', 'Valencia',
-        'nunc.interdum@euarcuMorbi.com', 'true', 'false'),
-       ('(02731) 2633176', '84554', '2000-01-10T03:58:16-08:00', 'Maria', 'dui. Cras pellentesque.', '3',
-        'est mauris, rhoncus', '2019-07-26T06:32:43-07:00', 'Freya', 'Gates', 'Maecenas.libero@aliquetPhasellus.ca',
-        'true', 'false'),
-       ('(039287) 215759', '40363', '2000-12-15T10:28:51-08:00', 'Carstairs', 'dictum eu,', '4',
-        'Integer eu lacus. Quisque imperdiet, erat nonummy ultricies', '2019-10-05T09:39:05-07:00', 'Russell', 'Castro',
-        'sed@cursusvestibulum.com', 'true', 'false'),
-       ('(08951) 8828676', '17101', '1999-08-07T07:40:37-07:00', 'Rendsburg', 'ac turpis', '2', 'tempor, est ac',
-        '2019-02-21T15:37:51-08:00', 'Meredith', 'Velez', 'tortor.nibh@Fusce.org', 'true', 'false'),
-       ('(0511) 10790101', '32457', '1996-06-17T22:58:26-07:00', 'Samara', 'ornare. In faucibus. Morbi', '5',
-        'nascetur ridiculus', '2016-08-11T01:25:34-07:00', 'Jerry', 'Blackwell', 'feugiat.nec.diam@nullaante.org',
-        'true', 'false'),
-       ('(042) 47718363', '14084', '1998-10-03T00:29:32-07:00', 'Ottawa-Carleton', 'senectus et netus et', '1',
-        'penatibus et', '2017-09-11T15:49:18-07:00', 'Odysseus', 'Wallace',
-        'Donec.nibh.Quisque@ultriciesdignissimlacus.com', 'true', 'false'),
-       ('(09725) 7560885', '81285', '1999-02-21T15:37:01-08:00', 'São João de Meriti', 'lectus convallis est,', '5',
-        'a, arcu. Sed et libero. Proin mi. Aliquam', '2018-06-11T11:12:40-07:00', 'Lars', 'Padilla',
-        'diam.lorem.auctor@adipiscing.edu', 'true', 'false'),
-       ('(017) 68122864', '48295', '1998-03-09T06:40:05-08:00', 'Kelkheim', 'fermentum risus, at fringilla', '1',
-        'Nunc',
-        '2018-08-18T13:13:01-07:00', 'Quincy', 'Byers', 'libero@atpretium.ca', 'true', 'false'),
-       ('(0226) 34219777', '19358', '1998-11-11T21:04:07-08:00', 'Kostroma', 'Donec est. Nunc ullamcorper,', '4',
-        'magna. Duis', '2016-09-20T04:29:37-07:00', 'Flynn', 'Cole', 'ac.libero@a.co.uk', 'true', 'false'),
-       ('(035) 54501013', '21544', '1996-08-22T00:17:09-07:00', 'Quinchao', 'sociosqu ad', '5', 'varius. Nam porttitor',
-        '2016-05-13T22:08:22-07:00', 'Carlos', 'Moon', 'et.lacinia.vitae@anuncIn.net', 'true', 'false'),
-       ('(034791) 289300', '55812', '1997-02-21T01:05:08-08:00', 'Goulburn', 'Maecenas mi felis, adipiscing fringilla,',
-        '3', 'nisi. Aenean', '2019-10-25T14:16:35-07:00', 'Tanya', 'Craft', 'hymenaeos@tempor.net', 'true', 'false'),
-       ('(063) 58090864', '82435', '1999-01-13T00:47:22-08:00', 'Mira Bhayandar', 'est. Nunc laoreet lectus quis', '4',
-        'natoque', '2016-04-03T10:49:15-07:00', 'Henry', 'Schroeder', 'adipiscing@dolor.co.uk', 'true', 'false'),
-       ('(05029) 7168424', '46523', '1996-11-30T04:00:31-08:00', 'Likino-Dulyovo', 'Duis dignissim tempor arcu.', '1',
-        'magnis', '2019-12-26T15:06:52-08:00', 'Wallace', 'Henderson', 'sociis@vulputaterisusa.com', 'false', 'false'),
-       ('(030498) 240321', '25723', '1999-05-08T10:41:34-07:00', 'Geer', 'in consectetuer ipsum', '3',
-        'Cum sociis natoque',
-        '2018-03-20T15:27:06-07:00', 'Nehru', 'Parrish', 'orci.consectetuer@Nam.edu', 'false', 'false'),
-       ('(0221) 22580280', '23019', '1997-09-19T16:12:48-07:00', 'Lincoln', 'Ut nec urna', '5',
-        'nibh. Aliquam ornare, libero at auctor ullamcorper, nisl', '2017-09-24T03:33:16-07:00', 'Autumn', 'Herring',
-        'risus.odio.auctor@sitametluctus.com', 'false', 'false'),
-       ('(07961) 6660121', '11047', '1998-01-17T09:30:01-08:00', 'Mendonk', 'et, euismod et, commodo at,', '2',
-        'eros. Nam consequat', '2019-10-04T07:20:25-07:00', 'Diana', 'Savage', 'a.facilisis.non@sodalesMauris.com',
-        'false', 'false'),
-       ('(00727) 7722470', '70571', '1996-05-09T19:29:35-07:00', 'Amravati',
-        'accumsan laoreet ipsum. Curabitur consequat,', '2', 'Praesent', '2016-04-07T21:18:38-07:00', 'Yeo', 'Eaton',
-        'ac.metus@Aliquam.org', 'false', 'false'),
-       ('(039548) 697636', '6321', '1998-01-02T02:56:31-08:00', 'Tacoma', 'vel arcu. Curabitur', '4',
-        'elit, pellentesque a, facilisis non,', '2016-07-02T19:19:11-07:00', 'Mercedes', 'Little',
-        'Mauris.vestibulum.neque@Vestibulumuteros.edu', 'false', 'false'),
-       ('(0493) 23710630', '6717', '1996-11-26T18:34:00-08:00', 'Annapolis', 'nec, malesuada ut,', '2',
-        'dolor. Quisque tincidunt pede ac urna. Ut', '2016-07-29T10:12:06-07:00', 'Duncan', 'Battle',
-        'a@uterosnon.co.uk', 'false', 'false'),
-       ('(055) 00485857', '72715', '1995-06-12T07:01:42-07:00', 'Lamont', 'tellus eu', '2',
-        'luctus sit amet, faucibus ut, nulla.', '2017-11-29T08:15:13-08:00', 'Marcia', 'Walls',
-        'non.lacinia.at@dignissimtempor.org', 'false', 'false'),
-       ('(033390) 564431', '43032', '1998-12-09T10:13:19-08:00', 'Tofield', 'nibh. Donec est', '1',
-        'aliquam iaculis, lacus', '2018-02-20T05:21:26-08:00', 'Suki', 'Vance',
-        'varius.orci.in@ultriciesdignissimlacus.com', 'false', 'false'),
-       ('(031600) 166005', '85740', '1999-11-30T14:41:34-08:00', 'Quibdó', 'vel arcu eu odio', '1',
-        'massa. Vestibulum accumsan neque et nunc. Quisque', '2016-01-09T22:26:28-08:00', 'TaShya', 'Mcguire',
-        'Cras.eget.nisi@ante.ca', 'false', 'false'),
-       ('(032241) 771102', '86783', '2000-08-27T19:06:27-07:00', 'Filadelfia', 'turpis. In condimentum. Donec at', '5',
-        'sem, vitae aliquam eros turpis non', '2017-12-22T01:29:16-08:00', 'Xavier', 'Baldwin',
-        'volutpat@sapienimperdiet.net', 'false', 'false'),
-       ('(076) 28756287', '24782', '1997-12-14T12:32:38-08:00', 'Montrose', 'et, lacinia', '2',
-        'lacinia at, iaculis quis, pede.', '2020-01-19T11:00:18-08:00', 'Shoshana', 'Garza',
-        'pellentesque@consectetuereuismod.co.uk', 'false', 'false'),
-       ('(0555) 48713292', '19989', '2000-11-01T08:25:43-08:00', 'Melipilla', 'vitae mauris sit amet', '2',
-        'lobortis augue scelerisque mollis.', '2017-04-29T21:26:26-07:00', 'Fulton', 'Hester',
-        'cursus.in.hendrerit@vehiculaaliquetlibero.edu', 'false', 'false'),
-       ('(084) 10143386', '21075', '1995-03-24T04:07:12-08:00', 'Saint-Brieuc', 'sociosqu ad litora', '2',
-        'vulputate ullamcorper magna. Sed eu eros. Nam consequat', '2019-05-30T13:57:10-07:00', 'Fritz', 'Weeks',
-        'lorem@at.co.uk', 'false', 'false'),
-       ('(0417) 81678591', '32050', '1995-05-19T07:05:03-07:00', 'Częstochowa', 'molestie orci', '1',
-        'pede ac urna. Ut tincidunt', '2017-07-28T22:23:42-07:00', 'Alika', 'Hartman', 'feugiat.tellus@turpis.ca',
-        'false', 'false'),
-       ('(030143) 428404', '98529', '1997-03-05T06:25:06-08:00', 'Donk', 'sem, vitae aliquam eros turpis', '2',
-        'Donec egestas.', '2019-05-20T10:58:16-07:00', 'Mark', 'Martin', 'libero.dui@infaucibus.co.uk', 'false',
-        'false'),
-       ('(038) 41264340', '40115', '1995-01-21T00:03:49-08:00', 'Palu', 'parturient montes, nascetur ridiculus', '3',
-        'orci,', '2016-03-02T07:42:18-08:00', 'Imogene', 'Mann', 'semper.Nam@aaliquetvel.net', 'false', 'false'),
-       ('(020) 51630131', '26627', '1999-02-25T10:05:20-08:00', 'Legal', 'velit dui, semper et, lacinia', '4',
-        'nisi a odio semper', '2016-12-28T20:27:19-08:00', 'Cameron', 'Boyer', 'nec@Aenean.org', 'false', 'false'),
-       ('(001) 17436836', '77669', '1999-10-03T09:09:57-07:00', 'Adana', 'velit in', '5', 'auctor quis,',
-        '2017-03-11T00:45:03-08:00', 'Deacon', 'Reeves', 'magna.Duis@luctussit.co.uk', 'false', 'false'),
-       ('(0170) 63120286', '50721', '1995-04-30T15:19:34-07:00', 'Degelis', 'pellentesque. Sed', '5', 'quis, pede.',
-        '2018-10-11T17:33:08-07:00', 'Rachel', 'Pennington', 'facilisis.eget@magna.ca', 'false', 'false'),
-       ('(040) 58128391', '4721', '1997-07-02T14:47:55-07:00', 'Rezzoaglio', 'eu dui. Cum', '5', 'nec, leo.',
-        '2016-07-23T23:08:25-07:00', 'Imelda', 'Kaufman', 'ut.pharetra.sed@parturientmontesnascetur.edu', 'false',
-        'false'),
-       ('(049) 39743066', '10983', '2000-02-22T14:39:25-08:00', 'Blankenfelde-Mahlow', 'Sed molestie. Sed id', '3',
-        'ornare, facilisis eget, ipsum.', '2018-06-15T01:02:31-07:00', 'Neville', 'Cantu',
-        'sit.amet.ultricies@euenimEtiam.org', 'false', 'false'),
-       ('(068) 06358794', '71589', '1998-05-09T15:58:17-07:00', 'Lahore', 'scelerisque scelerisque', '5', 'tristique',
-        '2019-06-09T03:08:50-07:00', 'Aspen', 'Ballard', 'Nunc.pulvinar@faucibuslectus.org', 'false', 'false'),
-       ('(036266) 482420', '5922', '1999-11-28T02:04:11-08:00', 'Boryeong', 'tellus. Suspendisse sed', '1',
-        'quis diam. Pellentesque habitant morbi tristique senectus et', '2018-11-08T21:40:43-08:00', 'Nomlanga',
-        'Garrison', 'ipsum.non@eudui.net', 'false', 'false'),
-       ('(018) 58415940', '6119', '1999-07-20T02:35:21-07:00', 'Bridgeport', 'sagittis. Nullam vitae diam. Proin', '4',
-        'risus. Donec egestas. Duis ac arcu. Nunc mauris.', '2017-03-03T13:37:02-08:00', 'Natalie', 'Kramer',
-        'Donec.fringilla.Donec@pretiumet.com', 'false', 'false');
+insert into student (ime_student, prezime_student, mail_student, je_clan, je_aktivan_clan, korisnicko_ime,
+                     mobitel_student, oib_student, datum_rodenja_student, prebivaliste_student, fakultet_student,
+                     godina_studija, smjer_studija, datum_azuriranja)
+values ('Jeffrey', 'Brach', 'jbrach0@ask.com', false, false, 'jbrach0', '+351 624 609 8026', '2365562083',
+        '1998-08-15T00:35:23Z', 'Boavista', 'Art Institute of Charlotte', 4, 'quam', '2017-11-29 02:51:26')
+     , ('Ettore', 'Iorio', 'eiorio1@tinypic.com', false, false, 'eiorio1', '+7 548 770 8827', '256926474',
+        '1996-07-18T11:25:54Z', 'Lakkha Nëvre', 'Swiss Federal Institute of Technology, Zurich', 4,
+        'sem sed sagittis nam congue', '2017-06-16 16:09:10')
+     , ('Patrice', 'Bugdall', 'pbugdall2@chicagotribune.com', false, true, 'pbugdall2', '+373 366 965 6909',
+        '7298146578',
+        '2000-02-03T21:37:50Z', 'Chiţcani', 'The College of Santa Fe', 4, 'dis', '2019-02-08 15:43:58')
+     , ('Austin', 'Fortey', 'afortey3@usnews.com', false, false, 'afortey3', '+269 692 843 9365', '2803541668',
+        '1998-07-07T17:12:53Z', 'Chandra', 'University of Nijenrode', 3, 'eleifend luctus ultricies',
+        '2015-11-29 08:31:09')
+     , ('Mathe', 'Truelock', 'mtruelock4@live.com', false, false, 'mtruelock4', '+55 561 384 3690', '6868973386',
+        '2000-01-04T19:06:48Z', 'Nova Prata', 'University of London', 1, 'ultricies', '2019-03-24 15:39:49')
+     , ('Carson', 'Blankenship', 'cblankenship5@sakura.ne.jp', true, false, 'cblankenship5', '+62 146 982 2570',
+        '2056948140', '2002-10-08T22:59:57Z', 'Bendoroto', 'Siam University', 2, 'leo', '2015-02-16 14:33:20')
+     , ('Terra', 'Mulvy', 'tmulvy6@histats.com', false, true, 'tmulvy6', '+62 821 665 8733', '5642396413',
+        '2002-08-23T02:15:47Z', 'Kubangwaru', 'Dijla University College', 3, 'curae duis faucibus accumsan',
+        '2016-10-13 23:29:04')
+     , ('Valry', 'Cissen', 'vcissen7@multiply.com', true, true, 'vcissen7', '+62 922 564 5662', '8360069075',
+        '1995-10-09T13:34:27Z', 'Luntas', 'Institute of Teachers Education, Tawau', 5, 'donec', '2018-04-12 07:03:57')
+     , ('Rodolph', 'Smeed', 'rsmeed8@alexa.com', true, true, 'rsmeed8', '+86 512 704 0753', '9790035455',
+        '1999-10-20T17:12:30Z', 'Xiayunling', 'Sunway University College', 4, 'aliquet at', '2018-06-22 22:09:04')
+     , ('Gladi', 'Broggio', 'gbroggio9@imdb.com', false, true, 'gbroggio9', '+976 621 864 0565', '5205137131',
+        '2001-01-06T16:02:17Z', 'Rashaant', 'Indian Institute of Technology, Delhi', 1, 'nisl', '2017-08-20 02:36:29')
+     , ('Gale', 'Ingerman', 'gingermana@cpanel.net', true, false, 'gingermana', '+230 642 877 5174', '7316890631',
+        '1995-10-20T21:56:41Z', 'Camp Thorel', 'City University of New York, New York City Technical College', 5,
+        'ligula sit amet', '2016-03-21 01:25:00')
+     , ('Chad', 'Bogays', 'cbogaysb@ucsd.edu', false, false, 'cbogaysb', '+62 527 315 1359', '9898926246',
+        '1998-01-21T03:19:12Z', 'Pende', 'Universidad de Deusto', 4, 'orci', '2015-08-31 04:15:03')
+     , ('Fergus', 'Battman', 'fbattmanc@timesonline.co.uk', true, false, 'fbattmanc', '+30 336 444 4169', '2519107604',
+        '1996-02-07T17:32:36Z', 'Loukísia', 'University of Alanta', 4, 'felis ut at', '2018-12-06 19:27:36')
+     , ('Rochella', 'Brunger', 'rbrungerd@dyndns.org', false, false, 'rbrungerd', '+1 305 373 7917', '1114163063',
+        '1996-01-21T04:49:45Z', 'Belleville', 'West Virginia University', 3, 'in eleifend quam a odio',
+        '2019-12-30 15:11:21')
+     , ('Dominica', 'Guinness', 'dguinnesse@istockphoto.com', true, true, 'dguinnesse', '+33 127 800 0097',
+        '3032048392',
+        '1999-12-06T12:37:38Z', 'Thiais', 'University of Montenegro', 2, 'duis', '2019-04-30 05:46:00')
+     , ('Ringo', 'Albertson', 'ralbertsonf@reuters.com', true, false, 'ralbertsonf', '+86 600 530 2549', '3010030238',
+        '1997-06-04T08:17:22Z', 'Qiman', 'University of Lapland', 3, 'duis faucibus accumsan odio',
+        '2018-06-04 14:43:33')
+     , ('Quillan', 'Guild', 'qguildg@ehow.com', true, true, 'qguildg', '+380 946 515 8722', '9644334259',
+        '1994-01-31T14:05:42Z', 'Kalynivka', 'University of Calicut', 5, 'id', '2016-12-21 18:12:58')
+     , ('Tammy', 'Rojel', 'trojelh@cloudflare.com', false, false, 'trojelh', '+55 646 572 9770', '5947903746',
+        '2001-01-31T08:44:36Z', 'Arapiraca',
+        'Postgraduate Institute of Pali & Buddhist Studies (University of Kelaniya)', 5, 'platea dictumst maecenas ut',
+        '2019-08-14 11:30:32')
+     , ('Liv', 'Calendar', 'lcalendari@bbb.org', true, true, 'lcalendari', '+55 661 673 9741', '8732841405',
+        '1998-02-05T18:13:29Z', 'Contagem', 'Pedagogical University of Zielona Gora', 2, 'cras mi pede malesuada in',
+        '2017-01-05 09:08:35')
+     , ('Dixie', 'Corbet', 'dcorbetj@sogou.com', true, false, 'dcorbetj', '+7 843 112 4824', '6109745349',
+        '1996-07-31T20:31:19Z', 'Nal’chik', 'Cleary College', 4, 'quis justo maecenas', '2017-02-06 04:20:38')
+     , ('Peyter', 'Emby', 'pembyk@skyrock.com', false, false, 'pembyk', '+351 342 809 9378', '343387197',
+        '2000-07-01T14:58:16Z', 'Parada de Todeia', 'University of East Asia', 3, 'ac', '2017-08-17 12:15:50')
+     , ('Perle', 'Pittham', 'ppitthaml@desdev.cn', false, true, 'ppitthaml', '+86 722 768 3699', '2910578279',
+        '1995-10-16T10:14:09Z', 'Xihuaiba', 'Hochschule Mittweida (FH)', 1, 'justo maecenas rhoncus aliquam',
+        '2015-10-20 13:09:32')
+     , ('Valentine', 'Middiff', 'vmiddiffm@squidoo.com', true, false, 'vmiddiffm', '+82 120 318 3876', '8588056470',
+        '2000-12-08T08:45:37Z', 'Hongch’ŏn', 'Awadhesh Pratap Singh University', 1, 'vel accumsan',
+        '2017-03-26 03:26:42')
+     , ('Elbertine', 'Yakovlev', 'eyakovlevn@mapquest.com', false, false, 'eyakovlevn', '+86 549 222 6256',
+        '4943748582',
+        '2001-10-03T11:17:50Z', 'Yiwa', 'Long Island University, C.W. Post Campus', 4, 'morbi ut odio cras mi',
+        '2015-02-03 14:29:51')
+     , ('Deeyn', 'Murrie', 'dmurrieo@indiatimes.com', true, false, 'dmurrieo', '+82 865 580 7824', '894506024',
+        '2002-08-03T07:55:39Z', 'Kwangmyŏng', 'University of North Texas Health Science Center at Fort Worth', 2,
+        'feugiat non pretium quis', '2015-09-02 05:10:34')
+     , ('Guthrie', 'Cheale', 'gchealep@i2i.jp', false, true, 'gchealep', '+7 923 136 8689', '7749064197',
+        '1996-09-14T17:23:32Z', 'Podkamennaya Tunguska', 'National University of Shipbuilding', 1,
+        'blandit non interdum in ante', '2019-09-04 07:27:39')
+     , ('Bea', 'Connerry', 'bconnerryq@nba.com', true, true, 'bconnerryq', '+33 944 220 1047', '1683488462',
+        '2002-07-27T17:19:41Z', 'Pouzauges', 'Sotheby´s Institute of Art - London', 4, 'justo pellentesque',
+        '2017-04-28 05:10:11')
+     , ('Beilul', 'Barby', 'bbarbyr@lulu.com', true, true, 'bbarbyr', '+62 281 109 7334', '6427804170',
+        '2000-02-26T03:50:02Z', 'Tanjung Timur', 'Troy University', 1, 'vestibulum ante ipsum', '2018-02-10 09:28:17')
+     , ('Katalin', 'Musla', 'kmuslas@slate.com', false, true, 'kmuslas', '+30 265 433 2792', '6449042436',
+        '2001-12-07T12:16:04Z', 'Adámas', 'South Dakota State University', 3, 'maecenas leo odio',
+        '2019-05-02 13:39:09')
+     , ('Clayborn', 'Sichardt', 'csichardtt@netlog.com', true, false, 'csichardtt', '+502 442 978 2153', '8597733577',
+        '2000-02-23T22:08:03Z', 'San Juan Ixcoy', 'Vardhaman Mahaveer Open University', 2, 'interdum eu tincidunt',
+        '2015-08-07 21:59:16')
+     , ('Isidora', 'Cobbled', 'icobbledu@sina.com.cn', true, true, 'icobbledu', '+86 887 446 0001', '8710668922',
+        '1999-01-04T22:22:43Z', 'Qiubin', 'University of Ancona', 4, 'auctor gravida sem', '2019-11-30 14:17:35')
+     , ('Perrine', 'Leaver', 'pleaverv@google.com.hk', false, true, 'pleaverv', '+47 921 471 7721', '7291842521',
+        '1996-04-21T09:23:53Z', 'Tromsø', 'Kanazawa Institute of Technology', 5, 'turpis donec', '2017-10-04 12:38:38')
+     , ('Wini', 'Jendrusch', 'wjendruschw@theglobeandmail.com', true, true, 'wjendruschw', '+51 595 198 5971',
+        '9045040656', '1997-01-03T09:05:26Z', 'Quinua', 'California School of Professional Psychology - Fresno', 5,
+        'vestibulum ante ipsum primis', '2015-09-17 04:50:55')
+     , ('Myer', 'Lumbly', 'mlumblyx@zimbio.com', false, false, 'mlumblyx', '+62 469 368 2081', '947325888',
+        '1994-09-05T08:20:46Z', 'Parung', 'Fine Arts Academy in Wroclaw', 3, 'at turpis a pede posuere',
+        '2017-04-19 07:41:45')
+     , ('Benjie', 'Pavlovsky', 'bpavlovskyy@xing.com', false, false, 'bpavlovskyy', '+46 945 878 0921', '1192083645',
+        '2002-07-26T08:09:56Z', 'Norrköping', 'Rockhurst College', 4, 'pede ullamcorper augue a suscipit',
+        '2015-11-08 14:44:22')
+     , ('Augusta', 'Smead', 'asmeadz@cocolog-nifty.com', false, true, 'asmeadz', '+54 572 899 1400', '9050707337',
+        '1994-03-06T07:13:16Z', 'Jardín América', 'Kiev National University of Construction and Architecture', 2,
+        'dis parturient montes nascetur', '2018-09-09 19:48:05')
+     , ('Lyman', 'Nason', 'lnason10@discuz.net', false, false, 'lnason10', '+1 319 422 1978', '881702083',
+        '1995-05-15T19:06:02Z', 'Iowa City', 'Universidad Fermin Toro', 5, 'volutpat', '2018-07-07 08:20:30')
+     , ('Gregoire', 'Walbridge', 'gwalbridge11@va.gov', true, false, 'gwalbridge11', '+58 553 983 2315', '265414804',
+        '1995-05-30T13:47:38Z', 'Píritu', 'Universidade de Franca', 2, 'amet cursus id', '2019-07-04 08:30:22')
+     , ('Tyrus', 'Skippon', 'tskippon12@51.la', true, true, 'tskippon12', '+7 553 367 6098', '1197766647',
+        '2000-06-09T13:51:32Z', 'Kukushtan', 'Universidad Cooperativa de Colombia', 2, 'nisl ut volutpat sapien arcu',
+        '2017-12-24 03:06:07')
+     , ('Gwenore', 'Renon', 'grenon13@over-blog.com', true, false, 'grenon13', '+7 847 775 4193', '5545738285',
+        '2002-11-14T02:38:00Z', 'Kurchatov', 'Hungarian Academy of Fine Arts Budapest', 5, 'ac est lacinia nisi',
+        '2019-03-25 23:06:59')
+     , ('Brittani', 'Faro', 'bfaro14@weibo.com', true, true, 'bfaro14', '+55 825 936 2826', '7939512636',
+        '2000-10-26T23:54:59Z', 'Marau',
+        'Pedagogical University of the Polish Association for Adult Education in Warsaw', 3, 'purus',
+        '2019-11-18 13:56:48')
+     , ('Bram', 'Timmons', 'btimmons15@weibo.com', false, true, 'btimmons15', '+420 828 546 1106', '7122703874',
+        '1996-01-29T03:49:42Z', 'Nový Knín', 'Sapporo University', 4, 'elit ac nulla sed', '2017-11-07 07:48:41')
+     , ('Nana', 'Spollen', 'nspollen16@businesswire.com', false, false, 'nspollen16', '+7 608 658 4990', '8765816301',
+        '2002-04-12T20:35:26Z', 'Shal’skiy', 'Northern Illinois University', 4, 'ultrices erat', '2017-11-23 00:08:32')
+     , ('Elvira', 'Lightollers', 'elightollers17@ted.com', false, true, 'elightollers17', '+86 798 786 3609',
+        '4846783895', '1994-01-30T04:21:15Z', 'Xingnong', 'Western State University College of Law - Orange County', 1,
+        'in faucibus', '2015-06-03 21:52:04')
+     , ('Brandon', 'Atwell', 'batwell18@engadget.com', true, true, 'batwell18', '+420 220 906 5137', '1959931742',
+        '1998-07-08T16:16:01Z', 'Poříčí nad Sázavou', 'Sadat Institute of Higher Education', 3,
+        'quam turpis adipiscing lorem', '2016-02-02 03:53:39')
+     , ('Antonius', 'Magill', 'amagill19@google.fr', true, true, 'amagill19', '+55 355 638 4558', '6947162219',
+        '2000-10-01T20:43:48Z', 'Capela', 'Sotheby´s Institute of Art - London', 5, 'nisl nunc rhoncus',
+        '2016-07-29 21:56:20')
+     , ('Sofie', 'Gladwish', 'sgladwish1a@com.com', true, false, 'sgladwish1a', '+963 861 467 5430', '8462688418',
+        '1998-01-23T17:29:40Z', 'Jindayris', 'University of Mary Hardin-Baylor', 5, 'mauris', '2017-04-23 03:52:04')
+     , ('Therine', 'Venus', 'tvenus1b@parallels.com', true, false, 'tvenus1b', '+351 788 847 6782', '4597561320',
+        '1996-08-24T06:37:13Z', 'Guilhabreu', 'Deutsche Sporthochschule Köln', 3, 'dolor sit', '2015-03-16 18:37:52')
+     , ('Nicol', 'Govey', 'ngovey1c@jalbum.net', true, true, 'ngovey1c', '+420 297 654 3837', '174991884',
+        '1998-05-18T17:30:05Z', 'Velké Bílovice', 'Fondazione Sacro Cuore', 1, 'felis fusce posuere felis',
+        '2019-01-15 05:13:59')
+     , ('Donelle', 'Keilloh', 'dkeilloh1d@taobao.com', false, false, 'dkeilloh1d', '+506 486 124 1113', '6327963424',
+        '2000-05-27T02:31:40Z', 'Chacarita', 'Yantai Education Institute & Yantai Television University', 4, 'amet',
+        '2018-03-04 01:10:17')
+     , ('Dael', 'Sproston', 'dsproston1e@marriott.com', false, true, 'dsproston1e', '+55 110 446 5350', '9031514524',
+        '1995-07-20T13:29:17Z', 'Poções', 'Northwestern College Iowa', 2, 'iaculis diam erat fermentum',
+        '2016-03-22 05:27:10')
+     , ('Althea', 'Brende', 'abrende1f@house.gov', false, true, 'abrende1f', '+970 296 214 9284', '6323116482',
+        '1999-01-07T04:53:28Z', 'Khallat Ḩamāmah', 'Institute of Teachers Education, Batu Lintang', 2,
+        'nisl duis ac nibh', '2016-09-25 05:30:37')
+     , ('Genia', 'Tuddenham', 'gtuddenham1g@paypal.com', true, false, 'gtuddenham1g', '+52 447 460 4235', '173431029',
+        '1999-06-01T23:32:31Z', 'Adolfo Lopez Mateos', 'Hanoi National Economics University', 2, 'magna',
+        '2017-09-29 04:56:09')
+     , ('Ekaterina', 'Boleyn', 'eboleyn1h@bbc.co.uk', true, false, 'eboleyn1h', '+62 627 813 2425', '3267494153',
+        '1997-08-09T00:16:58Z', 'Gadang', 'Universidade de São Paulo', 3, 'turpis', '2019-02-22 04:37:03')
+     , ('Daven', 'Carbett', 'dcarbett1i@twitpic.com', true, false, 'dcarbett1i', '+221 131 233 4373', '5224640069',
+        '1998-03-16T12:13:35Z', 'Ouro Sogui', 'University of Mostar', 3, 'erat id mauris', '2019-05-13 13:56:33')
+     , ('Roxanne', 'Hurst', 'rhurst1j@mac.com', true, true, 'rhurst1j', '+961 735 678 5587', '6692076182',
+        '1995-06-20T11:58:22Z', 'Bent Jbaïl', 'Kendall College of Art and Design', 2,
+        'sapien placerat ante nulla justo', '2016-02-14 07:45:01')
+     , ('Chan', 'Mattei', 'cmattei1k@rakuten.co.jp', true, false, 'cmattei1k', '+48 403 420 0883', '6596170886',
+        '1996-04-02T05:40:34Z', 'Mrozy', 'Universidad Maritima de Chile', 2, 'in leo maecenas pulvinar',
+        '2015-04-05 12:50:55')
+     , ('Cointon', 'Tarrant', 'ctarrant1l@webeden.co.uk', true, true, 'ctarrant1l', '+359 943 510 6470', '5737193529',
+        '1996-07-16T03:15:53Z', 'Batanovtsi', 'American International University West Africa', 1,
+        'nonummy maecenas tincidunt lacus', '2018-09-24 22:12:07')
+     , ('Hewie', 'Tonepohl', 'htonepohl1m@mysql.com', true, true, 'htonepohl1m', '+86 966 798 9833', '5240918772',
+        '1997-11-13T21:58:05Z', 'Guandi', 'Fondation Universitaire Luxembourgeoise', 5, 'in', '2017-01-13 17:58:54')
+     , ('Anatol', 'Cornock', 'acornock1n@geocities.com', false, false, 'acornock1n', '+81 450 424 0294', '3511645027',
+        '1994-12-12T16:06:03Z', 'Takamatsu-shi', 'State University of New York Empire State College', 4,
+        'mauris morbi non lectus', '2018-01-15 07:20:44')
+     , ('Morten', 'Trinke', 'mtrinke1o@cbslocal.com', false, true, 'mtrinke1o', '+86 629 977 2589', '2856886356',
+        '1996-07-03T18:52:25Z', 'Xinyi', 'Universidad Fray Luca Paccioli', 1, 'nisi venenatis tristique',
+        '2019-11-04 14:29:07')
+     , ('Shel', 'Camelli', 'scamelli1p@etsy.com', true, false, 'scamelli1p', '+62 437 154 1696', '3571636605',
+        '1998-12-04T08:58:44Z', 'Sorongan', 'American Military University', 3, 'volutpat convallis morbi',
+        '2019-05-14 15:31:31')
+     , ('Noak', 'Frantsev', 'nfrantsev1q@istockphoto.com', false, false, 'nfrantsev1q', '+86 228 443 2105',
+        '1980453649',
+        '1999-09-17T19:10:15Z', 'Dehui', 'École nationale d''administration publique, Université du Québec', 4,
+        'lobortis est phasellus sit', '2019-05-22 11:23:34')
+     , ('Rachele', 'Pearman', 'rpearman1r@hao123.com', true, true, 'rpearman1r', '+62 905 584 4472', '561943940',
+        '1997-09-15T11:23:27Z', 'Padangan', 'The School of the Art Institute of Chicago', 1, 'dui vel nisl',
+        '2017-09-27 17:16:35')
+     , ('Arny', 'McKoy', 'amckoy1s@a8.net', true, false, 'amckoy1s', '+66 267 720 3598', '2536798859',
+        '2001-03-12T02:00:02Z', 'Nong Khai', 'Delhi College of Engineering (DCE)', 1, 'maecenas tincidunt lacus at',
+        '2015-07-12 10:51:58')
+     , ('Ogdan', 'Fludder', 'ofludder1t@ibm.com', false, false, 'ofludder1t', '+63 439 831 8299', '8465694837',
+        '1999-06-24T01:49:54Z', 'Bayawan', 'International Islamic University', 5, 'nisi nam ultrices libero',
+        '2018-12-04 13:20:35')
+     , ('Sauncho', 'Lowen', 'slowen1u@discuz.net', false, false, 'slowen1u', '+46 725 122 7870', '5767212318',
+        '1997-05-20T23:38:40Z', 'Domsjö', 'Sadjad Institute of Technology', 3, 'eu magna', '2019-04-06 09:38:38')
+     , ('Gavan', 'Mirrlees', 'gmirrlees1v@liveinternet.ru', false, false, 'gmirrlees1v', '+86 194 155 3487',
+        '1035343548',
+        '1997-12-13T04:48:36Z', 'Dongmaku', 'Universidad Mexicana del Noreste', 3, 'orci', '2015-01-24 10:03:12')
+     , ('Ferdinanda', 'Wilbore', 'fwilbore1w@clickbank.net', true, true, 'fwilbore1w', '+249 209 821 2669',
+        '3813897431',
+        '1999-11-14T15:04:41Z', 'Kutum', 'Inner Mongolia Normal University', 4, 'ipsum praesent blandit',
+        '2016-05-18 04:23:57')
+     , ('Wally', 'Gallemore', 'wgallemore1x@webeden.co.uk', true, false, 'wgallemore1x', '+81 688 392 6810',
+        '6932233481',
+        '1997-09-20T18:19:05Z', 'Iida', 'Ecole Supérieure d''Optique', 3, 'odio odio', '2015-07-04 23:57:06')
+     , ('Jobye', 'Kemshell', 'jkemshell1y@addthis.com', true, true, 'jkemshell1y', '+48 445 892 3998', '1418880470',
+        '1996-10-02T15:08:16Z', 'Przytyk', 'Renmin University of China', 5, 'cras', '2015-10-07 23:11:25')
+     , ('Thacher', 'McEachern', 'tmceachern1z@guardian.co.uk', false, false, 'tmceachern1z', '+44 296 698 2120',
+        '9685347874', '1995-05-04T02:13:50Z', 'Sheffield', 'Musashi University', 4, 'at feugiat non pretium quis',
+        '2015-04-28 09:44:29')
+     , ('Sterling', 'Cumberledge', 'scumberledge20@tinypic.com', false, false, 'scumberledge20', '+353 308 702 7917',
+        '1591376035', '1998-12-29T02:11:35Z', 'Bagenalstown', 'Vellore Institute of Technology', 5,
+        'nulla sed accumsan',
+        '2019-06-03 16:51:00')
+     , ('Lane', 'Lippiatt', 'llippiatt21@icq.com', true, true, 'llippiatt21', '+996 825 535 3198', '1386699826',
+        '1998-04-09T11:30:04Z', 'Toktogul', 'Laurus Technical Institute', 5, 'non mi integer ac neque',
+        '2016-02-05 08:26:47')
+     , ('Quill', 'Roughsedge', 'qroughsedge22@buzzfeed.com', true, false, 'qroughsedge22', '+63 498 547 5735',
+        '1397330969', '2002-10-11T06:39:23Z', 'Bayang', 'Pontificia Universidad Católica Madre y Maestra (PUCMM)', 1,
+        'in libero', '2017-05-21 02:10:44')
+     , ('Marylinda', 'Klimsch', 'mklimsch23@php.net', true, true, 'mklimsch23', '+62 330 344 6116', '2413883109',
+        '1998-01-28T16:58:38Z', 'Tasikona', 'Fukuyama University', 3, 'vestibulum ante ipsum', '2015-09-06 10:53:54')
+     , ('Doretta', 'Seer', 'dseer24@japanpost.jp', true, true, 'dseer24', '+372 964 486 9670', '7108814622',
+        '1994-09-04T11:04:50Z', 'Haljala', 'Kamakura Women''s College', 1, 'ultrices mattis odio donec vitae',
+        '2017-10-09 11:12:23')
+     , ('Cynde', 'Broadbere', 'cbroadbere25@soup.io', true, true, 'cbroadbere25', '+86 499 531 6733', '8197287418',
+        '2001-07-25T15:26:41Z', 'Shanggu', 'Winona State University', 5, 'sapien cursus', '2019-09-15 03:23:22')
+     , ('Courtnay', 'Heggison', 'cheggison26@foxnews.com', true, true, 'cheggison26', '+7 788 597 9157', '9545820143',
+        '2000-09-12T19:56:06Z', 'Vacha', 'Ohio State University', 3, 'nisl aenean lectus pellentesque',
+        '2018-07-15 01:27:59')
+     , ('Shaun', 'Moodey', 'smoodey27@e-recht24.de', false, true, 'smoodey27', '+48 763 342 9562', '8713521963',
+        '2000-12-05T06:31:28Z', 'Gręboszów', 'Harran University', 5, 'luctus et ultrices posuere cubilia',
+        '2015-01-11 14:05:23')
+     , ('Orelee', 'Feavyour', 'ofeavyour28@studiopress.com', false, false, 'ofeavyour28', '+62 668 667 8175',
+        '2093869054', '1999-07-14T22:17:31Z', 'Pasauran', 'Catholic University of Malawi', 1,
+        'volutpat in congue etiam justo', '2015-08-18 09:53:33')
+     , ('Katya', 'Shann', 'kshann29@thetimes.co.uk', true, false, 'kshann29', '+54 702 228 7145', '9428414484',
+        '2001-07-02T01:07:37Z', 'San Miguel de Tucumán', 'Walcz College', 2, 'cras in', '2017-09-13 03:24:07')
+     , ('Fredric', 'Biddulph', 'fbiddulph2a@twitter.com', true, false, 'fbiddulph2a', '+351 531 683 9813', '5439969577',
+        '1999-01-07T09:05:59Z', 'Santo Aleixo', 'Kuban State University of Technology', 1, 'lectus',
+        '2015-05-30 12:22:04')
+     , ('Gill', 'McQuie', 'gmcquie2b@sakura.ne.jp', true, true, 'gmcquie2b', '+55 752 507 1714', '4109220373',
+        '2002-11-02T13:58:29Z', 'Boa Esperança', 'Nigerian Defence Academy', 4, 'potenti cras in',
+        '2019-04-17 10:13:59')
+     , ('Kaye', 'Kippins', 'kkippins2c@newyorker.com', false, false, 'kkippins2c', '+62 998 169 1560', '3848792184',
+        '1999-12-21T10:58:12Z', 'Mancagahar', 'Universidad del Norte', 4, 'viverra dapibus nulla suscipit ligula',
+        '2016-05-15 00:20:07')
+     , ('Kane', 'Kennan', 'kkennan2d@dagondesign.com', true, false, 'kkennan2d', '+81 619 654 2320', '1342588847',
+        '2000-11-26T05:35:35Z', 'Ube', 'International Business School of Scandinavia', 2, 'at velit vivamus vel',
+        '2017-05-17 23:30:43')
+     , ('Eustace', 'Legate', 'elegate2e@sbwire.com', true, false, 'elegate2e', '+375 592 668 7926', '4455193994',
+        '2002-11-14T06:58:19Z', 'Ivatsevichy', 'Free International University of Moldova', 1, 'adipiscing elit proin',
+        '2015-08-27 18:56:57')
+     , ('Sigfried', 'Matton', 'smatton2f@mapquest.com', true, true, 'smatton2f', '+86 836 323 8609', '1784087954',
+        '1999-01-13T20:58:12Z', 'Qinglian', 'Goshen College', 1, 'nisl', '2018-04-21 11:33:32')
+     , ('Cairistiona', 'Johannesson', 'cjohannesson2g@deliciousdays.com', true, true, 'cjohannesson2g',
+        '+86 904 241 4566', '4074568879', '1997-04-02T23:05:37Z', 'Xingfu', 'Tokyo Denki University', 4,
+        'elementum ligula vehicula', '2019-07-08 21:31:16')
+     , ('Jasmin', 'Giovannetti', 'jgiovannetti2h@europa.eu', false, false, 'jgiovannetti2h', '+385 287 452 9970',
+        '194711490', '1994-03-05T21:46:27Z', 'Gorjani', 'Matsuyama University', 3, 'quis tortor id',
+        '2017-02-21 04:15:58')
+     , ('Eryn', 'Heisham', 'eheisham2i@issuu.com', false, true, 'eheisham2i', '+63 129 979 7171', '8239349017',
+        '2000-01-23T18:36:02Z', 'Tabug', 'Université Pierre Mendes-France (Grenoble II)', 4,
+        'blandit lacinia erat vestibulum sed', '2017-08-01 08:24:48')
+     , ('Bryn', 'Eddolls', 'beddolls2j@printfriendly.com', false, false, 'beddolls2j', '+55 789 196 2376', '3999188268',
+        '2002-01-12T04:02:01Z', 'Porto Alegre', 'Dallas Christian College', 1, 'vestibulum', '2016-04-25 20:44:28')
+     , ('Ricky', 'Baysting', 'rbaysting2k@typepad.com', true, false, 'rbaysting2k', '+81 559 215 9175', '514251803',
+        '1994-10-26T03:41:49Z', 'Kitami', 'Ural State Forestry Technical Academy', 5, 'ultrices', '2018-05-25 02:03:40')
+     , ('Clarice', 'Leibold', 'cleibold2l@blogger.com', true, true, 'cleibold2l', '+86 573 551 2428', '4600357446',
+        '2000-04-19T23:36:14Z', 'Doushaguan', 'Jiaying University', 3, 'lacus morbi sem', '2019-04-06 12:14:23')
+     , ('Lexis', 'Daykin', 'ldaykin2m@usa.gov', true, true, 'ldaykin2m', '+86 569 212 9081', '8582023262',
+        '1995-04-12T22:09:24Z', 'Minle', 'Universidad de Caldas', 3, 'nec nisi vulputate nonummy maecenas',
+        '2016-05-21 19:11:18')
+     , ('Irena', 'Younglove', 'iyounglove2n@columbia.edu', false, false, 'iyounglove2n', '+1 205 838 5186',
+        '3641358064',
+        '2001-03-05T10:05:54Z', 'Birmingham', 'Pontifcia Università Gregoriana', 5, 'potenti nullam',
+        '2016-05-30 14:03:58')
+     , ('Tania', 'Fancy', 'tfancy2o@wisc.edu', false, true, 'tfancy2o', '+98 447 330 6119', '60804210',
+        '1996-10-28T02:32:08Z', 'Jam', 'University of Windsor', 1, 'ligula suspendisse ornare consequat',
+        '2019-05-27 20:31:06')
+     , ('Anallese', 'Dumini', 'adumini2p@slideshare.net', true, false, 'adumini2p', '+66 876 835 7787', '5130950529',
+        '2002-06-25T16:23:30Z', 'Bang Kruai', 'Tomsk Polytechnic University', 2, 'lacinia erat vestibulum sed magna',
+        '2015-06-27 20:43:04')
+     , ('Charmain', 'Tilburn', 'ctilburn2q@virginia.edu', true, false, 'ctilburn2q', '+93 135 189 0853', '3734081145',
+        '2000-08-13T15:39:42Z', 'Kai', 'Western Kentucky University', 4, 'nunc proin at turpis', '2015-09-19 20:03:34')
+     , ('Arlan', 'McLenaghan', 'amclenaghan2r@fc2.com', true, true, 'amclenaghan2r', '+86 662 116 4546', '4541263336',
+        '2000-01-30T08:19:59Z', 'Shuikou', 'Seoul National University', 1, 'quam suspendisse', '2016-12-28 15:03:51');
+
 
 --Random generirani timovi
 INSERT INTO "tim" (naziv_tim, opis_tim, id_voditelj)
