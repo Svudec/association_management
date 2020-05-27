@@ -73,3 +73,7 @@ tr:nth-child(odd) {background: #BBBBBB}
 	position:relative;
 	top:1px;
 }
+
+.error {
+	color: red;
+}

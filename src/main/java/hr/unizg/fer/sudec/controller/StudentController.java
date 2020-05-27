@@ -3,10 +3,14 @@ package hr.unizg.fer.sudec.controller;
 import hr.unizg.fer.sudec.entity.Student;
 import hr.unizg.fer.sudec.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -15,6 +19,14 @@ public class StudentController {
 
     @Autowired
     private StudentService studentService;
+
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder){
+
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+
+        dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+    }
 
     @GetMapping("/list")
     public String listStudents(Model model){
@@ -40,12 +52,16 @@ public class StudentController {
     }
 
     @PostMapping("/save")
-    public String saveStudent(@ModelAttribute("student") Student student, Model model){
+    public String saveStudent(@Valid @ModelAttribute("student") Student student, BindingResult bindingResult, Model model){
+
+        if (bindingResult.hasErrors())
+            return "student-form";
 
         if(studentService.getStudent(student.getId()) == null)
             studentService.saveStudent(student);
         else
             studentService.editStudent(student);
+
         model.addAttribute("student", student);
         model.addAttribute("disabled_edit", true);
         model.addAttribute("saveButton", "hidden");

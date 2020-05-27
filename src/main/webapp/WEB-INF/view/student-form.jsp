@@ -54,51 +54,87 @@
                 <tbody>
                 <tr>
                     <td><label>Ime:</label></td>
-                    <td><form:input disabled="${disabled_edit}" path="name" /></td>
+                    <td>
+                        <form:input disabled="${disabled_edit}" path="name" />
+                        <form:errors path="name" cssClass="error" />
+                    </td>
                 </tr>
                 <tr>
                     <td><label>Prezime:</label></td>
-                    <td><form:input disabled="${disabled_edit}" path="surname" /></td>
+                    <td>
+                        <form:input disabled="${disabled_edit}" path="surname" />
+                        <form:errors path="surname" cssClass="error" />
+                    </td>
                 </tr>
                 <tr>
                     <td><label>Email adresa:</label></td>
-                    <td><form:input disabled="${disabled_edit}" path="mail" /></td>
+                    <td>
+                        <form:input disabled="${disabled_edit}" path="mail" />
+                        <form:errors path="mail" cssClass="error" />
+                    </td>
                 </tr>
                 <tr>
                     <td><label>Mobitel:</label></td>
-                    <td><form:input disabled="${disabled_edit}" path="cellphone" /></td>
+                    <td>
+                        <form:input disabled="${disabled_edit}" path="cellphone" />
+                        <form:errors path="cellphone" cssClass="error" />
+                    </td>
                 </tr>
                 <tr>
                     <td><label>OIB:</label></td>
-                    <td><form:input disabled="${disabled_edit}" type="number" path="oib" /></td>
+                    <td>
+                        <form:input disabled="${disabled_edit}" type="number" path="oib" />
+                        <form:errors path="oib" cssClass="error" />
+                    </td>
                 </tr>
                 <tr>
                     <td><label>Datum rođenja:</label></td>
-                    <td><form:input disabled="${disabled_edit}" type="date" path="birthDate" /></td>
+                    <td>
+                        <form:input disabled="${disabled_edit}" type="date" path="birthDate" />
+                        <form:errors path="birthDate" cssClass="error" />
+                    </td>
                 </tr>
                 <tr>
                     <td><label>Mjesto prebivališta:</label></td>
-                    <td><form:input disabled="${disabled_edit}" path="hometown" /></td>
+                    <td>
+                        <form:input disabled="${disabled_edit}" path="hometown" />
+                        <form:errors path="hometown" cssClass="error" />
+                    </td>
                 </tr>
                 <tr>
                     <td><label>Fakultet:</label></td>
-                    <td><form:input disabled="${disabled_edit}" path="faculty" /></td>
+                    <td>
+                        <form:input disabled="${disabled_edit}" path="faculty" />
+                        <form:errors path="faculty" cssClass="error" />
+                    </td>
                 </tr>
                 <tr>
                     <td><label>Godina studija:</label></td>
-                    <td><form:input  disabled="${disabled_edit}" type="number" path="yearOfStudy" /></td>
+                    <td>
+                        <form:input  disabled="${disabled_edit}" type="number" path="yearOfStudy" />
+                        <form:errors path="yearOfStudy" cssClass="error" />
+                    </td>
                 </tr>
                 <tr>
                     <td><label>Smjer studija:</label></td>
-                    <td><form:input disabled="${disabled_edit}" path="studyField" /></td>
+                    <td>
+                        <form:input disabled="${disabled_edit}" path="studyField" />
+                        <form:errors path="studyField" cssClass="error" />
+                    </td>
                 </tr>
                 <tr>
                     <td><label>Student je član udruge:</label></td>
-                    <td><form:checkbox  disabled="${disabled_edit}" path="member" /></td>
+                    <td>
+                        <form:checkbox  disabled="${disabled_edit}" path="member" />
+                        <form:errors path="member" cssClass="error" />
+                    </td>
                 </tr>
                 <tr>
                     <td><label>Student je AKTIVAN član udruge:</label></td>
-                    <td><form:checkbox disabled="${disabled_edit}" path="activeMember" /></td>
+                    <td>
+                        <form:checkbox disabled="${disabled_edit}" path="activeMember" />
+                        <form:errors path="activeMember" cssClass="error" />
+                    </td>
                 </tr>
 
                 <tr>

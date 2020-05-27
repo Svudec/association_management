@@ -3,6 +3,7 @@ package hr.unizg.fer.sudec.entity;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,22 +18,29 @@ public class Student {
     private int id;
 
     @Column(name = "ime_student")
+    @NotNull(message = "Obavezno polje")
     private String name;
 
     @Column(name = "prezime_student")
+    @NotNull(message = "Obavezno polje")
     private String surname;
 
     @Column(name = "mail_student")
+    @NotNull(message = "Obavezno polje")
+    @Pattern(regexp = ".+@.+\\..+", message = "Nije važeća email adresa")
     private String mail;
 
     @Column(name = "mobitel_student")
+    @Pattern(regexp = "([0-9]|\\+|\\(|\\)|\\s)+", message = "Neispravan format")
     private String cellphone;
 
-    @Column(name = "oib_student")
+    @Column(name = "oib_student", unique = true)
+    @Pattern(regexp = "[0-9]+", message = "Neispravan format")
     private String oib;
 
     @Column(name = "datum_rodenja_student")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @Past(message = "Mora biti u prošlosti")
     private Date birthDate;
 
     @Column(name = "prebivaliste_student")
@@ -42,6 +50,8 @@ public class Student {
     private String faculty;
 
     @Column(name = "godina_studija")
+    @Max(value = 5, message = "Mora biti 5 ili manje")
+    @Min(value = 1, message = "Mora biti 1 ili veće")
     private Integer yearOfStudy;
 
     @Column(name = "smjer_studija")
@@ -49,12 +59,15 @@ public class Student {
 
     @Column(name = "datum_azuriranja")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @NotNull(message = "Obavezno polje")
     private Date lastUpdated;
 
     @Column(name = "je_clan")
+    @NotNull(message = "Obavezno polje")
     private boolean isMember;
 
     @Column(name = "je_aktivan_clan")
+    @NotNull(message = "Obavezno polje")
     private boolean isActiveMember;
 
     @OneToMany(mappedBy = "leader", cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
