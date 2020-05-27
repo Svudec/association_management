@@ -4,7 +4,6 @@ import hr.unizg.fer.sudec.dao.GatheringDAO;
 import hr.unizg.fer.sudec.dto.GatheringDTO;
 import hr.unizg.fer.sudec.entity.Gathering;
 import hr.unizg.fer.sudec.entity.Student;
-import hr.unizg.fer.sudec.helperClass.EntitiesHelperClass;
 import org.hibernate.Hibernate;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +45,6 @@ public class GatheringServiceImpl implements GatheringService{
         if(gathering == null) gathering = new Gathering();
 
         gathering.setTeam(teamService.getTeam(dto.getTeamId()));
-        EntitiesHelperClass.removeEmptyStrings(dto);
         modelMapper.map(dto, gathering);
 
         if(gathering.getTeam() != null && gathering.getTeam().getId() == 0){

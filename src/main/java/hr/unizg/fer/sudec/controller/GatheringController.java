@@ -5,10 +5,14 @@ import hr.unizg.fer.sudec.entity.Gathering;
 import hr.unizg.fer.sudec.service.GatheringService;
 import hr.unizg.fer.sudec.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -20,6 +24,14 @@ public class GatheringController {
 
     @Autowired
     private TeamService teamService;
+
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder){
+
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+
+        dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+    }
 
     @GetMapping("/list")
     public String listGatherings(Model model){
@@ -46,19 +58,21 @@ public class GatheringController {
     }
 
     @PostMapping("/save")
-    public String saveGathering(@ModelAttribute("gathering") GatheringDTO dto, Model model){
+    public String saveGathering(@Valid @ModelAttribute("gathering") GatheringDTO dto, BindingResult bindingResult, Model model){
+
+        if(bindingResult.hasErrors()){
+
+            model.addAttribute("teams", teamService.getTeams());
+            model.addAttribute("disabled_edit", false);
+            model.addAttribute("saveButton", "visible");
+            model.addAttribute("editButton", "hidden");
+
+            return "gathering-form";
+        }
 
         gatheringService.saveGathering(dto);
 
-        model.addAttribute("gathering", dto);
-
-        model.addAttribute("disabled_edit", true);
-        model.addAttribute("saveButton", "hidden");
-        model.addAttribute("editButton", "visible");
-
-        model.addAttribute("teams", teamService.getTeams());
-
-        return "gathering-form";
+        return "redirect:/gathering/list";
     }
 
     @GetMapping("/details")

@@ -60,29 +60,44 @@
             <tbody>
             <tr>
                 <td><label>Naziv:</label></td>
-                <td><form:input disabled="${disabled_edit}" path="name" /></td>
+                <td>
+                    <form:input disabled="${disabled_edit}" path="name" />
+                    <form:errors path="name" cssClass="error" />
+                </td>
             </tr>
             <tr>
                 <td><label>Opis:</label></td>
-                <td><form:input disabled="${disabled_edit}" path="description" /></td>
+                <td>
+                    <form:input disabled="${disabled_edit}" path="description" />
+                    <form:errors path="description" cssClass="error" />
+                </td>
             </tr>
             <tr>
                 <td><label>Početak:</label></td>
-                <td><form:input disabled="${disabled_edit}" type="datetime-local" path="startTime" /></td>
+                <td>
+                    <form:input disabled="${disabled_edit}" type="datetime-local" path="startTime" />
+                    <form:errors path="startTime" cssClass="error" />
+                </td>
             </tr>
             <tr>
                 <td><label>Završetak:</label></td>
-                <td><form:input disabled="${disabled_edit}" type="datetime-local" path="endTime" /></td>
+                <td>
+                    <form:input disabled="${disabled_edit}" type="datetime-local" path="endTime" />
+                    <form:errors path="endTime" cssClass="error" />
+                </td>
             </tr>
             <tr>
                 <td><label>Formalno:</label></td>
-                <td><form:checkbox disabled="${disabled_edit}" path="formal" /></td>
+                <td>
+                    <form:checkbox disabled="${disabled_edit}" path="formal" />
+                    <form:errors path="formal" cssClass="error" />
+                </td>
             </tr>
             <tr>
                 <td><label>Tim:</label></td>
                 <td><form:select disabled="${disabled_edit}" path="teamId" >
+                    <form:option value="0">--------</form:option>
                     <c:forEach var="tempTeam" items="${teams}">
-                        <form:option value="0">Opće okupljanje</form:option>
                         <form:option value="${tempTeam.id}">${tempTeam.name}</form:option>
                     </c:forEach>
                 </form:select>

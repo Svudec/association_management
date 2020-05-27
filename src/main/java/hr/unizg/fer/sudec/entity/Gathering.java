@@ -3,6 +3,7 @@ package hr.unizg.fer.sudec.entity;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,13 +25,16 @@ public class Gathering {
 
     @Column(name = "pocetak_okupljanje")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @NotNull(message = "Obavezno polje")
     private Timestamp startTime;
 
     @Column(name = "zavrsetak_okupljanje")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @NotNull(message = "Obavezno polje")
     private Timestamp endTime;
 
     @Column(name = "je_formalno")
+    @NotNull(message = "Obavezno polje")
     private Boolean isFormal;
 
     @ManyToOne(cascade={CascadeType.ALL})

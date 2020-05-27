@@ -4,7 +4,6 @@ import hr.unizg.fer.sudec.dao.ProjectDAO;
 import hr.unizg.fer.sudec.entity.Project;
 import hr.unizg.fer.sudec.entity.Sponsorship;
 import hr.unizg.fer.sudec.entity.Student;
-import hr.unizg.fer.sudec.helperClass.EntitiesHelperClass;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,7 +52,6 @@ public class ProjectServiceImpl implements ProjectService{
     @Transactional
     public void saveProject(Project project) {
 
-        EntitiesHelperClass.removeEmptyStrings(project);
         projectDAO.save(project);
     }
 

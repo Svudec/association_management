@@ -1,13 +1,22 @@
 package hr.unizg.fer.sudec.dto;
 
+import javax.validation.constraints.NotNull;
+
 public class GatheringDTO {
 
     private int id;
     private String name;
     private String description;
+
+    @NotNull(message = "Obavezno polje")
     private String startTime;
+
+    @NotNull(message = "Obavezno polje")
     private String endTime;
+
+    @NotNull(message = "Obavezno polje")
     private Boolean isFormal;
+
     private Integer teamId;
 
     public int getId() {
