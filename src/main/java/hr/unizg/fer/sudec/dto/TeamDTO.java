@@ -1,29 +1,11 @@
 package hr.unizg.fer.sudec.dto;
 
-import java.lang.reflect.Field;
-
 public class TeamDTO {
 
     private int id;
     private String name;
     private String description;
     private int leaderId;
-
-    public void removeEmptyStrings(){
-        Field[] fields = TeamDTO.class.getDeclaredFields();
-
-        for (Field field : fields) {
-            field.setAccessible(true);
-
-            try {
-                if(field.getType().equals(String.class) && ((String) field.get(this)).replaceAll("\\s", "").isEmpty())
-                    field.set(this, null);
-
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 
     @Override
     public String toString() {

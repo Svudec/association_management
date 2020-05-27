@@ -38,6 +38,9 @@
 <div id="container">
     <h3>${project.name}</h3>
 
+    <input type="button" value="Početna stranica" onclick="window.location='/'; return false;"
+           class="add-button">
+
         <table>
             <tbody>
             <tr>

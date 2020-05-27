@@ -43,6 +43,8 @@
         <form:hidden path="id"/>
         <input type="submit" value="Uredi" style="visibility: ${editButton}" class="add-button"/>
     </form:form>--%>
+    <input type="button" value="Početna stranica" onclick="window.location='/'; return false;"
+           class="add-button">
 
         <table>
             <tbody>

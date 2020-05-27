@@ -46,11 +46,19 @@ public class GatheringController {
     }
 
     @PostMapping("/save")
-    public String saveGathering(@ModelAttribute("gathering") GatheringDTO dto){
+    public String saveGathering(@ModelAttribute("gathering") GatheringDTO dto, Model model){
 
         gatheringService.saveGathering(dto);
 
-        return "redirect:/gathering/list";
+        model.addAttribute("gathering", dto);
+
+        model.addAttribute("disabled_edit", true);
+        model.addAttribute("saveButton", "hidden");
+        model.addAttribute("editButton", "visible");
+
+        model.addAttribute("teams", teamService.getTeams());
+
+        return "gathering-form";
     }
 
     @GetMapping("/details")

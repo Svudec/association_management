@@ -3,7 +3,6 @@ package hr.unizg.fer.sudec.entity;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -90,22 +89,6 @@ public class Student {
         this.eventsParticipated = new ArrayList<>();
         this.projectsParticipations = new ArrayList<>();
         this.organizedProjects = new ArrayList<>();
-    }
-
-    public void removeEmptyStrings(){
-        Field[] fields = Student.class.getDeclaredFields();
-
-        for (Field field : fields) {
-            field.setAccessible(true);
-
-            try {
-                if(field.getType().equals(String.class) && ((String) field.get(this)).replaceAll("\\s", "").isEmpty())
-                    field.set(this, null);
-
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     public List<Project> getProjectsParticipations() {

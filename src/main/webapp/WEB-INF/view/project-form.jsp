@@ -38,6 +38,9 @@
 <div id="container">
     <h3>Novi projekt</h3>
 
+    <input type="button" value="Početna stranica" onclick="window.location='/'; return false;"
+           class="add-button">
+
     <form:form action="save" modelAttribute="project" method="post">
 
         <form:hidden path="id"/>

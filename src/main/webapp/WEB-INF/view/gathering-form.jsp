@@ -39,15 +39,18 @@
 <div id="container">
     <h3>Forma za okupljanje</h3>
 
-<security:authorize access="hasAnyRole('BOARD_MEMBER', 'ADMIN')">
-
     <form:form action="edit" modelAttribute="gathering" method="get">
+
+        <security:authorize access="hasAnyRole('BOARD_MEMBER', 'ADMIN')">
         <form:hidden path="id"/>
         <input type="submit" value="Uredi" style="visibility: ${editButton}" class="add-button"/>
+
+        </security:authorize>
+
+        <input type="button" value="Početna stranica" onclick="window.location='/'; return false;"
+           class="add-button">
+
     </form:form>
-
-</security:authorize>
-
 
     <form:form action="save" modelAttribute="gathering" method="post">
 

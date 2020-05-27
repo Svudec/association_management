@@ -42,6 +42,8 @@
         <input type="button" value="Novo okupljanje" onclick="window.location.href='showFormForAdd'; return false;"
                class="add-button">
 </security:authorize>
+        <input type="button" value="Početna stranica" onclick="window.location='/'; return false;"
+               class="add-button">
 
         <table>
             <tr>

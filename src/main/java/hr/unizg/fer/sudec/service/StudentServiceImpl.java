@@ -2,6 +2,7 @@ package hr.unizg.fer.sudec.service;
 
 import hr.unizg.fer.sudec.dao.StudentDAO;
 import hr.unizg.fer.sudec.entity.Student;
+import hr.unizg.fer.sudec.helperClass.EntitiesHelperClass;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,7 @@ public class StudentServiceImpl implements StudentService{
     @Transactional
     public void saveStudent(Student student) {
 
-        student.removeEmptyStrings();
+        EntitiesHelperClass.removeEmptyStrings(student);
 
         studentDAO.saveStudent(student);
     }
@@ -41,7 +42,7 @@ public class StudentServiceImpl implements StudentService{
 
         Student original = getStudent(student.getId());
 
-        student.removeEmptyStrings();
+        EntitiesHelperClass.removeEmptyStrings(student);
         modelMapper.map(student, original);
 
         studentDAO.saveStudent(original);

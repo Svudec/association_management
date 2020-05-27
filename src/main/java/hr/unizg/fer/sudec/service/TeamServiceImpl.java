@@ -4,6 +4,7 @@ import hr.unizg.fer.sudec.dao.TeamDAO;
 import hr.unizg.fer.sudec.dto.TeamDTO;
 import hr.unizg.fer.sudec.entity.Student;
 import hr.unizg.fer.sudec.entity.Team;
+import hr.unizg.fer.sudec.helperClass.EntitiesHelperClass;
 import org.hibernate.Hibernate;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +63,7 @@ public class TeamServiceImpl implements TeamService{
         if(team == null) team = new Team();
 
         team.setLeader(studentService.getStudent(teamDTO.getLeaderId()));
-        teamDTO.removeEmptyStrings();
+        EntitiesHelperClass.removeEmptyStrings(teamDTO);
         modelMapper.map(teamDTO, team);
 
         teamDAO.saveTeam(team);

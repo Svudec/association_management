@@ -38,6 +38,10 @@
 
 <div id="container">
     <h3>Dodaj člana</h3>
+
+    <input type="button" value="Početna stranica" onclick="window.location='/'; return false;"
+           class="add-button">
+
 <form:form method="post" action="/team/addMember" modelAttribute="teamNewMember">
     <table>
         <tbody>

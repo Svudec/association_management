@@ -41,6 +41,8 @@
 
         <input type="button" value="Napravi račun" onclick="window.location.href='showFormForAdd'; return false;"
                class="add-button">
+        <input type="button" value="Početna stranica" onclick="window.location='/'; return false;"
+               class="add-button">
 
         <table>
             <tr>
