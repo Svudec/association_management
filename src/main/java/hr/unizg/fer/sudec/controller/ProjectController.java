@@ -36,11 +36,15 @@ public class ProjectController {
     }
 
     @PostMapping("/save")
-    public String saveProject(@ModelAttribute("project") Project project){
+    public String saveProject(@ModelAttribute("project") Project project, Model model){
 
         projectService.saveProject(project);
 
-        return "redirect:/project/list";
+        model.addAttribute("project", project);
+        model.addAttribute("sponsorships", projectService.getProjectSponsorships(project.getId()));
+        model.addAttribute("participants", projectService.getParticipants(project.getId()));
+
+        return "project-details";
     }
 
     @GetMapping("/details")

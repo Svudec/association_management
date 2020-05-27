@@ -145,7 +145,7 @@ create table racun
         constraint racun_pk
             primary key,
     vrsta_racun   vrsta_racuna                        not null,
-    iznos_racun   NUMERIC(12, 2)                      not null CHECK ( iznos_racun >= 0 ),
+    iznos_racun   NUMERIC(12, 2)                      not null CHECK ( iznos_racun > 0 ),
     vrijeme_racun TIMESTAMP default current_timestamp not null,
     napomena      VARCHAR CHECK ( trim(napomena) NOT LIKE '' ),
     id_projekt    INT       default null
