@@ -20,11 +20,14 @@
 
 <div class="navigation">
 
-    <!-- Logout button -->
+    <!-- Logout button and Homepage button-->
     <form:form action="${pageContext.request.contextPath}/logout" method="POST">
 
         <input type="submit" value="Odjavi se" class="logout-button"/>
     </form:form>
+
+    <input type="button" value="Početna stranica" onclick="window.location='/'; return false;"
+           class="logout-button">
 
 </div>
 
@@ -37,16 +40,13 @@
     <div id="container">
         <div id="content">
 
-            <security:authorize access="hasAnyRole('BOARD_MEMBER', 'ADMIN')">
+            <security:authorize access="hasAnyRole('BOARD_MEMBER')">
                 <input type="button" value="Dodaj studenta" onclick="window.location.href='showFormForAdd'; return false;"
                 class="add-button" style="${studentButton}">
 
                 <input type="button" value="Dodaj člana" onclick="window.location.href='formAddMember?TeamId=${param.get("TeamId")}'; return false;"
                    class="add-button" style="${memberButton}">
             </security:authorize>
-
-            <input type="button" value="Početna stranica" onclick="window.location='/'; return false;"
-                   class="add-button">
 
             <table>
                 <tr>
@@ -72,7 +72,7 @@
                         <td>${tempStudent.surname}</td>
                         <td>${tempStudent.mail}</td>
                         <td>
-                            <security:authorize access="hasAnyRole('BOARD_MEMBER', 'ADMIN')">
+                            <security:authorize access="hasAnyRole('BOARD_MEMBER')">
                             <a href="${detailsLink}">Otvori profil</a> | <a href="${deleteMemberLink}" style="${memberButton}">Ukloni</a>
                             </security:authorize>
                         </td>

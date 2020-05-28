@@ -21,11 +21,14 @@
 
 <div class="navigation">
 
-    <!-- Logout button -->
+    <!-- Logout button and Homepage button-->
     <form:form action="${pageContext.request.contextPath}/logout" method="POST">
 
         <input type="submit" value="Odjavi se" class="logout-button"/>
     </form:form>
+
+    <input type="button" value="Početna stranica" onclick="window.location='/'; return false;"
+           class="logout-button">
 
 </div>
 
@@ -37,9 +40,6 @@
 
 <div id="container">
     <h3>Novi projekt</h3>
-
-    <input type="button" value="Početna stranica" onclick="window.location='/'; return false;"
-           class="add-button">
 
     <form:form action="save" modelAttribute="project" method="post">
 

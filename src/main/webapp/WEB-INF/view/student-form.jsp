@@ -21,11 +21,14 @@
 
 <div class="navigation">
 
-    <!-- Logout button -->
+    <!-- Logout button and Homepage button-->
     <form:form action="${pageContext.request.contextPath}/logout" method="POST">
 
         <input type="submit" value="Odjavi se" class="logout-button"/>
     </form:form>
+
+    <input type="button" value="Početna stranica" onclick="window.location='/'; return false;"
+           class="logout-button">
 
 </div>
 
@@ -39,12 +42,11 @@
         <h3>Forma za studenta</h3>
 
         <form:form action="edit" modelAttribute="student" method="get">
+
             <form:hidden path="id"/>
             <input type="submit" value="Uredi" style="visibility: ${editButton}" class="add-button"/>
-            <input type="button" value="Početna stranica" onclick="window.location='/'; return false;"
-                   class="add-button">
-        </form:form>
 
+        </form:form>
 
         <form:form action="save" modelAttribute="student" method="post">
 

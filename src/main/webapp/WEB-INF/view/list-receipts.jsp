@@ -19,11 +19,14 @@
 
 <div class="navigation">
 
-    <!-- Logout button -->
+    <!-- Logout button and Homepage button-->
     <form:form action="${pageContext.request.contextPath}/logout" method="POST">
 
         <input type="submit" value="Odjavi se" class="logout-button"/>
     </form:form>
+
+    <input type="button" value="Početna stranica" onclick="window.location='/'; return false;"
+           class="logout-button">
 
 </div>
 
@@ -40,8 +43,6 @@
     <div id="content">
 
         <input type="button" value="Napravi račun" onclick="window.location.href='showFormForAdd'; return false;"
-               class="add-button">
-        <input type="button" value="Početna stranica" onclick="window.location='/'; return false;"
                class="add-button">
 
         <table>
