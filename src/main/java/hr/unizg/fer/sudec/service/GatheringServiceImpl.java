@@ -3,6 +3,8 @@ package hr.unizg.fer.sudec.service;
 import hr.unizg.fer.sudec.dao.GatheringDAO;
 import hr.unizg.fer.sudec.dto.GatheringDTO;
 import hr.unizg.fer.sudec.entity.Gathering;
+import hr.unizg.fer.sudec.entity.Receipt;
+import hr.unizg.fer.sudec.entity.ReceiptType;
 import hr.unizg.fer.sudec.entity.Student;
 import org.hibernate.Hibernate;
 import org.modelmapper.ModelMapper;
@@ -23,6 +25,32 @@ public class GatheringServiceImpl implements GatheringService{
 
     @Autowired
     private ModelMapper modelMapper;
+
+    @Override
+    @Transactional
+    public List<Receipt> getGatheringsReceipts(int gatheringId) {
+
+        Gathering gathering = getGathering(gatheringId);
+        Hibernate.initialize(gathering.getGatheringReceipts());
+
+        return gathering.getGatheringReceipts();
+    }
+
+    @Override
+    @Transactional
+    public double getGatheringsReceiptsValue(int gatheringId) {
+
+        List<Receipt> receipts = getGatheringsReceipts(gatheringId);
+        double sum = 0;
+
+        for (Receipt receipt : receipts){
+            if (receipt.getType() == ReceiptType.PRIHOD)
+                sum = sum + receipt.getValue();
+            else
+                sum = sum - receipt.getValue();
+        }
+        return sum;
+    }
 
     @Override
     @Transactional

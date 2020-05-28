@@ -48,9 +48,10 @@
 
         <table>
             <tr>
+                <th>Vrijeme</th>
                 <th>Naziv</th>
-                <th>Datum</th>
                 <th>Broj članova</th>
+                <th>Troškovi</th>
                 <th></th>
             </tr>
 
@@ -65,9 +66,10 @@
                 </c:url>
 
                 <tr>
+                    <td>${tempGathering.niceStartDate()}</td>
                     <td>${tempGathering.name}</td>
-                    <td>${tempGathering.startTime}</td>
                     <td>${gatheringService.getMembersNumber(tempGathering.id)}</td>
+                    <td>${receiptValues.get(tempGathering.id)}</td>
                     <td>
                         <a href="${detailsLink}">Detalji</a> <security:authorize access="hasAnyRole('BOARD_MEMBER', 'ADMIN')">| <a href="${membersLink}">Sudionici</a></security:authorize>
                     </td>

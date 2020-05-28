@@ -5,6 +5,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,6 +54,13 @@ public class Gathering {
 
         this.attenders = new ArrayList<>();
         this.gatheringReceipts = new ArrayList<>();
+    }
+
+    public String niceStartDate(){
+        LocalDateTime date = startTime.toLocalDateTime();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+
+        return date.format(formatter);
     }
 
     public List<Receipt> getGatheringReceipts() {
