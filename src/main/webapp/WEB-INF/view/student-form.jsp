@@ -147,5 +147,71 @@
             </table>
         </form:form>
     </div>
+
+<h3 style="${showGatherings}">Okupljanja</h3>
+<div id="container2" style="${showGatherings}">
+    <div id="content">
+
+        <table>
+            <tr>
+                <th>Vrijeme</th>
+                <th>Naziv</th>
+                <th>Broj prisutnih članova</th>
+                <th></th>
+            </tr>
+
+            <c:forEach var="tempGathering" items="${gatherings}">
+
+                <c:url var="detailsLink" value="/gathering/details">
+                    <c:param name="GatheringId" value="${tempGathering.id}"/>
+                </c:url>
+
+                <tr>
+                    <td>${tempGathering.niceStartDate()}</td>
+                    <td>${tempGathering.name}</td>
+                    <td>${gatheringService.getMembersNumber(tempGathering.id)}</td>
+                    <td><a href="${detailsLink}">Detalji</a></td>
+                </tr>
+
+            </c:forEach>
+        </table>
+
+    </div>
+</div>
+
+<h3 style="${showGatherings}">Putovanja</h3>
+<div id="container3" style="${showGatherings}">
+    <div id="content3">
+
+        <table>
+            <tr>
+                <th>Početak</th>
+                <th>Naziv</th>
+                <th>Vrsta</th>
+                <th>Cijena(EUR)</th>
+                <th></th>
+            </tr>
+
+            <c:forEach var="tempEvent" items="${events}">
+
+                <c:url var="detailsLink" value="/event/details">
+                    <c:param name="EventId" value="${tempEvent.id}"/>
+                </c:url>
+
+                <tr>
+                    <td>${tempEvent.niceStartDate()}</td>
+                    <td>${tempEvent.name}</td>
+                    <td>${tempEvent.eventCategory}</td>
+                    <td>${tempEvent.price}</td>
+                    <td>
+                        <a href="${detailsLink}">Detalji</a>
+                    </td>
+                </tr>
+
+            </c:forEach>
+        </table>
+
+    </div>
+</div>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package hr.unizg.fer.sudec.controller;
 
 import hr.unizg.fer.sudec.entity.Student;
+import hr.unizg.fer.sudec.service.GatheringService;
 import hr.unizg.fer.sudec.service.RoleService;
 import hr.unizg.fer.sudec.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ public class StudentController {
 
     @Autowired
     private RoleService roleService;
+
+    @Autowired
+    private GatheringService gatheringService;
 
     @InitBinder
     public void initBinder(WebDataBinder dataBinder){
@@ -52,6 +56,7 @@ public class StudentController {
         model.addAttribute("disabled_edit", false);
         model.addAttribute("saveButton", "visible");
         model.addAttribute("editButton", "hidden");
+        model.addAttribute("showGatherings", "display: none");
 
         return "student-form";
     }
@@ -64,6 +69,7 @@ public class StudentController {
             model.addAttribute("disabled_edit", false);
             model.addAttribute("saveButton", "visible");
             model.addAttribute("editButton", "hidden");
+            model.addAttribute("showGatherings", "display: none");
 
             return "student-form";
         }
@@ -80,7 +86,13 @@ public class StudentController {
     public String showStudentDetails(@RequestParam("studentId") int id, Model model){
 
         Student student = studentService.getStudent(id);
+
+        model.addAttribute("gatherings", studentService.getStudentsGatherings(id));
+        model.addAttribute("events", studentService.getStudentsEvents(id));
+        model.addAttribute("gatheringService", gatheringService);
         model.addAttribute("student", student);
+
+        model.addAttribute("showGatherings", "");
         model.addAttribute("disabled_edit", true);
         model.addAttribute("saveButton", "hidden");
         model.addAttribute("editButton", "visible");
@@ -93,6 +105,8 @@ public class StudentController {
 
         Student student = studentService.getStudent(id);
         model.addAttribute("student", student);
+
+        model.addAttribute("showGatherings", "display: none");
         model.addAttribute("disabled_edit", false);
         model.addAttribute("saveButton", "visible");
         model.addAttribute("editButton", "hidden");
