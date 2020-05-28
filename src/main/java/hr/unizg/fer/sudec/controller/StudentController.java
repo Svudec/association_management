@@ -125,4 +125,13 @@ public class StudentController {
 
         return "redirect:/student/manageRoles";
     }
+
+    @GetMapping("/manageRoles/remove")
+    public String removeRole(@RequestParam("studentId") int id, @RequestParam("role") String role){
+
+        String formatted = "ROLE_" + role.toUpperCase();
+        roleService.removeHolder(formatted,id);
+
+        return "redirect:/student/manageRoles";
+    }
 }

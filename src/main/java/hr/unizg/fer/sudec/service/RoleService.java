@@ -16,4 +16,6 @@ public interface RoleService {
     void addRoleHolder(String roleName, int studentId);
 
     void save(Role role);
+
+    void removeHolder(String roleName, int studentId);
 }

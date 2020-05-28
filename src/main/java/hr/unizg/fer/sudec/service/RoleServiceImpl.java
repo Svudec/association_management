@@ -61,6 +61,22 @@ public class RoleServiceImpl implements RoleService{
 
     @Override
     @Transactional
+    public void removeHolder(String roleName, int studentId) {
+
+        Role role = getByName(roleName);
+        if (role != null) {
+
+            List<Student> holders = getRoleHolders(roleName);
+            holders.remove(studentService.getStudent(studentId));
+
+            role.setUsers(holders);
+
+            save(role);
+        }
+    }
+
+    @Override
+    @Transactional
     public void save(Role role) {
 
         roleDAO.save(role);

@@ -68,8 +68,8 @@
                 </c:url>
 
                 <c:url var="deleteMemberLink" value="/student/manageRoles/remove">
-                    <c:param name="Role" value="board_member"/>
-                    <c:param name="StudentId" value="${tempStudent.id}"/>
+                    <c:param name="role" value="board_member"/>
+                    <c:param name="studentId" value="${tempStudent.id}"/>
                 </c:url>
 
                 <tr>
@@ -114,8 +114,8 @@
                 </c:url>
 
                 <c:url var="deleteMemberLink" value="/student/manageRoles/remove">
-                    <c:param name="Role" value="admin"/>
-                    <c:param name="StudentId" value="${tempStudent.id}"/>
+                    <c:param name="role" value="admin"/>
+                    <c:param name="studentId" value="${tempStudent.id}"/>
                 </c:url>
 
                 <tr>
