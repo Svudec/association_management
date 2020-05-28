@@ -110,6 +110,7 @@ public class TeamController {
     public String teamMembers(@RequestParam("TeamId") int id, Model model){
 
         model.addAttribute("students", teamService.getMembers(id));
+        model.addAttribute("studentService", studentService);
         model.addAttribute("studentButton", "display: none");
         model.addAttribute("memberButton", "");
 
