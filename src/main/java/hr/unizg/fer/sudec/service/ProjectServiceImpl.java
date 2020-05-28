@@ -1,9 +1,7 @@
 package hr.unizg.fer.sudec.service;
 
 import hr.unizg.fer.sudec.dao.ProjectDAO;
-import hr.unizg.fer.sudec.entity.Project;
-import hr.unizg.fer.sudec.entity.Sponsorship;
-import hr.unizg.fer.sudec.entity.Student;
+import hr.unizg.fer.sudec.entity.*;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,6 +44,39 @@ public class ProjectServiceImpl implements ProjectService{
     public int getParticipantsNumber(int projectId) {
 
         return getParticipants(projectId).size();
+    }
+
+    @Override
+    @Transactional
+    public int getProjectSponsorshipsNumber(int projectId) {
+
+        return getProjectSponsorships(projectId).size();
+    }
+
+    @Override
+    @Transactional
+    public List<Receipt> getProjectReceipts(int projectId) {
+
+        Project project = getProject(projectId);
+        Hibernate.initialize(project.getProjectReceipts());
+
+        return project.getProjectReceipts();
+    }
+
+    @Override
+    @Transactional
+    public double getProjectReceiptsValue(int projectId) {
+
+        List<Receipt> receipts = getProjectReceipts(projectId);
+        double sum = 0;
+
+        for (Receipt receipt : receipts){
+            if (receipt.getType() == ReceiptType.PRIHOD)
+                sum = sum + receipt.getValue();
+            else
+                sum = sum - receipt.getValue();
+        }
+        return sum;
     }
 
     @Override

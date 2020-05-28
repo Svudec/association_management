@@ -49,17 +49,17 @@
             </tr>
             <tr>
                 <td><label>Početak:</label></td>
-                <td><b>${project.startDate.toLocaleString()}</b></td>
+                <td><b>${project.niceStartDate()}</b></td>
             </tr>
             <tr>
                 <td><label>Završetak:</label></td>
-                <td><b>${project.endDate.toLocaleString()}</b></td>
+                <td><b>${project.niceEndDate()}</b></td>
             </tr>
             </tbody>
         </table>
 
 
-
+<br>
 <h2>Sponzorstva</h2>
 
 <div id="content">
@@ -80,6 +80,7 @@
 
         </c:forEach>
     </table>
+    <br>
 
     <h2>Sudionici</h2>
 

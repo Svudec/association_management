@@ -1,6 +1,7 @@
 package hr.unizg.fer.sudec.service;
 
 import hr.unizg.fer.sudec.entity.Project;
+import hr.unizg.fer.sudec.entity.Receipt;
 import hr.unizg.fer.sudec.entity.Sponsorship;
 import hr.unizg.fer.sudec.entity.Student;
 
@@ -19,4 +20,10 @@ public interface ProjectService {
     void saveProject(Project project);
 
     List<Sponsorship> getProjectSponsorships(int projectId);
+
+    int getProjectSponsorshipsNumber(int projectId);
+
+    List<Receipt> getProjectReceipts(int projectId);
+
+    double getProjectReceiptsValue(int projectId);
 }

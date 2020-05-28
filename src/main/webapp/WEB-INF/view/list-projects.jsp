@@ -47,10 +47,11 @@
 
         <table>
             <tr>
+                <th>Datum</th>
                 <th>Naziv</th>
-                <th>Datum početka</th>
-                <th>Datum završetka</th>
                 <th>Broj sudionika</th>
+                <th>Broj sponzorstava</th>
+                <th>Zarada</th>
                 <th></th>
             </tr>
 
@@ -61,10 +62,11 @@
                 </c:url>
 
                 <tr>
+                    <td>${tempProject.niceStartDate()}</td>
                     <td>${tempProject.name}</td>
-                    <td>${tempProject.startDate.toLocaleString()}</td>
-                    <td>${tempProject.endDate.toLocaleString()}</td>
                     <td>${projectService.getParticipantsNumber(tempProject.id)}</td>
+                    <td>${projectService.getProjectSponsorshipsNumber(tempProject.id)}</td>
+                    <td>${receiptValues.get(tempProject.id)}</td>
                     <td>
 
                         <security:authorize access="hasAnyRole('BOARD_MEMBER')">

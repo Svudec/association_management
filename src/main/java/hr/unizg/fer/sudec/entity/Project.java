@@ -4,6 +4,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -54,6 +57,20 @@ public class Project {
         this.participants = new ArrayList<>();
         this.organizers = new ArrayList<>();
         this.sponsorships = new ArrayList<>();
+    }
+
+    public String niceStartDate(){
+        LocalDateTime date = LocalDateTime.ofInstant(startDate.toInstant(), ZoneId.systemDefault());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+        return date.format(formatter);
+    }
+
+    public String niceEndDate(){
+        LocalDateTime date = LocalDateTime.ofInstant(endDate.toInstant(), ZoneId.systemDefault());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+        return date.format(formatter);
     }
 
     public List<Sponsorship> getSponsorships() {

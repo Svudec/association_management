@@ -11,7 +11,9 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/project")
@@ -32,6 +34,12 @@ public class ProjectController {
     public String listProjects(Model model){
 
         List<Project> projects = projectService.getProjects();
+        Map<Integer,String> receiptValues = new HashMap<>();
+        for (Project project : projects){
+            receiptValues.put(project.getId(), String.format("%.2f", projectService.getProjectReceiptsValue(project.getId())));
+        }
+
+        model.addAttribute("receiptValues", receiptValues);
         model.addAttribute("projects", projects);
         model.addAttribute("projectService", projectService);
 

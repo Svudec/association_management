@@ -10,6 +10,8 @@ import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name = "racun")
@@ -52,6 +54,13 @@ public class Receipt {
     public Receipt(){
 
         this.time = new Timestamp(System.currentTimeMillis());
+    }
+
+    public String niceTime(){
+        LocalDateTime date = time.toLocalDateTime();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+
+        return date.format(formatter);
     }
 
     public Gathering getGatheringReceipt() {
