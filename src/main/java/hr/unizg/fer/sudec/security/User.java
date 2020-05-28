@@ -5,7 +5,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @FieldMatch.List({
-        @FieldMatch(first = "password", second = "matchingPassword", message = "The password fields must match")
+        @FieldMatch(first = "password", second = "matchingPassword", message = "Ponovljena zaporka neispravna")
 })
 public class User {
 

@@ -78,3 +78,15 @@ tr:nth-child(odd) {background: #BBBBBB}
 .error {
 	color: red;
 }
+
+.my-menu .my-menu-button {
+	background-color: #09c;
+	border: 1px #408c99;
+	width: 120px;
+	color: white;
+	font-size: 14px;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	display: block;
+}

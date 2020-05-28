@@ -21,14 +21,16 @@
 
 <div class="navigation">
 
+    <div class="my-menu">
     <!-- Logout button and Homepage button-->
     <form:form action="${pageContext.request.contextPath}/logout" method="POST">
 
-        <input type="submit" value="Odjavi se" class="logout-button"/>
+        <input type="submit" value="Odjavi se" class="logout-button my-menu-button"/>
     </form:form>
 
     <input type="button" value="Početna stranica" onclick="window.location='/'; return false;"
-           class="logout-button">
+           class="logout-button my-menu-button">
+    </div>
 
 </div>
 

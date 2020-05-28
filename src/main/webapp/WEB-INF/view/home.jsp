@@ -22,11 +22,13 @@
 
 <div class="navigation">
 
-    <!-- Logout button -->
-    <form:form action="${pageContext.request.contextPath}/logout" method="POST">
+    <div class="my-menu">
+        <!-- Logout button-->
+        <form:form action="${pageContext.request.contextPath}/logout" method="POST">
 
-        <input type="submit" value="Odjavi se" size="small" class="logout-button"/>
-    </form:form>
+            <input type="submit" value="Odjavi se" class="logout-button my-menu-button"/>
+        </form:form>
+    </div>
 
 </div>
 
