@@ -50,9 +50,11 @@
 
             <table>
                 <tr>
-                    <th>Ime</th>
-                    <th>Prezime</th>
-                    <th>Email</th>
+                    <th>Ime i prezime</th>
+                    <th>Fakultet</th>
+                    <th>Godina studija</th>
+                    <th>Broj okupljanja</th>
+                    <th>Broj putovanja</th>
                     <th></th>
                 </tr>
 
@@ -68,9 +70,11 @@
                     </c:url>
 
                     <tr>
-                        <td>${tempStudent.name}</td>
-                        <td>${tempStudent.surname}</td>
-                        <td>${tempStudent.mail}</td>
+                        <td>${tempStudent.fullName}</td>
+                        <td>${tempStudent.faculty}</td>
+                        <td>${tempStudent.yearOfStudy}</td>
+                        <td>${studentService.getNumberOfGatheringsParticipated(tempStudent.id)}</td>
+                        <td>${studentService.getNumberOfEventsParticipated(tempStudent.id)}</td>
                         <td>
                             <security:authorize access="hasAnyRole('BOARD_MEMBER')">
                             <a href="${detailsLink}">Otvori profil</a> | <a href="${deleteMemberLink}" style="${memberButton}">Ukloni</a>

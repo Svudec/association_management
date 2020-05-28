@@ -36,6 +36,7 @@ public class StudentController {
     public String listStudents(Model model){
 
         List<Student> students = studentService.getStudents();
+        model.addAttribute("studentService", studentService);
         model.addAttribute("students", students);
         model.addAttribute("studentButton", "");
         model.addAttribute("memberButton", "display: none");

@@ -1,6 +1,8 @@
 package hr.unizg.fer.sudec.service;
 
 import hr.unizg.fer.sudec.dao.StudentDAO;
+import hr.unizg.fer.sudec.entity.Gathering;
+import hr.unizg.fer.sudec.entity.InternationalEvent;
 import hr.unizg.fer.sudec.entity.Role;
 import hr.unizg.fer.sudec.entity.Student;
 import hr.unizg.fer.sudec.security.User;
@@ -100,6 +102,40 @@ public class StudentServiceImpl implements StudentService{
         nonHolders.removeAll(role.getUsers());
 
         return nonHolders;
+    }
+
+    @Override
+    @Transactional
+    public List<InternationalEvent> getStudentsEvents(int studentId) {
+
+        Student student = getStudent(studentId);
+        Hibernate.initialize(student.getEventsParticipated());
+
+        return student.getEventsParticipated();
+    }
+
+    @Override
+    @Transactional
+    public int getNumberOfEventsParticipated(int studentId) {
+
+        return getStudentsEvents(studentId).size();
+    }
+
+    @Override
+    @Transactional
+    public List<Gathering> getStudentsGatherings(int studentId) {
+
+        Student student = getStudent(studentId);
+        Hibernate.initialize(student.getAttendedGatherings());
+
+        return student.getAttendedGatherings();
+    }
+
+    @Override
+    @Transactional
+    public int getNumberOfGatheringsParticipated(int studentId) {
+
+        return getStudentsGatherings(studentId).size();
     }
 
     @Override

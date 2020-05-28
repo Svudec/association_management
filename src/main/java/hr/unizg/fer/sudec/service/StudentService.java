@@ -1,5 +1,7 @@
 package hr.unizg.fer.sudec.service;
 
+import hr.unizg.fer.sudec.entity.Gathering;
+import hr.unizg.fer.sudec.entity.InternationalEvent;
 import hr.unizg.fer.sudec.entity.Role;
 import hr.unizg.fer.sudec.entity.Student;
 import hr.unizg.fer.sudec.security.User;
@@ -27,4 +29,12 @@ public interface StudentService extends UserDetailsService {
     List<Role> getRoles(int studentId);
 
     List<Student> getStudentsWithoutRole(String roleName);
+
+    List<InternationalEvent> getStudentsEvents(int studentId);
+
+    int getNumberOfEventsParticipated(int studentId);
+
+    List<Gathering> getStudentsGatherings(int studentId);
+
+    int getNumberOfGatheringsParticipated(int studentId);
 }
