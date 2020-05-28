@@ -55,11 +55,11 @@
             </tr>
             <tr>
                 <td><label>Početak:</label></td>
-                <td>${event.startDate}</td>
+                <td>${event.niceStartDate()}</td>
             </tr>
             <tr>
                 <td><label>Završetak:</label></td>
-                <td>${event.endDate}</td>
+                <td>${event.niceEndDate()}</td>
             </tr>
             <tr>
                 <td><label>Ukupno sudionika:</label></td>
@@ -67,7 +67,7 @@
             </tr>
             <tr>
                 <td><label>Cijena:</label></td>
-                <td>${event.price}</td>
+                <td>${event.price} €</td>
             </tr>
             <tr>
                 <td><label>Vrsta:</label></td>
@@ -83,6 +83,8 @@
 
             </tbody>
         </table>
+    <br><br>
+
     <td/>
     <b>Naši sudionici</b>
     <td/>
@@ -90,9 +92,11 @@
 
             <table>
                 <tr>
-                    <th>Ime</th>
-                    <th>Prezime</th>
-                    <th>Email</th>
+                    <th>Ime i prezime</th>
+                    <th>Fakultet</th>
+                    <th>Godina studija</th>
+                    <th>Broj okupljanja</th>
+                    <th>Broj putovanja</th>
                     <th></th>
                 </tr>
 
@@ -103,15 +107,18 @@
                     </c:url>
 
                     <tr>
-                        <td>${tempStudent.name}</td>
-                        <td>${tempStudent.surname}</td>
-                        <td>${tempStudent.mail}</td>
+                        <td>${tempStudent.fullName}</td>
+                        <td>${tempStudent.faculty}</td>
+                        <td>${tempStudent.yearOfStudy}</td>
+                        <td>${studentService.getNumberOfGatheringsParticipated(tempStudent.id)}</td>
+                        <td>${studentService.getNumberOfEventsParticipated(tempStudent.id)}</td>
                         <td>
                             <security:authorize access="hasAnyRole('BOARD_MEMBER')">
-                            <a href="${detailsLink}">Otvori profil</a>
+                                <a href="${detailsLink}">Otvori profil</a>
                             </security:authorize>
                         </td>
                     </tr>
+
                 </c:forEach>
             </table>
         </div>

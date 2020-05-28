@@ -3,6 +3,7 @@ package hr.unizg.fer.sudec.controller;
 import hr.unizg.fer.sudec.entity.InternationalEvent;
 import hr.unizg.fer.sudec.service.InternationalEventService;
 import hr.unizg.fer.sudec.service.LocalBranchService;
+import hr.unizg.fer.sudec.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,9 @@ public class InternationalEventController {
 
     @Autowired
     private LocalBranchService branchService;
+
+    @Autowired
+    StudentService studentService;
 
     @GetMapping("/list")
     public String listEvents(Model model){
@@ -44,6 +48,7 @@ public class InternationalEventController {
 
         InternationalEvent event = eventService.getEvent(id);
         model.addAttribute("event", event);
+        model.addAttribute("studentService", studentService);
 
         model.addAttribute("students", eventService.getParticipants(id));
         model.addAttribute("organizers", eventService.getOrganizers(id));

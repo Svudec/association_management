@@ -46,7 +46,7 @@
             <tr>
                 <th>Država</th>
                 <th>Ogranak</th>
-                <th>Broj događanja</th>
+                <th>Organizirano događanja</th>
                 <th></th>
             </tr>
 
@@ -61,7 +61,12 @@
                 </c:url>--%>
 
                 <tr>
-                    <td>${tempBranch.country.name}</td>
+                    <td>
+                    <c:if test="${!tempBranch.country.name.equals(last)}">
+                        ${tempBranch.country.name}
+                        <c:set var="last" scope="page" value="${tempBranch.country.name}"/>
+                    </c:if>
+                    </td>
                     <td>${tempBranch.name}</td>
                     <td>${branchService.getEventsNumber(tempBranch.id)}</td>
                     <td>

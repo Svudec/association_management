@@ -44,10 +44,10 @@
 
         <table>
             <tr>
-                <th>Naziv događanja</th>
-                <th>Početak događanja</th>
-                <th>Vrsta događanja</th>
-                <th>Ukupno sudionika</th>
+                <th>Početak</th>
+                <th>Naziv</th>
+                <th>Vrsta</th>
+                <th>Broj sudionika</th>
                 <th>Cijena(EUR)</th>
                 <th></th>
             </tr>
@@ -63,8 +63,8 @@
                 </c:url>--%>
 
                 <tr>
+                    <td>${tempEvent.niceStartDate()}</td>
                     <td>${tempEvent.name}</td>
-                    <td>${tempEvent.startDate.toLocaleString()}</td>
                     <td>${tempEvent.eventCategory}</td>
                     <td>${tempEvent.capacity}</td>
                     <td>${tempEvent.price}</td>

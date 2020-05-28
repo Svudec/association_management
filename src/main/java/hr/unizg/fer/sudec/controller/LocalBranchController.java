@@ -21,6 +21,8 @@ public class LocalBranchController {
     public String listBranches(Model model){
 
         List<LocalBranch> branches = localBranchService.getBranches();
+
+        model.addAttribute("last", "");
         model.addAttribute("branches", branches);
         model.addAttribute("branchService", localBranchService);
 
