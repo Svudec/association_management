@@ -68,7 +68,7 @@
             <tr>
                 <td><label>Opis:</label></td>
                 <td>
-                    <form:input disabled="${disabled_edit}" path="description" />
+                    <form:textarea rows="6" cols="50" disabled="${disabled_edit}" path="description" />
                     <form:errors path="description" cssClass="error" />
                 </td>
             </tr>

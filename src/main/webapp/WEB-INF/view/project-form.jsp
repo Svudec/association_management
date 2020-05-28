@@ -59,7 +59,7 @@
             <tr>
                 <td><label>Opis:</label></td>
                 <td>
-                    <form:input path="description" />
+                    <form:textarea rows="6" cols="50" path="description" />
                     <form:errors path="description" cssClass="error" />
                 </td>
             </tr>
