@@ -69,7 +69,7 @@ public class StudentController {
         }
 
         if(studentService.getStudent(student.getId()) == null)
-            studentService.saveStudent(student);
+            studentService.createStudent(student);
         else
             studentService.editStudent(student);
 

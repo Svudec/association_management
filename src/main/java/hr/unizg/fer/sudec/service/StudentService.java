@@ -14,7 +14,7 @@ public interface StudentService extends UserDetailsService {
 
     List<Student> getStudents();
 
-    void saveStudent(Student student);
+    void createStudent(Student student);
 
     void editStudent(Student student);
 

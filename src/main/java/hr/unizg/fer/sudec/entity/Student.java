@@ -71,11 +71,9 @@ public class Student {
     private boolean isActiveMember;
 
     @Column(name = "korisnicko_ime", unique = true)
-    @NotNull(message = "Obavezno polje")
     private String username;
 
     @Column(name = "lozinka")
-    @NotNull(message = "Obavezno polje")
     private String password;
 
     @ManyToMany

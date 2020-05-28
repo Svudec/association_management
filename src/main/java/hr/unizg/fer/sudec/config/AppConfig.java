@@ -1,10 +1,12 @@
 package hr.unizg.fer.sudec.config;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import hr.unizg.fer.sudec.entity.Student;
 import org.hibernate.SessionFactory;
 import org.modelmapper.AbstractConverter;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -134,6 +136,14 @@ public class AppConfig implements WebMvcConfigurer {
                 return out.toString();
             }
         };
+
+        myModelMapper.addMappings(new PropertyMap<Student, Student>() {
+            @Override
+            protected void configure() {
+                skip(destination.getUsername());
+                skip(destination.getPassword());
+            }
+        });
 
         myModelMapper.addConverter(myFormatTimestamp);
         myModelMapper.addConverter(myFormatTimestamp2);

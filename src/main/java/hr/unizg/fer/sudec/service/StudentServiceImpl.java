@@ -21,6 +21,7 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
 @Service
@@ -46,7 +47,13 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     @Transactional
-    public void saveStudent(Student student) {
+    public void createStudent(Student student) {
+
+        student.setUsername(student.getName() + ThreadLocalRandom.current().nextInt(1, 9999 + 1));
+        student.setPassword(passwordEncoder.encode("1234"));
+        List<Role> roles = student.getRoles();
+        roles.add(roleService.getByName("ROLE_USER"));
+        student.setRoles(roles);
 
         studentDAO.saveStudent(student);
     }
@@ -157,7 +164,7 @@ public class StudentServiceImpl implements StudentService{
         student.setRoles(roles);
         student.setPassword(passwordEncoder.encode(user.getPassword()));
 
-        saveStudent(student);
+        studentDAO.saveStudent(student);;
     }
 
     @Override
