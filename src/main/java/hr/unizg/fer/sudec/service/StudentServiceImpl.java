@@ -96,6 +96,7 @@ public class StudentServiceImpl implements StudentService{
         List<Role> roles = student.getRoles();
         roles.add(roleDAO.getByName("ROLE_USER"));
         student.setRoles(roles);
+        student.setPassword(passwordEncoder.encode(user.getPassword()));
 
         saveStudent(student);
     }
