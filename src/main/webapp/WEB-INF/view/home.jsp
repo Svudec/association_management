@@ -46,6 +46,9 @@
 <a href="${pageContext.request.contextPath}/student/list" class="homeButton">Studenti</a>
     <a href="${pageContext.request.contextPath}/team/list" class="homeButton">Timovi</a>
     <a href="${pageContext.request.contextPath}/gathering/list" class="homeButton">Okupljanja</a>
+<security:authorize access="hasAnyRole('ADMIN')">
+    <a href="${pageContext.request.contextPath}/student/manageRoles" class="homeButton">Administriranje</a>
+</security:authorize>
 </div>
 <br/>
 <div><h4>Međunarodna sfera</h4></div>
