@@ -41,7 +41,7 @@
 
     <form:form action="edit" modelAttribute="team" method="get">
 
-        <security:authorize access="hasAnyRole('BOARD_MEMBER', 'ADMIN')">
+        <security:authorize access="hasAnyRole('BOARD_MEMBER')">
             <form:hidden path="id"/>
             <input type="submit" value="Uredi" style="visibility: ${editButton}" class="add-button"/>
     </security:authorize>

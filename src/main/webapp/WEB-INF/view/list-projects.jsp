@@ -37,7 +37,7 @@
 <div id="container">
     <div id="content">
 
-<security:authorize access="hasAnyRole('BOARD_MEMBER', 'ADMIN')">
+<security:authorize access="hasAnyRole('BOARD_MEMBER')">
         <input type="button" value="Novi projekt" onclick="window.location.href='showFormForAdd'; return false;"
                class="add-button">
 </security:authorize>
@@ -66,7 +66,7 @@
                     <td>${projectService.getParticipantsNumber(tempProject.id)}</td>
                     <td>
 
-                        <security:authorize access="hasAnyRole('BOARD_MEMBER', 'ADMIN')">
+                        <security:authorize access="hasAnyRole('BOARD_MEMBER')">
                             <a href="${detailsLink}">Detalji</a>
                         </security:authorize>
                     </td>

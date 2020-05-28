@@ -60,7 +60,7 @@
 <div><h4>Projekti i financije</h4></div>
 <div>
     <a href="${pageContext.request.contextPath}/project/list" class="homeButton">Projekti</a>
-<security:authorize access="hasAnyRole('BOARD_MEMBER', 'ADMIN')">
+<security:authorize access="hasAnyRole('BOARD_MEMBER')">
     <a href="${pageContext.request.contextPath}/receipt/list" class="homeButton">Financije</a>
 </security:authorize>
 </div>

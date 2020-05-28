@@ -37,7 +37,7 @@
 <div id="container">
     <div id="content">
 
-        <security:authorize access="hasAnyRole('BOARD_MEMBER', 'ADMIN')">
+        <security:authorize access="hasAnyRole('BOARD_MEMBER')">
             <input type="button" value="Napravi tim" onclick="window.location.href='showFormForAdd'; return false;"
                class="add-button">
         </security:authorize>
@@ -68,7 +68,7 @@
                     <td>${tempTeam.leader.getFullName()}</td>
                     <td>${teamService.getNumberOfMembers(tempTeam.id)}</td>
                     <td>
-                        <a href="${detailsLink}">Detalji</a> <security:authorize access="hasAnyRole('BOARD_MEMBER', 'ADMIN')">| <a href="${membersLink}">Članovi</a></security:authorize>
+                        <a href="${detailsLink}">Detalji</a> <security:authorize access="hasAnyRole('BOARD_MEMBER')">| <a href="${membersLink}">Članovi</a></security:authorize>
                     </td>
                 </tr>
 

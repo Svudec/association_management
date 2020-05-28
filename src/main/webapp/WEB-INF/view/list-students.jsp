@@ -37,7 +37,7 @@
     <div id="container">
         <div id="content">
 
-            <security:authorize access="hasAnyRole('BOARD_MEMBER', 'ADMIN')">
+            <security:authorize access="hasAnyRole('BOARD_MEMBER')">
                 <input type="button" value="Dodaj studenta" onclick="window.location.href='showFormForAdd'; return false;"
                 class="add-button" style="${studentButton}">
 
@@ -72,7 +72,7 @@
                         <td>${tempStudent.surname}</td>
                         <td>${tempStudent.mail}</td>
                         <td>
-                            <security:authorize access="hasAnyRole('BOARD_MEMBER', 'ADMIN')">
+                            <security:authorize access="hasAnyRole('BOARD_MEMBER')">
                             <a href="${detailsLink}">Otvori profil</a> | <a href="${deleteMemberLink}" style="${memberButton}">Ukloni</a>
                             </security:authorize>
                         </td>

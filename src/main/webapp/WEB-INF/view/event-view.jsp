@@ -106,7 +106,7 @@
                         <td>${tempStudent.surname}</td>
                         <td>${tempStudent.mail}</td>
                         <td>
-                            <security:authorize access="hasAnyRole('BOARD_MEMBER', 'ADMIN')">
+                            <security:authorize access="hasAnyRole('BOARD_MEMBER')">
                             <a href="${detailsLink}">Otvori profil</a>
                             </security:authorize>
                         </td>
