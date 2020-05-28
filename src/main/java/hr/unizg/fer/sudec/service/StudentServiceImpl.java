@@ -1,10 +1,10 @@
 package hr.unizg.fer.sudec.service;
 
-import hr.unizg.fer.sudec.dao.RoleDAO;
 import hr.unizg.fer.sudec.dao.StudentDAO;
 import hr.unizg.fer.sudec.entity.Role;
 import hr.unizg.fer.sudec.entity.Student;
 import hr.unizg.fer.sudec.security.User;
+import org.hibernate.Hibernate;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -31,7 +31,7 @@ public class StudentServiceImpl implements StudentService{
     private ModelMapper modelMapper;
 
     @Autowired
-    private RoleDAO roleDAO;
+    private RoleService roleService;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -81,6 +81,29 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     @Transactional
+    public List<Role> getRoles(int studentId) {
+
+        Student student = getStudent(studentId);
+        Hibernate.initialize(student.getRoles());
+
+        return student.getRoles();
+    }
+
+    @Override
+    @Transactional
+    public List<Student> getStudentsWithoutRole(String roleName) {
+
+        List<Student> nonHolders = getStudents();
+        Role role = roleService.getByName(roleName);
+        Hibernate.initialize(role.getUsers());
+
+        nonHolders.removeAll(role.getUsers());
+
+        return nonHolders;
+    }
+
+    @Override
+    @Transactional
     public Student findByUsername(String username) {
 
         return studentDAO.findByUsername(username);
@@ -94,7 +117,7 @@ public class StudentServiceImpl implements StudentService{
         modelMapper.map(user, student);
 
         List<Role> roles = student.getRoles();
-        roles.add(roleDAO.getByName("ROLE_USER"));
+        roles.add(roleService.getByName("ROLE_USER"));
         student.setRoles(roles);
         student.setPassword(passwordEncoder.encode(user.getPassword()));
 

@@ -1,6 +1,7 @@
 package hr.unizg.fer.sudec.controller;
 
 import hr.unizg.fer.sudec.entity.Student;
+import hr.unizg.fer.sudec.service.RoleService;
 import hr.unizg.fer.sudec.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -19,6 +20,9 @@ public class StudentController {
 
     @Autowired
     private StudentService studentService;
+
+    @Autowired
+    private RoleService roleService;
 
     @InitBinder
     public void initBinder(WebDataBinder dataBinder){
@@ -93,5 +97,32 @@ public class StudentController {
         model.addAttribute("editButton", "hidden");
 
         return "student-form";
+    }
+
+    @GetMapping("/manageRoles")
+    public String manageStudentRolesMenu(Model model){
+
+        model.addAttribute("board_members", roleService.getRoleHolders("ROLE_BOARD_MEMBER"));
+        model.addAttribute("admins", roleService.getRoleHolders("ROLE_ADMIN"));
+        model.addAttribute("nonBoard", studentService.getStudentsWithoutRole("ROLE_BOARD_MEMBER"));
+        model.addAttribute("nonAdmin", studentService.getStudentsWithoutRole("ROLE_ADMIN"));
+
+        return "list-roles";
+    }
+
+    @GetMapping("/manageRoles/addBoard")
+    public String addBoardMember(@RequestParam("studentId") int id){
+
+        roleService.addRoleHolder("ROLE_BOARD_MEMBER",id);
+
+        return "redirect:/student/manageRoles";
+    }
+
+    @GetMapping("/manageRoles/addAdmin")
+    public String addAdmin(@RequestParam("studentId") int id){
+
+        roleService.addRoleHolder("ROLE_ADMIN",id);
+
+        return "redirect:/student/manageRoles";
     }
 }

@@ -1,5 +1,6 @@
 package hr.unizg.fer.sudec.service;
 
+import hr.unizg.fer.sudec.entity.Role;
 import hr.unizg.fer.sudec.entity.Student;
 import hr.unizg.fer.sudec.security.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -22,4 +23,8 @@ public interface StudentService extends UserDetailsService {
     Map<Integer, String> getStudentsIdFullNameMap();
 
     void registerStudent(User user);
+
+    List<Role> getRoles(int studentId);
+
+    List<Student> getStudentsWithoutRole(String roleName);
 }
