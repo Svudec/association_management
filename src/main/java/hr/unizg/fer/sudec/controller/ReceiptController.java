@@ -14,7 +14,9 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/receipt")
@@ -41,8 +43,15 @@ public class ReceiptController {
     public String listReceipts(Model model){
 
         List<Receipt> receipts = receiptService.getReceipts();
+        Map<Integer,String> receiptValues = new HashMap<>();
+        for (Receipt receipt : receipts){
+            receiptValues.put(receipt.getId(), String.format("%12.2f", receipt.getValue()));
+        }
+        String accountValue = String.format("%,12.2f", receiptService.getAccountValue());
+
+        model.addAttribute("accountValue", accountValue);
+        model.addAttribute("receiptValues", receiptValues);
         model.addAttribute("receipts", receipts);
-        model.addAttribute("receiptService", receiptService);
 
         return "list-receipts";
     }

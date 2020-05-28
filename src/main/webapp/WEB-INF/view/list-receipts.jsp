@@ -38,7 +38,7 @@
 
 <div id="container">
     <div>
-        <h3>Trenutno stanje računa: ${receiptService.getAccountValue()}</h3>
+        <h3>Trenutno stanje računa: ${accountValue}</h3>
     </div>
     <div id="content">
 
@@ -47,18 +47,23 @@
 
         <table>
             <tr>
+                <th>Vrijeme</th>
                 <th>Vrsta</th>
                 <th>Iznos</th>
-                <th>Vrijeme</th>
                 <th>Opis</th>
             </tr>
 
             <c:forEach var="tempReceipt" items="${receipts}">
 
                 <tr>
-                    <td>${tempReceipt.type}</td>
-                    <td>${tempReceipt.value}</td>
-                    <td>${tempReceipt.time.toLocaleString()}</td>
+                    <td>${tempReceipt.niceTime()}</td>
+                    <td>
+                        <c:choose>
+                        <c:when test="${tempReceipt.type.toString().equals('PRIHOD')}">+</c:when>
+                        <c:otherwise>-</c:otherwise>
+                        </c:choose>
+                    </td>
+                    <td>${receiptValues.get(tempReceipt.id)}</td>
                     <td>${tempReceipt.description}</td>
                 </tr>
 

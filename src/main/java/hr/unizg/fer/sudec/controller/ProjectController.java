@@ -36,7 +36,7 @@ public class ProjectController {
         List<Project> projects = projectService.getProjects();
         Map<Integer,String> receiptValues = new HashMap<>();
         for (Project project : projects){
-            receiptValues.put(project.getId(), String.format("%.2f", projectService.getProjectReceiptsValue(project.getId())));
+            receiptValues.put(project.getId(), String.format("%12.2f", projectService.getProjectReceiptsValue(project.getId())));
         }
 
         model.addAttribute("receiptValues", receiptValues);
