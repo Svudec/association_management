@@ -3,6 +3,7 @@ package hr.unizg.fer.sudec.controller;
 import hr.unizg.fer.sudec.dto.GatheringDTO;
 import hr.unizg.fer.sudec.dto.addMemberDTO;
 import hr.unizg.fer.sudec.entity.Gathering;
+import hr.unizg.fer.sudec.entity.Receipt;
 import hr.unizg.fer.sudec.entity.Student;
 import hr.unizg.fer.sudec.service.GatheringService;
 import hr.unizg.fer.sudec.service.StudentService;
@@ -67,6 +68,7 @@ public class GatheringController {
         model.addAttribute("disabled_edit", false);
         model.addAttribute("saveButton", "visible");
         model.addAttribute("editButton", "hidden");
+        model.addAttribute("showReceipts", "display: none");
 
         return "gathering-form";
     }
@@ -80,6 +82,7 @@ public class GatheringController {
             model.addAttribute("disabled_edit", false);
             model.addAttribute("saveButton", "visible");
             model.addAttribute("editButton", "hidden");
+            model.addAttribute("showReceipts", "display: none");
 
             return "gathering-form";
         }
@@ -94,12 +97,19 @@ public class GatheringController {
 
         GatheringDTO dto = gatheringService.getGatheringDTO(id);
         model.addAttribute("gathering", dto);
+        List<Receipt> receipts = gatheringService.getGatheringReceipts(id);
+        model.addAttribute("receipts", receipts);
+        Map<Integer,String> receiptValues = new HashMap<>();
+        for (Receipt receipt : receipts){
+            receiptValues.put(receipt.getId(), String.format("%12.2f", receipt.getValue()));
+        }
+        model.addAttribute("receiptValues", receiptValues);
+        model.addAttribute("teams", teamService.getTeams());
 
         model.addAttribute("disabled_edit", true);
         model.addAttribute("saveButton", "hidden");
         model.addAttribute("editButton", "visible");
-
-        model.addAttribute("teams", teamService.getTeams());
+        model.addAttribute("showReceipts", "");
 
         return "gathering-form";
     }
@@ -113,6 +123,7 @@ public class GatheringController {
         model.addAttribute("disabled_edit", false);
         model.addAttribute("saveButton", "visible");
         model.addAttribute("editButton", "hidden");
+        model.addAttribute("showReceipts", "display: none");
 
         model.addAttribute("teams", teamService.getTeams());
 

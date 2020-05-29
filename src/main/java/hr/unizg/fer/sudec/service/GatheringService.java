@@ -30,4 +30,6 @@ public interface GatheringService {
     void addMember(int gatheringId, int memberToAddId);
 
     void removeMember(int gatheringId, int memberId);
+
+    List<Receipt> getGatheringReceipts(int gatheringId);
 }

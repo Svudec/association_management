@@ -113,5 +113,37 @@
         </table>
     </form:form>
 </div>
+
+<h3 style="${showReceipts}">Računi</h3>
+<div id="container2" style="${showReceipts}">
+    <div id="content">
+
+        <table>
+            <tr>
+                <th>Vrijeme</th>
+                <th>Vrsta</th>
+                <th>Iznos</th>
+                <th>Opis</th>
+            </tr>
+
+            <c:forEach var="tempReceipt" items="${receipts}">
+
+                <tr>
+                    <td>${tempReceipt.niceTime()}</td>
+                    <td>
+                        <c:choose>
+                            <c:when test="${tempReceipt.type.toString().equals('PRIHOD')}">+</c:when>
+                            <c:otherwise>-</c:otherwise>
+                        </c:choose>
+                    </td>
+                    <td>${receiptValues.get(tempReceipt.id)}</td>
+                    <td>${tempReceipt.description}</td>
+                </tr>
+
+            </c:forEach>
+        </table>
+
+    </div>
+</div>
 </body>
 </html>

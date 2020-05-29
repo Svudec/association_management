@@ -92,6 +92,16 @@ public class GatheringServiceImpl implements GatheringService{
 
     @Override
     @Transactional
+    public List<Receipt> getGatheringReceipts(int gatheringId) {
+
+        Gathering gathering = getGathering(gatheringId);
+        Hibernate.initialize(gathering.getGatheringReceipts());
+
+        return gathering.getGatheringReceipts();
+    }
+
+    @Override
+    @Transactional
     public List<Gathering> getGatherings() {
 
         return gatheringDAO.getGatherings();
