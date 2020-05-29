@@ -60,11 +60,11 @@
             <c:forEach var="tempGathering" items="${gatherings}">
 
                 <c:url var="detailsLink" value="/gathering/details">
-                    <c:param name="GatheringId" value="${tempGathering.id}"/>
+                    <c:param name="id" value="${tempGathering.id}"/>
                 </c:url>
 
                 <c:url var="membersLink" value="/gathering/members">
-                    <c:param name="GatheringId" value="${tempGathering.id}"/>
+                    <c:param name="id" value="${tempGathering.id}"/>
                 </c:url>
 
                 <tr>

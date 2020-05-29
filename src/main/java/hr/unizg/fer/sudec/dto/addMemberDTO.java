@@ -1,17 +1,17 @@
 package hr.unizg.fer.sudec.dto;
 
-public class TeamAddMemberDTO {
+public class addMemberDTO {
 
-    private Integer teamId;
+    private Integer id;
 
     private Integer memberToAdd;
 
-    public Integer getTeamId() {
-        return teamId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setTeamId(Integer teamId) {
-        this.teamId = teamId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getMemberToAdd() {
@@ -25,7 +25,7 @@ public class TeamAddMemberDTO {
     @Override
     public String toString() {
         return "TeamAddMemberDTO{" +
-                "teamId=" + teamId +
+                "teamId=" + id +
                 ", memberToAdd=" + memberToAdd +
                 '}';
     }

@@ -46,7 +46,7 @@
                 <input type="button" value="Dodaj studenta" onclick="window.location.href='showFormForAdd'; return false;"
                 class="add-button" style="${studentButton}">
 
-                <input type="button" value="Dodaj člana" onclick="window.location.href='formAddMember?TeamId=${param.get("TeamId")}'; return false;"
+                <input type="button" value="Dodaj člana" onclick="window.location.href='formAddMember?id=${param.get("id")}'; return false;"
                    class="add-button" style="${memberButton}">
             </security:authorize>
 
@@ -66,8 +66,8 @@
                         <c:param name="studentId" value="${tempStudent.id}"/>
                     </c:url>
 
-                    <c:url var="deleteMemberLink" value="/team/removeMember">
-                        <c:param name="TeamId" value="${param.get('TeamId')}"/>
+                    <c:url var="deleteMemberLink" value="/${mappingPath}/removeMember">
+                        <c:param name="id" value="${param.get('id')}"/>
                         <c:param name="MemberId" value="${tempStudent.id}"/>
                     </c:url>
 

@@ -44,7 +44,7 @@
 <div id="container">
     <h3>Dodaj člana</h3>
 
-<form:form method="post" action="/team/addMember" modelAttribute="teamNewMember">
+<form:form method="post" action="/${mappingPath}/addMember" modelAttribute="newMember">
     <table>
         <tbody>
             <tr>
@@ -55,7 +55,7 @@
                             <form:option value="${tempStudent.key}">${tempStudent.value}</form:option>
                         </c:forEach>
                     </form:select>
-                    <form:input type="hidden" path="teamId" value="${param.get('TeamId')}" />
+                    <form:input type="hidden" path="id" value="${param.get('id')}" />
                 </label>
                 </td>
             </tr>

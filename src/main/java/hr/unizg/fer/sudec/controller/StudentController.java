@@ -42,6 +42,8 @@ public class StudentController {
         List<Student> students = studentService.getStudents();
         model.addAttribute("studentService", studentService);
         model.addAttribute("students", students);
+        model.addAttribute("mappingPath", "");
+
         model.addAttribute("studentButton", "");
         model.addAttribute("memberButton", "display: none");
 

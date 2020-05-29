@@ -58,11 +58,11 @@
             <c:forEach var="tempTeam" items="${teams}">
 
                 <c:url var="detailsLink" value="/team/details">
-                    <c:param name="TeamId" value="${tempTeam.id}"/>
+                    <c:param name="id" value="${tempTeam.id}"/>
                 </c:url>
 
                 <c:url var="membersLink" value="/team/members">
-                    <c:param name="TeamId" value="${tempTeam.id}"/>
+                    <c:param name="id" value="${tempTeam.id}"/>
                 </c:url>
 
                 <tr>

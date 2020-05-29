@@ -1,7 +1,7 @@
 package hr.unizg.fer.sudec.controller;
 
-import hr.unizg.fer.sudec.dto.TeamAddMemberDTO;
 import hr.unizg.fer.sudec.dto.TeamDTO;
+import hr.unizg.fer.sudec.dto.addMemberDTO;
 import hr.unizg.fer.sudec.entity.Student;
 import hr.unizg.fer.sudec.entity.Team;
 import hr.unizg.fer.sudec.service.StudentService;
@@ -79,7 +79,7 @@ public class TeamController {
     }
 
     @GetMapping("/details")
-    public String showTeamDetails(@RequestParam("TeamId") int id, Model model){
+    public String showTeamDetails(@RequestParam("id") int id, Model model){
 
         TeamDTO teamDTO = teamService.getTeamDTO(id);
         model.addAttribute("team", teamDTO);
@@ -107,10 +107,12 @@ public class TeamController {
     }
 
     @GetMapping("/members")
-    public String teamMembers(@RequestParam("TeamId") int id, Model model){
+    public String teamMembers(@RequestParam("id") int id, Model model){
 
         model.addAttribute("students", teamService.getMembers(id));
         model.addAttribute("studentService", studentService);
+        model.addAttribute("mappingPath", "team");
+
         model.addAttribute("studentButton", "display: none");
         model.addAttribute("memberButton", "");
 
@@ -118,7 +120,7 @@ public class TeamController {
     }
 
     @GetMapping("/formAddMember")
-    public String formAddMember(@RequestParam("TeamId") int id, Model model){
+    public String formAddMember(@RequestParam("id") int id, Model model){
 
         Map<Integer, String> nonMembers = studentService.getStudentsIdFullNameMap();
         List<Student> members = teamService.getMembers(id);
@@ -126,25 +128,26 @@ public class TeamController {
             nonMembers.remove(student.getId());
         }
 
-        TeamAddMemberDTO dto = new TeamAddMemberDTO();
+        addMemberDTO dto = new addMemberDTO();
         model.addAttribute("nonMembers", nonMembers);
-        model.addAttribute("teamNewMember", dto);
+        model.addAttribute("newMember", dto);
+        model.addAttribute("mappingPath", "team");
 
         return "add-member";
     }
 
     @PostMapping("/addMember")
-    public String addMember(@ModelAttribute("teamNewMember") TeamAddMemberDTO dto){
+    public String addMember(@ModelAttribute("teamNewMember") addMemberDTO dto){
 
-        teamService.addMember(dto.getTeamId(),dto.getMemberToAdd());
-        return "redirect:/team/members?TeamId=" + dto.getTeamId();
+        teamService.addMember(dto.getId(),dto.getMemberToAdd());
+        return "redirect:/team/members?id=" + dto.getId();
     }
 
     @GetMapping("/removeMember")
-    public String removeMember(@RequestParam("TeamId") int teamId, @RequestParam("MemberId") int memberId){
+    public String removeMember(@RequestParam("id") int teamId, @RequestParam("MemberId") int memberId){
 
         teamService.removeMember(teamId, memberId);
 
-        return "redirect:/team/members?TeamId=" + teamId;
+        return "redirect:/team/members?id=" + teamId;
     }
 }

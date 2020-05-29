@@ -88,7 +88,7 @@ public class GatheringController {
     }
 
     @GetMapping("/details")
-    public String showGatheringDetails(@RequestParam("GatheringId") int id, Model model){
+    public String showGatheringDetails(@RequestParam("id") int id, Model model){
 
         GatheringDTO dto = gatheringService.getGatheringDTO(id);
         model.addAttribute("gathering", dto);
@@ -118,10 +118,12 @@ public class GatheringController {
     }
 
     @GetMapping("/members")
-    public String gatheringMembers(@RequestParam("GatheringId") int id, Model model){
+    public String gatheringMembers(@RequestParam("id") int id, Model model){
 
         model.addAttribute("students", gatheringService.getMembers(id));
         model.addAttribute("studentService", studentService);
+        model.addAttribute("mappingPath", "gathering");
+
         model.addAttribute("studentButton", "display: none");
         model.addAttribute("memberButton", "display: none");
 
