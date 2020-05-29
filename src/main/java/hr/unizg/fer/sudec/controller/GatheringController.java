@@ -1,7 +1,9 @@
 package hr.unizg.fer.sudec.controller;
 
 import hr.unizg.fer.sudec.dto.GatheringDTO;
+import hr.unizg.fer.sudec.dto.addMemberDTO;
 import hr.unizg.fer.sudec.entity.Gathering;
+import hr.unizg.fer.sudec.entity.Student;
 import hr.unizg.fer.sudec.service.GatheringService;
 import hr.unizg.fer.sudec.service.StudentService;
 import hr.unizg.fer.sudec.service.TeamService;
@@ -125,8 +127,40 @@ public class GatheringController {
         model.addAttribute("mappingPath", "gathering");
 
         model.addAttribute("studentButton", "display: none");
-        model.addAttribute("memberButton", "display: none");
+        model.addAttribute("memberButton", "");
 
         return "list-students";
+    }
+
+    @GetMapping("/formAddMember")
+    public String formAddMember(@RequestParam("id") int id, Model model){
+
+        Map<Integer, String> nonMembers = studentService.getStudentsIdFullNameMap();
+        List<Student> members = gatheringService.getMembers(id);
+        for(Student student : members){
+            nonMembers.remove(student.getId());
+        }
+
+        addMemberDTO dto = new addMemberDTO();
+        model.addAttribute("nonMembers", nonMembers);
+        model.addAttribute("newMember", dto);
+        model.addAttribute("mappingPath", "gathering");
+
+        return "add-member";
+    }
+
+    @PostMapping("/addMember")
+    public String addMember(@ModelAttribute("newMember") addMemberDTO dto){
+
+        gatheringService.addMember(dto.getId(),dto.getMemberToAdd());
+        return "redirect:/gathering/members?id=" + dto.getId();
+    }
+
+    @GetMapping("/removeMember")
+    public String removeMember(@RequestParam("id") int gatheringId, @RequestParam("MemberId") int memberId){
+
+        gatheringService.removeMember(gatheringId, memberId);
+
+        return "redirect:/gathering/members?id=" + gatheringId;
     }
 }

@@ -24,6 +24,9 @@ public class GatheringServiceImpl implements GatheringService{
     private TeamService teamService;
 
     @Autowired
+    private StudentService studentService;
+
+    @Autowired
     private ModelMapper modelMapper;
 
     @Override
@@ -50,6 +53,41 @@ public class GatheringServiceImpl implements GatheringService{
                 sum = sum - receipt.getValue();
         }
         return sum;
+    }
+
+    @Override
+    @Transactional
+    public void addMember(int gatheringId, int memberToAddId) {
+
+        Gathering gathering = getGathering(gatheringId);
+        Hibernate.initialize(gathering.getAttenders());
+
+        List<Student> attenders = gathering.getAttenders();
+        attenders.add(studentService.getStudent(memberToAddId));
+        gathering.setAttenders(attenders);
+
+        saveGathering(gathering);
+    }
+
+    @Override
+    @Transactional
+    public void removeMember(int gatheringId, int memberId) {
+
+        Gathering gathering = getGathering(gatheringId);
+        Hibernate.initialize(gathering.getAttenders());
+
+        List<Student> attenders = gathering.getAttenders();
+        attenders.remove(studentService.getStudent(memberId));
+        gathering.setAttenders(attenders);
+
+        saveGathering(gathering);
+    }
+
+    @Override
+    @Transactional
+    public void saveGathering(Gathering gathering) {
+
+        gatheringDAO.save(gathering);
     }
 
     @Override

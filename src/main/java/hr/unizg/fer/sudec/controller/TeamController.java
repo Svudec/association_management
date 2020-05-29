@@ -137,7 +137,7 @@ public class TeamController {
     }
 
     @PostMapping("/addMember")
-    public String addMember(@ModelAttribute("teamNewMember") addMemberDTO dto){
+    public String addMember(@ModelAttribute("newMember") addMemberDTO dto){
 
         teamService.addMember(dto.getId(),dto.getMemberToAdd());
         return "redirect:/team/members?id=" + dto.getId();

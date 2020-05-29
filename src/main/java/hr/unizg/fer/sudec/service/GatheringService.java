@@ -11,6 +11,8 @@ public interface GatheringService {
 
     List<Gathering> getGatherings();
 
+    void saveGathering(Gathering gathering);
+
     void saveGathering(GatheringDTO dto);
 
     Gathering getGathering(int id);
@@ -24,4 +26,8 @@ public interface GatheringService {
     List<Receipt> getGatheringsReceipts(int gatheringId);
 
     double getGatheringsReceiptsValue(int gatheringId);
+
+    void addMember(int gatheringId, int memberToAddId);
+
+    void removeMember(int gatheringId, int memberId);
 }
