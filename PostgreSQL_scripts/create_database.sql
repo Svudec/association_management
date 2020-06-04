@@ -65,7 +65,7 @@ create table partner
         constraint partner_pk
             primary key,
     naziv_partner      VARCHAR not null CHECK ( trim(naziv_partner) NOT LIKE ''),
-    oib_partner        VARCHAR not null CHECK ( oib_partner SIMILAR TO '[0-9]+'),
+    oib_partner        VARCHAR UNIQUE not null CHECK ( oib_partner SIMILAR TO '[0-9]+'),
     web_adresa_partner VARCHAR CHECK ( web_adresa_partner SIMILAR TO '[^\s(["<,>]*\.[^\s[",><]*'),
     mobitel_partner    VARCHAR CHECK ( mobitel_partner SIMILAR TO '([0-9]|\+|\(|\)|\s)+'),
     mail_partner       VARCHAR not null CHECK ( mail_partner LIKE '_%@_%._%')
@@ -162,7 +162,7 @@ create table racun
 create index index_vrijeme_racun
     on racun (vrijeme_racun DESC);
 
--- tablice users i authorities su kreirane ovim shemama kako bi funkcionirale s Java Spring Security
+-- tablice uloga i korisnik_uloga služe za security
 
 create table uloga
 (
@@ -286,25 +286,6 @@ create table sponzorira
     napomena            VARCHAR,
     constraint sponzorira_pk
         primary key (id_projekt, id_partner)
-);
-
-
-create table putni_trosak
-(
-    id_student             INT
-        constraint student_putnitrosak_fk
-            references student
-            on delete cascade,
-    id_racun               INT
-        constraint racun_putnitrosak_fk
-            references racun
-            on delete cascade,
-    id_medunarodni_dogadaj INT
-        constraint medunarodniDogadaj_putnitrosak_fk
-            references medunarodni_dogadaj
-            on delete set null,
-    constraint putnitrosak_pk
-        primary key (id_student, id_racun)
 );
 
 
