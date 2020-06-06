@@ -32,6 +32,13 @@ public class InternationalEventDAOImpl implements InternationalEventDAO{
     }
 
     @Override
+    public void saveEvent(InternationalEvent event) {
+
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(event);
+    }
+
+    @Override
     public void deleteInternationalEvent(InternationalEvent event) {
 
         Session session = sessionFactory.getCurrentSession();

@@ -11,4 +11,6 @@ public interface InternationalEventDAO {
     InternationalEvent getEvent(int id);
 
     void deleteInternationalEvent(InternationalEvent event);
+
+    void saveEvent(InternationalEvent event);
 }

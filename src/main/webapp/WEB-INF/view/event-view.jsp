@@ -92,31 +92,42 @@
     <td/>
         <div id="content">
 
+            <form action="${pageContext.request.contextPath}/event/addParticipant" method="get">
+                <select name="studentId">
+                    <c:forEach var="tempStudent" items="${nonParticipants}">
+                        <option value="${tempStudent.id}">${tempStudent.fullName}</option>
+                    </c:forEach>
+                </select>
+                <input type="hidden" name="eventId" value="${param.get('EventId')}" />
+
+                <input type="submit" value="Dodaj" class="add-button"/>
+            </form>
+
             <table>
                 <tr>
                     <th>Ime i prezime</th>
-                    <th>Fakultet</th>
                     <th>Godina studija</th>
-                    <th>Broj okupljanja</th>
                     <th>Broj putovanja</th>
                     <th></th>
                 </tr>
 
-                <c:forEach var="tempStudent" items="${students}">
+                <c:forEach var="tempStudent" items="${participants}">
 
                     <c:url var="detailsLink" value="/student/details">
                         <c:param name="studentId" value="${tempStudent.id}"/>
                     </c:url>
+                    <c:url var="removeParticipantLink" value="/event/removeParticipant">
+                        <c:param name="studentId" value="${tempStudent.id}"/>
+                        <c:param name="eventId" value="${param.get('EventId')}"/>
+                    </c:url>
 
                     <tr>
                         <td>${tempStudent.fullName}</td>
-                        <td>${tempStudent.faculty}</td>
                         <td>${tempStudent.yearOfStudy}</td>
-                        <td>${studentService.getNumberOfGatheringsParticipated(tempStudent.id)}</td>
                         <td>${studentService.getNumberOfEventsParticipated(tempStudent.id)}</td>
                         <td>
                             <security:authorize access="hasAnyRole('BOARD_MEMBER')">
-                                <a href="${detailsLink}">Otvori profil</a>
+                                <a href="${detailsLink}">Otvori profil</a> | <a href="${removeParticipantLink}">Ukloni</a>
                             </security:authorize>
                         </td>
                     </tr>

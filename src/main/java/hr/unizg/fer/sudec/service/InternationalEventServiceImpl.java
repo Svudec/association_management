@@ -17,6 +17,9 @@ public class InternationalEventServiceImpl implements InternationalEventService{
     @Autowired
     private InternationalEventDAO eventDAO;
 
+    @Autowired
+    private StudentService studentService;
+
     @Override
     @Transactional
     public List<InternationalEvent> getEvents() {
@@ -29,6 +32,13 @@ public class InternationalEventServiceImpl implements InternationalEventService{
     public InternationalEvent getEvent(int id) {
 
         return eventDAO.getEvent(id);
+    }
+
+    @Override
+    @Transactional
+    public void save(InternationalEvent event) {
+
+        eventDAO.saveEvent(event);
     }
 
     @Override
@@ -50,11 +60,46 @@ public class InternationalEventServiceImpl implements InternationalEventService{
 
     @Override
     @Transactional
+    public List<Student> getNonParticipants(int eventId) {
+
+        List<Student> nonParticipants = studentService.getStudents();
+        nonParticipants.removeAll(getParticipants(eventId));
+        return nonParticipants;
+    }
+
+    @Override
+    @Transactional
     public List<LocalBranch> getOrganizers(int eventId) {
 
         InternationalEvent event = getEvent(eventId);
         Hibernate.initialize(event.getOrganizers());
 
         return event.getOrganizers();
+    }
+
+    @Override
+    @Transactional
+    public void addParticipant(int eventId, int studentId) {
+
+        InternationalEvent event = getEvent(eventId);
+        Hibernate.initialize(event.getParticipants());
+        List<Student> participants = event.getParticipants();
+
+        participants.add(studentService.getStudent(studentId));
+        event.setParticipants(participants);
+        save(event);
+    }
+
+    @Override
+    @Transactional
+    public void removeParticipant(int eventId, int studentId) {
+
+        InternationalEvent event = getEvent(eventId);
+        Hibernate.initialize(event.getParticipants());
+        List<Student> participants = event.getParticipants();
+
+        participants.remove(studentService.getStudent(studentId));
+        event.setParticipants(participants);
+        save(event);
     }
 }

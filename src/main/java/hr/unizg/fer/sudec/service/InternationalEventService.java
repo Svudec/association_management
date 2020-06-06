@@ -12,9 +12,17 @@ public interface InternationalEventService {
 
     InternationalEvent getEvent(int id);
 
+    void save(InternationalEvent event);
+
     List<Student> getParticipants(int eventId);
+
+    List<Student> getNonParticipants(int eventId);
 
     List<LocalBranch> getOrganizers(int eventId);
 
     void deleteEvent(int eventId);
+
+    void addParticipant(int eventId, int studentId);
+
+    void removeParticipant(int eventId, int studentId);
 }

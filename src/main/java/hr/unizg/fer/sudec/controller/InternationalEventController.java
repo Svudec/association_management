@@ -50,8 +50,9 @@ public class InternationalEventController {
         model.addAttribute("event", event);
         model.addAttribute("studentService", studentService);
 
-        model.addAttribute("students", eventService.getParticipants(id));
+        model.addAttribute("participants", eventService.getParticipants(id));
         model.addAttribute("organizers", eventService.getOrganizers(id));
+        model.addAttribute("nonParticipants", eventService.getNonParticipants(id));
 
         return "event-view";
     }
@@ -61,5 +62,19 @@ public class InternationalEventController {
 
         eventService.deleteEvent(eventId);
         return"redirect:/event/list";
+    }
+
+    @GetMapping("/addParticipant")
+    public String addParticipant(@RequestParam("studentId") int studentId, @RequestParam("eventId") int eventId){
+
+        eventService.addParticipant(eventId, studentId);
+        return "redirect:/event/details?EventId=" + eventId;
+    }
+
+    @GetMapping("/removeParticipant")
+    public String removeParticipant(@RequestParam("studentId") int studentId, @RequestParam("eventId") int eventId){
+
+        eventService.removeParticipant(eventId, studentId);
+        return "redirect:/event/details?EventId=" + eventId;
     }
 }
