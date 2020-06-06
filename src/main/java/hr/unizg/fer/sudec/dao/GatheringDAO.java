@@ -11,4 +11,6 @@ public interface GatheringDAO {
     Gathering getGathering(int id);
 
     void save(Gathering gathering);
+
+    void deleteGathering(Gathering gathering);
 }

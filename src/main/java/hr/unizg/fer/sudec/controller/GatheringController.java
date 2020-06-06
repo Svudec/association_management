@@ -130,6 +130,13 @@ public class GatheringController {
         return "gathering-form";
     }
 
+    @GetMapping("/delete")
+    public String deleteGathering(@RequestParam("id") int gatheringId){
+
+        gatheringService.deleteGathering(gatheringId);
+        return "redirect:/gathering/list";
+    }
+
     @GetMapping("/members")
     public String gatheringMembers(@RequestParam("id") int id, Model model){
 

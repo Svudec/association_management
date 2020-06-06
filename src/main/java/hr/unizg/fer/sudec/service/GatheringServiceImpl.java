@@ -92,6 +92,13 @@ public class GatheringServiceImpl implements GatheringService{
 
     @Override
     @Transactional
+    public void deleteGathering(int gatheringId) {
+
+        gatheringDAO.deleteGathering(getGathering(gatheringId));
+    }
+
+    @Override
+    @Transactional
     public List<Receipt> getGatheringReceipts(int gatheringId) {
 
         Gathering gathering = getGathering(gatheringId);

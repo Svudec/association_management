@@ -17,6 +17,8 @@ public interface GatheringService {
 
     Gathering getGathering(int id);
 
+    void deleteGathering(int gatheringId);
+
     GatheringDTO getGatheringDTO(int id);
 
     List<Student> getMembers(int gatheringId);

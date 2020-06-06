@@ -42,15 +42,22 @@
 <div id="container">
     <h3>Okupljanje</h3>
 
-    <form:form action="edit" modelAttribute="gathering" method="get">
+    <security:authorize access="hasAnyRole('BOARD_MEMBER')">
+    <div id="frm">
+        <form:form action="edit" modelAttribute="gathering" method="get">
+            <form:hidden path="id"/>
+            <input type="submit" value="Uredi" style="visibility: ${editButton}" class="add-button"/>
 
-        <security:authorize access="hasAnyRole('BOARD_MEMBER')">
-        <form:hidden path="id"/>
-        <input type="submit" value="Uredi" style="visibility: ${editButton}" class="add-button"/>
+        </form:form>
 
-        </security:authorize>
+        <form:form action="delete" modelAttribute="gathering" method="get">
 
-    </form:form>
+            <form:hidden path="id"/>
+            <input type="submit" value="Izbriši" style="visibility: ${editButton}" class="add-button"/>
+
+        </form:form>
+    </div>
+    </security:authorize>
 
     <form:form action="save" modelAttribute="gathering" method="post">
 

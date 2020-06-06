@@ -33,6 +33,13 @@ public class GatheringDAOImpl implements GatheringDAO{
     }
 
     @Override
+    public void deleteGathering(Gathering gathering) {
+
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(gathering);
+    }
+
+    @Override
     public void save(Gathering gathering) {
 
         Session session = sessionFactory.getCurrentSession();
