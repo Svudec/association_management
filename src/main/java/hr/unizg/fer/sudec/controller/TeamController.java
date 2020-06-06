@@ -150,4 +150,11 @@ public class TeamController {
 
         return "redirect:/team/members?id=" + teamId;
     }
+
+    @GetMapping("/delete")
+    public String deleteTeam(@RequestParam("id") int teamId){
+
+        teamService.deleteTeam(teamId);
+        return "redirect:/team/list";
+    }
 }

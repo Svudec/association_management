@@ -11,4 +11,6 @@ public interface TeamDAO {
     Team getTeam(int id);
 
     void saveTeam(Team team);
+
+    void deleteTeam(Team team);
 }

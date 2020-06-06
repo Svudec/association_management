@@ -14,6 +14,8 @@ public interface TeamService {
 
     Team getTeam(int id);
 
+    void deleteTeam(int teamId);
+
     TeamDTO getTeamDTO(int id);
 
     void saveTeam(Team team);

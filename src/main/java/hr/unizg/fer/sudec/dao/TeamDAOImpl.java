@@ -33,6 +33,13 @@ public class TeamDAOImpl implements TeamDAO{
     }
 
     @Override
+    public void deleteTeam(Team team) {
+
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(team);
+    }
+
+    @Override
     public void saveTeam(Team team) {
 
         Session session = sessionFactory.getCurrentSession();

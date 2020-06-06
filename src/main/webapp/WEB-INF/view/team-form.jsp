@@ -44,14 +44,23 @@
 <div id="container">
     <h3>Tim</h3>
 
-    <form:form action="edit" modelAttribute="team" method="get">
+    <security:authorize access="hasAnyRole('BOARD_MEMBER')">
+    <div id="frm">
+        <form:form action="edit" modelAttribute="team" method="get">
 
-        <security:authorize access="hasAnyRole('BOARD_MEMBER')">
+
+                <form:hidden path="id"/>
+                <input type="submit" value="Uredi" style="visibility: ${editButton}" class="add-button"/>
+        </form:form>
+
+        <form:form action="delete" modelAttribute="team" method="get">
+
             <form:hidden path="id"/>
-            <input type="submit" value="Uredi" style="visibility: ${editButton}" class="add-button"/>
-    </security:authorize>
-    </form:form>
+            <input type="submit" value="Izbriši" style="visibility: ${editButton}" class="add-button"/>
 
+        </form:form>
+    </security:authorize>
+    </div>
 
 
     <form:form action="save" modelAttribute="team" method="post">
