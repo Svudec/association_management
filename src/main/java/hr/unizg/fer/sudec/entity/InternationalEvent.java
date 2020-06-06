@@ -61,6 +61,11 @@ public class InternationalEvent {
         this.participants = new ArrayList<>();
     }
 
+    public String niceCategory(){
+
+        return this.eventCategory.toString().toLowerCase().replace("_", " ");
+    }
+
     public String niceStartDate(){
         LocalDateTime date = LocalDateTime.ofInstant(startDate.toInstant(), ZoneId.systemDefault());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");

@@ -33,6 +33,13 @@ public class InternationalEventServiceImpl implements InternationalEventService{
 
     @Override
     @Transactional
+    public void deleteEvent(int eventId) {
+
+        eventDAO.deleteInternationalEvent(getEvent(eventId));
+    }
+
+    @Override
+    @Transactional
     public List<Student> getParticipants(int eventId) {
 
         InternationalEvent event = getEvent(eventId);

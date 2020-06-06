@@ -67,7 +67,7 @@
                 <tr>
                     <td>${tempEvent.niceStartDate()}</td>
                     <td>${tempEvent.name}</td>
-                    <td>${tempEvent.eventCategory}</td>
+                    <td>${tempEvent.niceCategory()}</td>
                     <td>${tempEvent.capacity}</td>
                     <td>${tempEvent.price}</td>
                     <td>

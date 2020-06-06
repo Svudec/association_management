@@ -30,4 +30,11 @@ public class InternationalEventDAOImpl implements InternationalEventDAO{
 
         return session.get(InternationalEvent.class,id);
     }
+
+    @Override
+    public void deleteInternationalEvent(InternationalEvent event) {
+
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(event);
+    }
 }

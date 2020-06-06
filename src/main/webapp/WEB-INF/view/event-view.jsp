@@ -43,10 +43,11 @@
 <div id="container">
     <h3>${event.name}</h3>
 
-    <%--<form:form action="edit" modelAttribute="team" method="get">
-        <form:hidden path="id"/>
-        <input type="submit" value="Uredi" style="visibility: ${editButton}" class="add-button"/>
-    </form:form>--%>
+    <security:authorize access="hasAnyRole('BOARD_MEMBER')">
+        <div id="frm">
+            <button type="button" onclick="location.href='/event/delete?id=${param.get('EventId')}'" class="add-button">Izbriši</button>
+        </div>
+    </security:authorize>
 
         <table>
             <tbody>
@@ -72,7 +73,7 @@
             </tr>
             <tr>
                 <td><label>Vrsta:</label></td>
-                <td>${event.eventCategory}</td>
+                <td>${event.niceCategory()}</td>
             </tr>
             <tr>
                 <td><label>Organizator(i):</label></td>

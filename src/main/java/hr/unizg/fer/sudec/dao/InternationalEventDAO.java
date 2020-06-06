@@ -9,4 +9,6 @@ public interface InternationalEventDAO {
     List<InternationalEvent> getEvents();
 
     InternationalEvent getEvent(int id);
+
+    void deleteInternationalEvent(InternationalEvent event);
 }

@@ -55,4 +55,11 @@ public class InternationalEventController {
 
         return "event-view";
     }
+
+    @GetMapping("/delete")
+    public String deleteEvent(@RequestParam("id") int eventId){
+
+        eventService.deleteEvent(eventId);
+        return"redirect:/event/list";
+    }
 }

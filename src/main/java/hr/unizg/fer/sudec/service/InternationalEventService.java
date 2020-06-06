@@ -15,4 +15,6 @@ public interface InternationalEventService {
     List<Student> getParticipants(int eventId);
 
     List<LocalBranch> getOrganizers(int eventId);
+
+    void deleteEvent(int eventId);
 }
