@@ -56,7 +56,7 @@
         <form:form action="delete" modelAttribute="team" method="get">
 
             <form:hidden path="id"/>
-            <input type="submit" value="Izbriši" style="visibility: ${editButton}" class="add-button"/>
+            <input onclick="if (!confirm('Izbrisat ćeš tim!')) return false" type="submit" value="Izbriši" style="visibility: ${editButton}" class="add-button"/>
 
         </form:form>
     </security:authorize>

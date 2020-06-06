@@ -53,7 +53,7 @@
         <form:form action="delete" modelAttribute="gathering" method="get">
 
             <form:hidden path="id"/>
-            <input type="submit" value="Izbriši" style="visibility: ${editButton}" class="add-button"/>
+            <input onclick="if (!confirm('Izbrisat ćeš okupljanje!')) return false" type="submit" value="Izbriši" style="visibility: ${editButton}" class="add-button"/>
 
         </form:form>
     </div>

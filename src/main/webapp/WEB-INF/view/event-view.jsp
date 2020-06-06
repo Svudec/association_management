@@ -45,7 +45,7 @@
 
     <security:authorize access="hasAnyRole('BOARD_MEMBER')">
         <div id="frm">
-            <button type="button" onclick="location.href='/event/delete?id=${param.get('EventId')}'" class="add-button">Izbriši</button>
+            <button type="button" onclick="if (confirm('Izbrisat ćeš događaj!')) return location.href='/event/delete?id=${param.get('EventId')}'" class="add-button">Izbriši</button>
         </div>
     </security:authorize>
 
