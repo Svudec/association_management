@@ -37,4 +37,6 @@ public interface StudentService extends UserDetailsService {
     List<Gathering> getStudentsGatherings(int studentId);
 
     int getNumberOfGatheringsParticipated(int studentId);
+
+    void deleteStudent(int studentId);
 }

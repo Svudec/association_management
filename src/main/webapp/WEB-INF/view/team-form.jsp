@@ -11,7 +11,7 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
-    <title>Forma za tim</title>
+    <title>Detalji tima</title>
 
     <link type="text/css" rel="stylesheet"
           href="${pageContext.request.contextPath}/resources/css/style.css">
@@ -42,7 +42,7 @@
 </div>
 
 <div id="container">
-    <h3>Forma za tim</h3>
+    <h3>Tim</h3>
 
     <form:form action="edit" modelAttribute="team" method="get">
 

@@ -50,7 +50,7 @@
                 <th>Naziv</th>
                 <th>Vrsta</th>
                 <th>Broj sudionika</th>
-                <th>Cijena(EUR)</th>
+                <th>Participacija(EUR)</th>
                 <th></th>
             </tr>
 

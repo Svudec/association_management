@@ -10,7 +10,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Forma za studenta</title>
+    <title>Student</title>
 
     <link type="text/css" rel="stylesheet"
             href="${pageContext.request.contextPath}/resources/css/style.css">
@@ -41,14 +41,23 @@
     </div>
 
     <div id="container">
-        <h3>Forma za studenta</h3>
+        <h3>Student</h3>
 
+        <div id="frm">
         <form:form action="edit" modelAttribute="student" method="get">
 
             <form:hidden path="id"/>
             <input type="submit" value="Uredi" style="visibility: ${editButton}" class="add-button"/>
 
         </form:form>
+
+        <form:form action="delete" modelAttribute="student" method="get">
+
+            <form:hidden path="id"/>
+            <input type="submit" value="Izbriši" style="visibility: ${editButton}" class="add-button"/>
+
+        </form:form>
+        </div>
 
         <form:form action="save" modelAttribute="student" method="post">
 

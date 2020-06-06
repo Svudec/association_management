@@ -13,4 +13,6 @@ public interface StudentDAO {
     Student getStudent(int id);
 
     Student findByUsername(String username);
+
+    void deleteStudent(Student student);
 }

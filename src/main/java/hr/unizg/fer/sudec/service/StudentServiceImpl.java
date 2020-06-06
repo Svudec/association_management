@@ -90,6 +90,13 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     @Transactional
+    public void deleteStudent(int studentId) {
+
+        studentDAO.deleteStudent(getStudent(studentId));
+    }
+
+    @Override
+    @Transactional
     public List<Role> getRoles(int studentId) {
 
         Student student = getStudent(studentId);

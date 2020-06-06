@@ -38,8 +38,8 @@
     </div>
 </div>
 
-<h2>Korisnik: <security:authentication property="principal.username"/></h2>
-<h3>Uloga: <security:authentication property="principal.authorities"/></h3>
+<h2>Bok, <security:authentication property="principal.username"/>!</h2>
+<%--<h3>Uloga: <security:authentication property="principal.authorities"/></h3>--%>
 <br/>
 
 <div><h4>Općenito</h4></div>

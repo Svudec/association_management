@@ -56,4 +56,12 @@ public class StudentDAOImpl implements StudentDAO{
 
         return student;
     }
+
+    @Override
+    public void deleteStudent(Student student) {
+
+        Session session = sessionFactory.getCurrentSession();
+
+        session.delete(student);
+    }
 }

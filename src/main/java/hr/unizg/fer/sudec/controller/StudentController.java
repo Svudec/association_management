@@ -116,6 +116,13 @@ public class StudentController {
         return "student-form";
     }
 
+    @GetMapping("/delete")
+    public String deleteStudent(@RequestParam("id") int id){
+
+        studentService.deleteStudent(id);
+        return "redirect:/student/list";
+    }
+
     @GetMapping("/manageRoles")
     public String manageStudentRolesMenu(Model model){
 
