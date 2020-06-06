@@ -1,15 +1,35 @@
 package hr.unizg.fer.sudec.dto;
 
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import java.util.List;
+
 public class InternationalEventDTO {
 
     private int id;
+
+    @NotNull(message = "Obavezno polje")
     private String name;
     private String description;
+
+    @NotNull(message = "Obavezno polje")
     private String startDate;
+
+    @NotNull(message = "Obavezno polje")
     private String endDate;
+
+    @Min(value = 1, message = "Mora biti barem 1")
     private Integer capacity;
+
+    @DecimalMin(value = "0", message = "Mora biti pozitivno")
     private String price;
+
+    @NotNull(message = "Obavezno polje")
     private String eventCategory;
+
+    @NotNull(message = "Obavezno polje")
+    private List<String> organizers;
 
     public int getId() {
         return id;
@@ -75,6 +95,14 @@ public class InternationalEventDTO {
         this.eventCategory = eventCategory;
     }
 
+    public List<String> getOrganizers() {
+        return organizers;
+    }
+
+    public void setOrganizers(List<String> organizers) {
+        this.organizers = organizers;
+    }
+
     @Override
     public String toString() {
         return "InternationalEventDTO{" +
@@ -86,6 +114,7 @@ public class InternationalEventDTO {
                 ", capacity=" + capacity +
                 ", price='" + price + '\'' +
                 ", eventCategory='" + eventCategory + '\'' +
+                ", organizers=" + organizers +
                 '}';
     }
 }

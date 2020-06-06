@@ -1,5 +1,6 @@
 package hr.unizg.fer.sudec.service;
 
+import hr.unizg.fer.sudec.dto.InternationalEventDTO;
 import hr.unizg.fer.sudec.entity.InternationalEvent;
 import hr.unizg.fer.sudec.entity.LocalBranch;
 import hr.unizg.fer.sudec.entity.Student;
@@ -13,6 +14,8 @@ public interface InternationalEventService {
     InternationalEvent getEvent(int id);
 
     void save(InternationalEvent event);
+
+    void save(InternationalEventDTO eventDTO);
 
     List<Student> getParticipants(int eventId);
 

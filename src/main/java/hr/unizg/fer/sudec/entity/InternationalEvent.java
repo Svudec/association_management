@@ -6,6 +6,10 @@ import org.hibernate.annotations.TypeDef;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -24,6 +28,7 @@ public class InternationalEvent {
     private int id;
 
     @Column(name = "naziv_medunarodni_dogadaj")
+    @NotNull(message = "Obavezno polje")
     private String name;
 
     @Column(name = "opis_medunarodni_dogadaj")
@@ -31,21 +36,27 @@ public class InternationalEvent {
 
     @Column(name = "pocetak_medunarodni_dogadaj")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @NotNull(message = "Obavezno polje")
     private Date startDate;
 
     @Column(name = "zavrsetak_medunarodni_dogadaj")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @NotNull(message = "Obavezno polje")
     private Date endDate;
 
     @Column(name = "kapacitet")
+    @Min(value = 1, message = "Mora biti barem 1")
     private Integer capacity;
 
     @Column(name = "cijena")
-    private String price;
+    @DecimalMin(value = "0", message = "Mora biti pozitivno")
+    @DecimalMax(value = "10000000", message = "Mora biti manji od 10 000 000")
+    private Float price;
 
     @Column(name = "vrsta_medunarodni_dogadaj", columnDefinition = "vrsta_dogadaja")
     @Enumerated(EnumType.STRING)
     @Type(type = "pgsql_enum")
+    @NotNull(message = "Obavezno polje")
     private EventCategory eventCategory;
 
     @ManyToMany
@@ -78,22 +89,6 @@ public class InternationalEvent {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
         return date.format(formatter);
-    }
-
-    public List<Student> getParticipants() {
-        return participants;
-    }
-
-    public void setParticipants(List<Student> participants) {
-        this.participants = participants;
-    }
-
-    public List<LocalBranch> getOrganizers() {
-        return organizers;
-    }
-
-    public void setOrganizers(List<LocalBranch> organizers) {
-        this.organizers = organizers;
     }
 
     public int getId() {
@@ -144,11 +139,11 @@ public class InternationalEvent {
         this.capacity = capacity;
     }
 
-    public String getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 
@@ -160,6 +155,22 @@ public class InternationalEvent {
         this.eventCategory = eventCategory;
     }
 
+    public List<LocalBranch> getOrganizers() {
+        return organizers;
+    }
+
+    public void setOrganizers(List<LocalBranch> organizers) {
+        this.organizers = organizers;
+    }
+
+    public List<Student> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(List<Student> participants) {
+        this.participants = participants;
+    }
+
     @Override
     public String toString() {
         return "InternationalEvent{" +
@@ -169,7 +180,7 @@ public class InternationalEvent {
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 ", capacity=" + capacity +
-                ", price='" + price + '\'' +
+                ", price=" + price +
                 ", eventCategory=" + eventCategory +
                 '}';
     }

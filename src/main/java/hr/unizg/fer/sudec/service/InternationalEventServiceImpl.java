@@ -1,10 +1,12 @@
 package hr.unizg.fer.sudec.service;
 
 import hr.unizg.fer.sudec.dao.InternationalEventDAO;
+import hr.unizg.fer.sudec.dto.InternationalEventDTO;
 import hr.unizg.fer.sudec.entity.InternationalEvent;
 import hr.unizg.fer.sudec.entity.LocalBranch;
 import hr.unizg.fer.sudec.entity.Student;
 import org.hibernate.Hibernate;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +21,12 @@ public class InternationalEventServiceImpl implements InternationalEventService{
 
     @Autowired
     private StudentService studentService;
+
+    @Autowired
+    private LocalBranchService localBranchService;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Override
     @Transactional
@@ -39,6 +47,23 @@ public class InternationalEventServiceImpl implements InternationalEventService{
     public void save(InternationalEvent event) {
 
         eventDAO.saveEvent(event);
+    }
+
+    @Override
+    @Transactional
+    public void save(InternationalEventDTO eventDTO) {
+
+        InternationalEvent event = new InternationalEvent();
+        List<LocalBranch> organizers = event.getOrganizers();
+
+        modelMapper.map(eventDTO, event);
+        for (String organizerId: eventDTO.getOrganizers()) {
+
+            organizers.add(localBranchService.getBranch(Integer.parseInt(organizerId)));
+        }
+        event.setOrganizers(organizers);
+
+        save(event);
     }
 
     @Override

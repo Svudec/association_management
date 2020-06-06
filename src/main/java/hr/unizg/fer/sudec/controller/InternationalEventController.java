@@ -1,5 +1,7 @@
 package hr.unizg.fer.sudec.controller;
 
+import hr.unizg.fer.sudec.dto.InternationalEventDTO;
+import hr.unizg.fer.sudec.entity.EventCategory;
 import hr.unizg.fer.sudec.entity.InternationalEvent;
 import hr.unizg.fer.sudec.service.InternationalEventService;
 import hr.unizg.fer.sudec.service.LocalBranchService;
@@ -7,10 +9,10 @@ import hr.unizg.fer.sudec.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -33,6 +35,34 @@ public class InternationalEventController {
         model.addAttribute("events", events);
 
         return "list-events";
+    }
+
+    @GetMapping("/showFormForAdd")
+    public String showFormForAdd(Model model){
+
+        InternationalEventDTO event = new InternationalEventDTO();
+        model.addAttribute("event", event);
+
+        model.addAttribute("branches", branchService.getBranches());
+        model.addAttribute("categories", EventCategory.values());
+
+        return "event-form";
+    }
+
+    @PostMapping("/create")
+    public String saveEvent(@Valid @ModelAttribute("event") InternationalEventDTO event, BindingResult bindingResult, Model model){
+
+        if(bindingResult.hasErrors()){
+
+            model.addAttribute("branches", branchService.getBranches());
+            model.addAttribute("categories", EventCategory.values());
+
+            return "event-form";
+        }
+
+        eventService.save(event);
+
+        return "redirect:/event/list";
     }
 
     @GetMapping("/listByBranch")

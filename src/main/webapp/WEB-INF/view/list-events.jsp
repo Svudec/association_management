@@ -41,8 +41,8 @@
 <div id="container">
     <div id="content">
 
-        <%--<input type="button" value="Novo okupljanje" onclick="window.location.href='showFormForAdd'; return false;"
-               class="add-button">--%>
+        <input type="button" value="Novi događaj" onclick="window.location.href='showFormForAdd'; return false;"
+               class="add-button">
 
         <table>
             <tr>
@@ -59,10 +59,6 @@
                 <c:url var="detailsLink" value="/event/details">
                     <c:param name="EventId" value="${tempEvent.id}"/>
                 </c:url>
-
-                <%--<c:url var="membersLink" value="/gathering/members">
-                    <c:param name="GatheringId" value="${tempBranch.id}"/>
-                </c:url>--%>
 
                 <tr>
                     <td>${tempEvent.niceStartDate()}</td>
