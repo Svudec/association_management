@@ -1,5 +1,6 @@
 package hr.unizg.fer.sudec.entity;
 
+import org.hibernate.annotations.Check;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -33,6 +34,7 @@ public class Gathering {
     @Column(name = "zavrsetak_okupljanje")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @NotNull(message = "Obavezno polje")
+    @Check(constraints = "zavrsetak_okupljanje > pocetak_okupljanje")
     private Timestamp endTime;
 
     @Column(name = "je_formalno")

@@ -13,6 +13,7 @@ import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
@@ -75,6 +76,11 @@ public class GatheringController {
 
     @PostMapping("/save")
     public String saveGathering(@Valid @ModelAttribute("gathering") GatheringDTO dto, BindingResult bindingResult, Model model){
+
+        if(!dto.timesValid()){
+            FieldError e = new FieldError("gathering","endTime", "Završetak je prije početka");
+            bindingResult.addError(e);
+        }
 
         if(bindingResult.hasErrors()){
 

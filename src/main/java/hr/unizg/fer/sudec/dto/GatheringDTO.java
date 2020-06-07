@@ -1,6 +1,8 @@
 package hr.unizg.fer.sudec.dto;
 
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class GatheringDTO {
 
@@ -18,6 +20,19 @@ public class GatheringDTO {
     private Boolean isFormal;
 
     private Integer teamId;
+
+    public boolean timesValid(){
+
+        try {
+            LocalDateTime start = LocalDateTime.parse(this.startTime, DateTimeFormatter.ISO_DATE_TIME);
+            LocalDateTime end = LocalDateTime.parse(this.endTime, DateTimeFormatter.ISO_DATE_TIME);
+
+            return start.isBefore(end);
+
+        }catch (Exception e){
+            return false;
+        }
+    }
 
     public int getId() {
         return id;
