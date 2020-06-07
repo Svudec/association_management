@@ -1,6 +1,7 @@
 package hr.unizg.fer.sudec.entity;
 
 import com.vladmihalcea.hibernate.type.basic.PostgreSQLEnumType;
+import org.hibernate.annotations.Check;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -42,6 +43,7 @@ public class InternationalEvent {
     @Column(name = "zavrsetak_medunarodni_dogadaj")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @NotNull(message = "Obavezno polje")
+    @Check(constraints = "zavrsetak_medunarodni_dogadaj > pocetak_medunarodni_dogadaj")
     private Date endDate;
 
     @Column(name = "kapacitet")

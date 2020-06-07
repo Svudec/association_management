@@ -1,8 +1,13 @@
 package hr.unizg.fer.sudec.dto;
 
+import org.hibernate.annotations.Check;
+
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class InternationalEventDTO {
@@ -17,19 +22,36 @@ public class InternationalEventDTO {
     private String startDate;
 
     @NotNull(message = "Obavezno polje")
+    @Check(constraints = "zavrsetak_medunarodni_dogadaj > pocetak_medunarodni_dogadaj")
     private String endDate;
 
     @Min(value = 1, message = "Mora biti barem 1")
+    @NotNull(message = "Obavezno polje")
     private Integer capacity;
 
     @DecimalMin(value = "0", message = "Mora biti pozitivno")
+    @NotNull(message = "Obavezno polje")
     private String price;
 
     @NotNull(message = "Obavezno polje")
     private String eventCategory;
 
     @NotNull(message = "Obavezno polje")
+    @NotEmpty(message = "Obavezno polje")
     private List<String> organizers;
+
+    public boolean datesValid(){
+
+        try {
+            LocalDate start = LocalDate.parse(this.startDate, DateTimeFormatter.ISO_DATE);
+            LocalDate end = LocalDate.parse(this.endDate, DateTimeFormatter.ISO_DATE);
+
+            return start.isBefore(end);
+        }
+        catch (Exception e){
+            return false;
+        }
+    }
 
     public int getId() {
         return id;

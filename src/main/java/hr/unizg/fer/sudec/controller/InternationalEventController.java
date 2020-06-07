@@ -6,10 +6,14 @@ import hr.unizg.fer.sudec.entity.InternationalEvent;
 import hr.unizg.fer.sudec.service.InternationalEventService;
 import hr.unizg.fer.sudec.service.LocalBranchService;
 import hr.unizg.fer.sudec.service.StudentService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -27,6 +31,17 @@ public class InternationalEventController {
 
     @Autowired
     StudentService studentService;
+
+    @Autowired
+    ModelMapper modelMapper;
+
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder){
+
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+
+        dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+    }
 
     @GetMapping("/list")
     public String listEvents(Model model){
@@ -51,6 +66,11 @@ public class InternationalEventController {
 
     @PostMapping("/create")
     public String saveEvent(@Valid @ModelAttribute("event") InternationalEventDTO event, BindingResult bindingResult, Model model){
+
+        if(!event.datesValid()){
+            FieldError e = new FieldError("event","endDate", "Završetak je prije početka");
+            bindingResult.addError(e);
+        }
 
         if(bindingResult.hasErrors()){
 
