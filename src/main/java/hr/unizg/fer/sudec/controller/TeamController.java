@@ -4,6 +4,7 @@ import hr.unizg.fer.sudec.dto.TeamDTO;
 import hr.unizg.fer.sudec.dto.addMemberDTO;
 import hr.unizg.fer.sudec.entity.Student;
 import hr.unizg.fer.sudec.entity.Team;
+import hr.unizg.fer.sudec.service.GatheringService;
 import hr.unizg.fer.sudec.service.StudentService;
 import hr.unizg.fer.sudec.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,9 @@ public class TeamController {
 
     @Autowired
     private StudentService studentService;
+
+    @Autowired
+    private GatheringService gatheringService;
 
     @InitBinder
     public void initBinder(WebDataBinder dataBinder){
@@ -54,6 +58,7 @@ public class TeamController {
         model.addAttribute("disabled_edit", false);
         model.addAttribute("saveButton", "visible");
         model.addAttribute("editButton", "hidden");
+        model.addAttribute("showGatherings", "display: none");
 
         model.addAttribute("students", studentService.getStudentsIdFullNameMap());
 
@@ -69,6 +74,7 @@ public class TeamController {
             model.addAttribute("saveButton", "visible");
             model.addAttribute("editButton", "hidden");
             model.addAttribute("students", studentService.getStudentsIdFullNameMap());
+            model.addAttribute("showGatherings", "display: none");
 
             return "team-form";
         }
@@ -86,8 +92,11 @@ public class TeamController {
         model.addAttribute("disabled_edit", true);
         model.addAttribute("saveButton", "hidden");
         model.addAttribute("editButton", "visible");
+        model.addAttribute("showGatherings", "");
 
         model.addAttribute("students", studentService.getStudentsIdFullNameMap());
+        model.addAttribute("gatherings", teamService.getGatherings(id));
+        model.addAttribute("gatheringService", gatheringService);
 
         return "team-form";
     }
@@ -100,6 +109,7 @@ public class TeamController {
         model.addAttribute("disabled_edit", false);
         model.addAttribute("saveButton", "visible");
         model.addAttribute("editButton", "hidden");
+        model.addAttribute("showGatherings", "display: none");
 
         model.addAttribute("students", studentService.getStudentsIdFullNameMap());
 

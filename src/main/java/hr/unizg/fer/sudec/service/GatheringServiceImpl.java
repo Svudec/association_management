@@ -31,19 +31,9 @@ public class GatheringServiceImpl implements GatheringService{
 
     @Override
     @Transactional
-    public List<Receipt> getGatheringsReceipts(int gatheringId) {
-
-        Gathering gathering = getGathering(gatheringId);
-        Hibernate.initialize(gathering.getGatheringReceipts());
-
-        return gathering.getGatheringReceipts();
-    }
-
-    @Override
-    @Transactional
     public double getGatheringsReceiptsValue(int gatheringId) {
 
-        List<Receipt> receipts = getGatheringsReceipts(gatheringId);
+        List<Receipt> receipts = getGatheringReceipts(gatheringId);
         double sum = 0;
 
         for (Receipt receipt : receipts){

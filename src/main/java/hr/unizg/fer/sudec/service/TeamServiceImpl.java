@@ -2,6 +2,7 @@ package hr.unizg.fer.sudec.service;
 
 import hr.unizg.fer.sudec.dao.TeamDAO;
 import hr.unizg.fer.sudec.dto.TeamDTO;
+import hr.unizg.fer.sudec.entity.Gathering;
 import hr.unizg.fer.sudec.entity.Student;
 import hr.unizg.fer.sudec.entity.Team;
 import org.hibernate.Hibernate;
@@ -122,5 +123,15 @@ public class TeamServiceImpl implements TeamService{
         members.remove(member);
 
         team.setMembers(members);
+    }
+
+    @Override
+    @Transactional
+    public List<Gathering> getGatherings(int teamId) {
+
+        Team team = getTeam(teamId);
+        Hibernate.initialize(team.getGatherings());
+
+        return team.getGatherings();
     }
 }

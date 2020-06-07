@@ -25,8 +25,6 @@ public interface GatheringService {
 
     int getMembersNumber(int gatheringId);
 
-    List<Receipt> getGatheringsReceipts(int gatheringId);
-
     double getGatheringsReceiptsValue(int gatheringId);
 
     void addMember(int gatheringId, int memberToAddId);

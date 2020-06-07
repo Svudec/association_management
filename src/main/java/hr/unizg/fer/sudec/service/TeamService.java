@@ -1,6 +1,7 @@
 package hr.unizg.fer.sudec.service;
 
 import hr.unizg.fer.sudec.dto.TeamDTO;
+import hr.unizg.fer.sudec.entity.Gathering;
 import hr.unizg.fer.sudec.entity.Student;
 import hr.unizg.fer.sudec.entity.Team;
 
@@ -27,4 +28,6 @@ public interface TeamService {
     void addMember(int teamId, int newMemberId);
 
     void removeMember(int teamId, int memberId);
+
+    List<Gathering> getGatherings(int teamId);
 }
