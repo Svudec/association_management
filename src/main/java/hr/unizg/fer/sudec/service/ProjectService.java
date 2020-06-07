@@ -17,6 +17,8 @@ public interface ProjectService {
 
     List<Student> getParticipants(int projectId);
 
+    List<Student> getNonParticipants(int projectId);
+
     void saveProject(Project project);
 
     List<Sponsorship> getProjectSponsorships(int projectId);
@@ -26,4 +28,8 @@ public interface ProjectService {
     List<Receipt> getProjectReceipts(int projectId);
 
     double getProjectReceiptsValue(int projectId);
+
+    void addParticipant(int projectId, int studentId);
+
+    void removeParticipant(int projectId, int studentId);
 }

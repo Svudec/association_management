@@ -1,6 +1,7 @@
 package hr.unizg.fer.sudec.controller;
 
 import hr.unizg.fer.sudec.entity.Project;
+import hr.unizg.fer.sudec.entity.Receipt;
 import hr.unizg.fer.sudec.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -79,7 +80,31 @@ public class ProjectController {
         model.addAttribute("project", project);
         model.addAttribute("sponsorships", projectService.getProjectSponsorships(id));
         model.addAttribute("participants", projectService.getParticipants(id));
+        model.addAttribute("nonParticipants", projectService.getNonParticipants(id));
+        model.addAttribute("showReceipts", "");
+
+        List<Receipt> receipts = projectService.getProjectReceipts(id);
+        model.addAttribute("receipts", receipts);
+        Map<Integer,String> receiptValues = new HashMap<>();
+        for (Receipt receipt : receipts){
+            receiptValues.put(receipt.getId(), String.format("%12.2f", receipt.getValue()));
+        }
+        model.addAttribute("receiptValues", receiptValues);
 
         return "project-details";
+    }
+
+    @GetMapping("/addParticipant")
+    public String addParticipant(@RequestParam("studentId") int studentId, @RequestParam("projectId") int projectId){
+
+        projectService.addParticipant(projectId, studentId);
+        return "redirect:/project/details?ProjectId=" + projectId;
+    }
+
+    @GetMapping("/removeParticipant")
+    public String removeParticipant(@RequestParam("studentId") int studentId, @RequestParam("projectId") int projectId){
+
+        projectService.removeParticipant(projectId, studentId);
+        return "redirect:/project/details?ProjectId=" + projectId;
     }
 }

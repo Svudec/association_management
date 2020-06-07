@@ -15,6 +15,9 @@ public class ProjectServiceImpl implements ProjectService{
     @Autowired
     private ProjectDAO projectDAO;
 
+    @Autowired
+    private StudentService studentService;
+
     @Override
     @Transactional
     public Project getProject(int id) {
@@ -37,6 +40,16 @@ public class ProjectServiceImpl implements ProjectService{
         Hibernate.initialize(project.getParticipants());
 
         return project.getParticipants();
+    }
+
+    @Override
+    @Transactional
+    public List<Student> getNonParticipants(int projectId) {
+
+        List<Student> nonParticipants = studentService.getStudents();
+        nonParticipants.removeAll(getParticipants(projectId));
+
+        return nonParticipants;
     }
 
     @Override
@@ -94,5 +107,33 @@ public class ProjectServiceImpl implements ProjectService{
         Hibernate.initialize(project.getSponsorships());
 
         return project.getSponsorships();
+    }
+
+    @Override
+    @Transactional
+    public void addParticipant(int projectId, int studentId) {
+
+        Project project = getProject(projectId);
+
+        Hibernate.initialize(project.getParticipants());
+        List<Student> participants = project.getParticipants();
+        participants.add(studentService.getStudent(studentId));
+        project.setParticipants(participants);
+
+        saveProject(project);
+    }
+
+    @Override
+    @Transactional
+    public void removeParticipant(int projectId, int studentId) {
+
+        Project project = getProject(projectId);
+
+        Hibernate.initialize(project.getParticipants());
+        List<Student> participants = project.getParticipants();
+        participants.remove(studentService.getStudent(studentId));
+        project.setParticipants(participants);
+
+        saveProject(project);
     }
 }

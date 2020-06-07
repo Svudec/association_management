@@ -85,8 +85,18 @@
     <br>
 
     <h2>Sudionici</h2>
-
     <div id="content2">
+
+        <form action="${pageContext.request.contextPath}/project/addParticipant" method="get">
+            <select name="studentId">
+                <c:forEach var="tempStudent" items="${nonParticipants}">
+                    <option value="${tempStudent.id}">${tempStudent.fullName}</option>
+                </c:forEach>
+            </select>
+            <input type="hidden" name="projectId" value="${param.get('ProjectId')}" />
+
+            <input type="submit" value="Dodaj" class="add-button"/>
+        </form>
 
         <table>
             <tr>
@@ -102,6 +112,10 @@
                 <c:url var="detailsLink" value="/student/details">
                     <c:param name="studentId" value="${temp.id}"/>
                 </c:url>
+                <c:url var="removeParticipantLink" value="/project/removeParticipant">
+                    <c:param name="studentId" value="${temp.id}"/>
+                    <c:param name="projectId" value="${param.get('ProjectId')}"/>
+                </c:url>
 
                 <tr>
                     <td>${temp.name}</td>
@@ -109,7 +123,7 @@
                     <td>${temp.faculty}</td>
                     <td>${temp.yearOfStudy}</td>
                     <td>
-                        <a href="${detailsLink}">Otvori profil</a>
+                        <a href="${detailsLink}">Otvori profil</a> | <a href="${removeParticipantLink}">Ukloni</a>
                     </td>
                 </tr>
 
@@ -119,6 +133,38 @@
     </div>
 </div>
 
+</div>
+
+<h3 style="${showReceipts}">Računi</h3>
+<div id="container2" style="${showReceipts}">
+    <div id="content3">
+
+        <table>
+            <tr>
+                <th>Vrijeme</th>
+                <th>Vrsta</th>
+                <th>Iznos</th>
+                <th>Opis</th>
+            </tr>
+
+            <c:forEach var="tempReceipt" items="${receipts}">
+
+                <tr>
+                    <td>${tempReceipt.niceTime()}</td>
+                    <td>
+                        <c:choose>
+                            <c:when test="${tempReceipt.type.toString().equals('PRIHOD')}">+</c:when>
+                            <c:otherwise>-</c:otherwise>
+                        </c:choose>
+                    </td>
+                    <td>${receiptValues.get(tempReceipt.id)}</td>
+                    <td>${tempReceipt.description}</td>
+                </tr>
+
+            </c:forEach>
+        </table>
+
+    </div>
 </div>
 </body>
 </html>
