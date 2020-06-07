@@ -1,5 +1,6 @@
 package hr.unizg.fer.sudec.entity;
 
+import org.hibernate.annotations.Check;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -35,6 +36,7 @@ public class Project {
     @Column(name = "zavrsetak_projekt")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @NotNull(message = "Obavezno polje")
+    @Check(constraints = "zavrsetak_projekt > pocetak_projekt")
     private Date endDate;
 
     @OneToMany(mappedBy = "projectReceipt", cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
@@ -57,6 +59,15 @@ public class Project {
         this.participants = new ArrayList<>();
         this.organizers = new ArrayList<>();
         this.sponsorships = new ArrayList<>();
+    }
+
+    public boolean datesValid(){
+        try {
+            return this.startDate.before(this.endDate);
+
+        } catch (Exception e){
+            return false;
+        }
     }
 
     public String niceStartDate(){

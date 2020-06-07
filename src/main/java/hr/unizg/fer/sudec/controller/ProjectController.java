@@ -7,6 +7,7 @@ import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
@@ -57,6 +58,11 @@ public class ProjectController {
 
     @PostMapping("/save")
     public String saveProject(@Valid @ModelAttribute("project") Project project, BindingResult bindingResult, Model model){
+
+        if(!project.datesValid()){
+            FieldError e = new FieldError("project","endDate", "Završetak je prije početka");
+            bindingResult.addError(e);
+        }
 
         if(bindingResult.hasErrors())
             return "project-form";
