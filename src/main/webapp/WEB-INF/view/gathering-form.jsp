@@ -131,6 +131,7 @@
                 <th>Vrsta</th>
                 <th>Iznos</th>
                 <th>Opis</th>
+                <th></th>
             </tr>
 
             <c:forEach var="tempReceipt" items="${receipts}">
@@ -145,6 +146,7 @@
                     </td>
                     <td>${receiptValues.get(tempReceipt.id)}</td>
                     <td>${tempReceipt.description}</td>
+                    <td> <a onclick="if (!confirm('Izbrisat ćeš račun!')) return false" href="${deleteLink}">Izbriši</a> </td>
                 </tr>
 
             </c:forEach>
