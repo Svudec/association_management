@@ -43,6 +43,12 @@
 <div id="container">
     <h3>${project.name}</h3>
 
+    <security:authorize access="hasAnyRole('BOARD_MEMBER')">
+        <div id="frm">
+            <button type="button" onclick="if (confirm('Izbrisat ćeš projekt!')) return location.href='/project/delete?id=${param.get('ProjectId')}'" class="add-button">Izbriši</button>
+        </div>
+    </security:authorize>
+
         <table>
             <tbody>
             <tr>

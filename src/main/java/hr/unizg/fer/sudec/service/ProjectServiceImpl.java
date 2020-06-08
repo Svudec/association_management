@@ -101,6 +101,13 @@ public class ProjectServiceImpl implements ProjectService{
 
     @Override
     @Transactional
+    public void delete(int projectId) {
+
+        projectDAO.delete(getProject(projectId));
+    }
+
+    @Override
+    @Transactional
     public List<Sponsorship> getProjectSponsorships(int projectId) {
 
         Project project = getProject(projectId);

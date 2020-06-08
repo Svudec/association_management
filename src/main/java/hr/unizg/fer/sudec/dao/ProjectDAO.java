@@ -11,4 +11,6 @@ public interface ProjectDAO {
     List<Project> getProjects();
 
     void save(Project project);
+
+    void delete(Project project);
 }

@@ -32,4 +32,6 @@ public interface ProjectService {
     void addParticipant(int projectId, int studentId);
 
     void removeParticipant(int projectId, int studentId);
+
+    void delete(int projectId);
 }
