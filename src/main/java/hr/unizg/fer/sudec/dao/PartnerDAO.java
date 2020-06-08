@@ -13,4 +13,6 @@ public interface PartnerDAO {
     void save(Partner partner);
 
     void delete(Partner partner);
+
+    double getSponsorshipsValue(Partner partner);
 }

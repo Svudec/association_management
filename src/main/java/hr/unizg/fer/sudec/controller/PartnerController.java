@@ -33,6 +33,9 @@ public class PartnerController {
 
         List<Partner> partners = partnerService.getPartners();
 
+        model.addAttribute("partners", partners);
+        model.addAttribute("partnerService", partnerService);
+
         return "list-partners";
     }
 }

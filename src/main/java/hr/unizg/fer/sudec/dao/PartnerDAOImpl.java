@@ -45,4 +45,15 @@ public class PartnerDAOImpl implements PartnerDAO{
         Session session = sessionFactory.getCurrentSession();
         session.delete(partner);
     }
+
+    @Override
+    public double getSponsorshipsValue(Partner partner) {
+
+        Session session = sessionFactory.getCurrentSession();
+        String hql = "select SUM(value) from Sponsorship where primaryKey.partner = :partner";
+
+        Query query = session.createQuery(hql).setParameter("partner", partner);
+
+        return (double) query.getSingleResult();
+    }
 }
