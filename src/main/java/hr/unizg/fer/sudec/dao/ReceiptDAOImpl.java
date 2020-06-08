@@ -51,4 +51,11 @@ public class ReceiptDAOImpl implements ReceiptDAO{
 
         return session.get(Receipt.class, id);
     }
+
+    @Override
+    public void delete(Receipt receipt) {
+
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(receipt);
+    }
 }

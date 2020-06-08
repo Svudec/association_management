@@ -82,4 +82,11 @@ public class ReceiptController {
 
         return "redirect:/receipt/list";
     }
+
+    @GetMapping("/delete")
+    public String deleteReceipt(@RequestParam("receiptId") int receiptId){
+
+        receiptService.deleteReceipt(receiptId);
+        return "redirect:/receipt/list";
+    }
 }

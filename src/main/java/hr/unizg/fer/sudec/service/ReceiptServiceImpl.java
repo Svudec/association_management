@@ -55,6 +55,13 @@ public class ReceiptServiceImpl implements ReceiptService{
 
     @Override
     @Transactional
+    public void deleteReceipt(int receiptId) {
+
+        receiptDAO.delete(getReceipt(receiptId));
+    }
+
+    @Override
+    @Transactional
     public Receipt getReceipt(int id) {
 
         return receiptDAO.getReceipt(id);

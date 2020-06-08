@@ -12,4 +12,6 @@ public interface ReceiptDAO {
     void save(Receipt receipt);
 
     Receipt getReceipt(int id);
+
+    void delete(Receipt receipt);
 }

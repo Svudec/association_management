@@ -13,4 +13,6 @@ public interface ReceiptService {
     Receipt getReceipt(int id);
 
     double getAccountValue();
+
+    void deleteReceipt(int receiptId);
 }

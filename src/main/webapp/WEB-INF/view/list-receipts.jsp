@@ -53,9 +53,14 @@
                 <th>Vrsta</th>
                 <th>Iznos</th>
                 <th>Opis</th>
+                <th></th>
             </tr>
 
             <c:forEach var="tempReceipt" items="${receipts}">
+
+                <c:url var="deleteLink" value="/receipt/delete">
+                    <c:param name="receiptId" value="${tempReceipt.id}"/>
+                </c:url>
 
                 <tr>
                     <td>${tempReceipt.niceTime()}</td>
@@ -67,6 +72,7 @@
                     </td>
                     <td>${receiptValues.get(tempReceipt.id)}</td>
                     <td>${tempReceipt.description}</td>
+                    <td> <a onclick="if (!confirm('Izbrisat ćeš račun!')) return false" href="${deleteLink}">Izbriši</a> </td>
                 </tr>
 
             </c:forEach>
