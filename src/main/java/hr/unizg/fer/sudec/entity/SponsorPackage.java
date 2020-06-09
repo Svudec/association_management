@@ -3,6 +3,7 @@ package hr.unizg.fer.sudec.entity;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,6 +18,7 @@ public class SponsorPackage {
     private int id;
 
     @Column(name = "naziv_sponzorski_paket")
+    @NotNull(message = "Obvezno polje")
     private String name;
 
     @Column(name = "stavke")

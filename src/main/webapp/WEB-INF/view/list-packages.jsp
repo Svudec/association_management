@@ -50,7 +50,7 @@
         <table>
             <tr>
                 <th>Naziv</th>
-                <th>Vrijeme stvaranja</th>
+                <th>Vrijeme ažuriranja</th>
                 <th>Broj ostvarenih sponzorstava</th>
                 <th></th>
             </tr>

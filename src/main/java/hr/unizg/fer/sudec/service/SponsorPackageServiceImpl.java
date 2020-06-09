@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -27,6 +28,7 @@ public class SponsorPackageServiceImpl implements SponsorPackageService{
     @Transactional
     public void save(SponsorPackage sponsorPackage) {
 
+        sponsorPackage.setCreationDate(new Date());
         sponsorPackageDAO.save(sponsorPackage);
     }
 
