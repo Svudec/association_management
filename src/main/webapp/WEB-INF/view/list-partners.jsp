@@ -50,7 +50,6 @@
         <table>
             <tr>
                 <th>Naziv</th>
-                <th>Web adresa</th>
                 <th>Email adresa</th>
                 <th>Kontakt</th>
                 <th>Ukupno donirano</th>
@@ -65,7 +64,6 @@
 
                 <tr>
                     <td>${tempPartner.name}</td>
-                    <td>${tempPartner.webAdress}</td>
                     <td>${tempPartner.mail}</td>
                     <td>${tempPartner.mobile}</td>
                     <td>${partnerService.getSponsorshipsValue(tempPartner.id)}</td>

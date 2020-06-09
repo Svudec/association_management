@@ -54,6 +54,8 @@ public class PartnerDAOImpl implements PartnerDAO{
 
         Query query = session.createQuery(hql).setParameter("partner", partner);
 
-        return (double) query.getSingleResult();
+        if(query.getSingleResult() != null)
+            return (double) query.getSingleResult();
+        else return 0.;
     }
 }
