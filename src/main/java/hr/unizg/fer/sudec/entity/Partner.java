@@ -1,6 +1,8 @@
 package hr.unizg.fer.sudec.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,18 +16,25 @@ public class Partner {
     private int id;
 
     @Column(name = "naziv_partner")
+    @NotNull(message = "Obavezno polje")
     private String name;
 
-    @Column(name = "oib_partner")
+    @Column(name = "oib_partner", unique = true)
+    @NotNull(message = "Obavezno polje")
+    @Pattern(regexp = "[0-9]+", message = "Neispravan OIB")
     private String oib;
 
     @Column(name = "web_adresa_partner")
+    @Pattern(regexp = "[a-z0-9]+([\\-.]{1}[a-z0-9]+)*\\.[a-z]{2,5}(:[0-9]{1,5})?(/.*)?$", message = "Neispravan format")
     private String webAdress;
 
     @Column(name = "mobitel_partner")
+    @Pattern(regexp = "([0-9]|\\+|\\(|\\)|\\s)+", message = "Neispravan format")
     private String mobile;
 
     @Column(name = "mail_partner")
+    @Pattern(regexp = ".+@.+\\..+", message = "Nije važeća email adresa")
+    @NotNull(message = "Obavezno polje")
     private String mail;
 
     @OneToMany(mappedBy = "primaryKey.partner", cascade = CascadeType.ALL)
