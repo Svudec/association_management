@@ -58,7 +58,7 @@ public class ProjectController {
     }
 
     @PostMapping("/save")
-    public String saveProject(@Valid @ModelAttribute("project") Project project, BindingResult bindingResult, Model model){
+    public String saveProject(@Valid @ModelAttribute("project") Project project, BindingResult bindingResult){
 
         if(!project.datesValid()){
             FieldError e = new FieldError("project","endDate", "Završetak je prije početka");
