@@ -34,6 +34,11 @@ public class SponsorPackage {
         this.sponsorships = new ArrayList<>();
     }
 
+    public String niceCreationDate(){
+
+        return creationDate.toString().split(" ")[0];
+    }
+
     public List<Sponsorship> getSponsorships() {
         return sponsorships;
     }

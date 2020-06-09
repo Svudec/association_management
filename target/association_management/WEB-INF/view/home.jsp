@@ -64,6 +64,7 @@
     <a href="${pageContext.request.contextPath}/project/list" class="homeButton">Projekti</a>
 <security:authorize access="hasAnyRole('BOARD_MEMBER')">
     <a href="${pageContext.request.contextPath}/receipt/list" class="homeButton">Financije</a>
+    <a href="${pageContext.request.contextPath}/partner/list" class="homeButton">Partneri</a>
 </security:authorize>
 </div>
 
