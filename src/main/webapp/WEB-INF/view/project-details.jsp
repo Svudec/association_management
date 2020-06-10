@@ -68,7 +68,7 @@
 
 
 <br>
-<h2>Sponzorstva</h2>
+<h3>Sponzorstva</h3>
 
 <div id="content">
 
@@ -101,7 +101,7 @@
     </table>
     <br>
 
-    <h2>Sudionici</h2>
+    <h3>Sudionici</h3>
     <div id="content2">
 
         <form action="${pageContext.request.contextPath}/project/addParticipant" method="get">
