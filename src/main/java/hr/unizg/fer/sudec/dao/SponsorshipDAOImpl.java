@@ -26,4 +26,11 @@ public class SponsorshipDAOImpl implements SponsorshipDAO{
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(sponsorship);
     }
+
+    @Override
+    public void delete(Sponsorship sponsorship) {
+
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(sponsorship);
+    }
 }

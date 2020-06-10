@@ -46,4 +46,11 @@ public class SponsorshipServiceImpl implements SponsorshipService{
 
         sponsorshipDAO.createSponsorship(sponsorship);
     }
+
+    @Override
+    @Transactional
+    public void delete(int partnerId, int projectId) {
+
+        sponsorshipDAO.delete(getSponsorship(partnerId, projectId));
+    }
 }

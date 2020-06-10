@@ -8,4 +8,6 @@ public interface SponsorshipDAO {
     Sponsorship getSponsorship(SponsorshipId id);
 
     void createSponsorship(Sponsorship sponsorship);
+
+    void delete(Sponsorship sponsorship);
 }

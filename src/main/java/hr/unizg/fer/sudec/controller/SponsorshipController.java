@@ -1,4 +1,4 @@
-package hr.unizg.fer.sudec.entity;
+package hr.unizg.fer.sudec.controller;
 
 import hr.unizg.fer.sudec.dto.SponsorshipDTO;
 import hr.unizg.fer.sudec.service.PartnerService;
@@ -66,5 +66,19 @@ public class SponsorshipController {
 
         sponsorshipService.createSponsorship(sponsorshipDTO);
         return "redirect:/project/list";
+    }
+
+    @GetMapping("/details")
+    public String sponsorshipDetails(@RequestParam("projectId") int projectId, @RequestParam("partnerId") int partnerId, Model model){
+
+        model.addAttribute("sponsorship", sponsorshipService.getSponsorship(partnerId, projectId));
+        return "sponsorship-view";
+    }
+
+    @GetMapping("/delete")
+    public String deleteSponsorship(@RequestParam("projectId") int projectId, @RequestParam("partnerId") int partnerId){
+
+        sponsorshipService.delete(partnerId, projectId);
+        return "redirect:/project/details?ProjectId=" + projectId;
     }
 }

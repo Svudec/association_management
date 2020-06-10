@@ -81,9 +81,17 @@
 
         <c:forEach var="temp" items="${sponsorships}">
 
+            <c:url var="sponsorshipLink" value="/sponsorship/details">
+                <c:param name="partnerId" value="${temp.partner.id}"/>
+                <c:param name="projectId" value="${temp.project.id}"/>
+            </c:url>
+
             <tr>
                 <td>${temp.partner.name}</td>
                 <td>${temp.value}</td>
+                <td>
+                <a href="${sponsorshipLink}">Detalji</a>
+                </td>
             </tr>
 
         </c:forEach>
