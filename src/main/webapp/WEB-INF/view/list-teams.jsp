@@ -67,7 +67,7 @@
 
                 <tr>
                     <td>${tempTeam.name}</td>
-                    <td>${tempTeam.leader.getFullName()}</td>
+                    <td>${tempTeam.leader.fullName}</td>
                     <td>${teamService.getNumberOfMembers(tempTeam.id)}</td>
                     <td>
                         <a href="${detailsLink}">Detalji</a> <security:authorize access="hasAnyRole('BOARD_MEMBER')">| <a href="${membersLink}">Članovi</a></security:authorize>

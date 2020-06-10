@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <title>${project.name}</title>
@@ -166,6 +167,10 @@
             </tr>
 
             <c:forEach var="tempReceipt" items="${receipts}">
+
+                <c:url var="deleteLink" value="/receipt/delete">
+                    <c:param name="receiptId" value="${tempReceipt.id}"/>
+                </c:url>
 
                 <tr>
                     <td>${tempReceipt.niceTime()}</td>

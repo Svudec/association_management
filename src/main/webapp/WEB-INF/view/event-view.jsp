@@ -87,9 +87,9 @@
         </table>
     <br><br>
 
-    <td/>
+    <td>
     <b>Naši sudionici</b>
-    <td/>
+    </td>
         <div id="content">
 
             <form action="${pageContext.request.contextPath}/event/addParticipant" method="get">

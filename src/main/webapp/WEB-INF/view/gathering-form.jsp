@@ -31,8 +31,6 @@
            class="logout-button my-menu-button">
 </div>
 
-</div>
-
 <div id="wrapper">
     <div id="header">
         <h2>Aplikacija za studentsku udrugu</h2>
@@ -135,6 +133,10 @@
             </tr>
 
             <c:forEach var="tempReceipt" items="${receipts}">
+
+                <c:url var="deleteLink" value="/receipt/delete">
+                    <c:param name="receiptId" value="${tempReceipt.id}"/>
+                </c:url>
 
                 <tr>
                     <td>${tempReceipt.niceTime()}</td>
