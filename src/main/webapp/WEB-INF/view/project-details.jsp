@@ -72,6 +72,9 @@
 
 <div id="content">
 
+    <div>
+        <button type="button" onclick="location.href='/sponsorship/new'" class="add-button">Dodaj</button>
+    </div>
     <table>
         <tr>
             <th>Partner</th>
