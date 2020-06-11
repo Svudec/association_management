@@ -123,6 +123,9 @@
 <div id="container2" style="${showReceipts}">
     <div id="content">
 
+        <input type="button" value="Napravi račun" onclick="location.href='${pageContext.request.contextPath}/receipt/showFormForAdd'"
+               class="add-button">
+
         <table>
             <tr>
                 <th>Vrijeme</th>
@@ -148,7 +151,9 @@
                     </td>
                     <td>${receiptValues.get(tempReceipt.id)}</td>
                     <td>${tempReceipt.description}</td>
+                    <security:authorize access="hasAnyRole('BOARD_MEMBER')">
                     <td> <a onclick="if (!confirm('Izbrisat ćeš račun!')) return false" href="${deleteLink}">Izbriši</a> </td>
+                    </security:authorize>
                 </tr>
 
             </c:forEach>

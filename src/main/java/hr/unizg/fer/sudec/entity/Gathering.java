@@ -41,7 +41,7 @@ public class Gathering {
     @NotNull(message = "Obavezno polje")
     private Boolean isFormal;
 
-    @ManyToOne(cascade={CascadeType.ALL})
+    @ManyToOne(cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "id_tim")
     private Team team;
 

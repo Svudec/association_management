@@ -9,4 +9,8 @@ public interface LocalBranchDAO {
     List<LocalBranch> getBranches();
 
     LocalBranch getBranch(int id);
+
+    void createBranch(LocalBranch branch);
+
+    void deleteBranch(LocalBranch branch);
 }

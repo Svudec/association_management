@@ -91,7 +91,7 @@
     <b>Naši sudionici</b>
     </td>
         <div id="content">
-
+            <security:authorize access="hasAnyRole('BOARD_MEMBER')">
             <form action="${pageContext.request.contextPath}/event/addParticipant" method="get">
                 <select name="studentId">
                     <c:forEach var="tempStudent" items="${nonParticipants}">
@@ -102,6 +102,7 @@
 
                 <input type="submit" value="Dodaj" class="add-button"/>
             </form>
+            </security:authorize>
 
             <table>
                 <tr>

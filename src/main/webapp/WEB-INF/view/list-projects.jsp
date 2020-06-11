@@ -70,10 +70,7 @@
                     <td>${projectService.getProjectSponsorshipsNumber(tempProject.id)}</td>
                     <td>${receiptValues.get(tempProject.id)}</td>
                     <td>
-
-                        <security:authorize access="hasAnyRole('BOARD_MEMBER')">
-                            <a href="${detailsLink}">Detalji</a>
-                        </security:authorize>
+                        <a href="${detailsLink}">Detalji</a>
                     </td>
                 </tr>
 

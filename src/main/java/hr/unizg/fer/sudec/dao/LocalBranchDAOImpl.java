@@ -31,4 +31,18 @@ public class LocalBranchDAOImpl implements LocalBranchDAO{
 
         return session.get(LocalBranch.class, id);
     }
+
+    @Override
+    public void createBranch(LocalBranch branch) {
+
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(branch);
+    }
+
+    @Override
+    public void deleteBranch(LocalBranch branch) {
+
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(branch);
+    }
 }

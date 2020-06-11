@@ -1,5 +1,7 @@
 package hr.unizg.fer.sudec.service;
 
+import hr.unizg.fer.sudec.dto.LocalBranchDTO;
+import hr.unizg.fer.sudec.entity.Country;
 import hr.unizg.fer.sudec.entity.InternationalEvent;
 import hr.unizg.fer.sudec.entity.LocalBranch;
 
@@ -14,4 +16,12 @@ public interface LocalBranchService {
     List<InternationalEvent> getEvents(int branchId);
 
     int getEventsNumber(int branchId);
+
+    void createBranch(LocalBranchDTO branchDTO);
+
+    void deleteBranch(int branchId);
+
+    List<Country> getCountries();
+
+    Country getCountry(int countryId);
 }

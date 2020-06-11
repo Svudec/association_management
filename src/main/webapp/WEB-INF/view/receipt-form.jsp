@@ -66,7 +66,7 @@
                 </td>
             </tr>
             <tr>
-                <td><label>Napomena:</label></td>
+                <td><label>Opis:</label></td>
                 <td>
                     <form:textarea rows="4" cols="50" path="description" />
                     <form:errors path="description" cssClass="error" />

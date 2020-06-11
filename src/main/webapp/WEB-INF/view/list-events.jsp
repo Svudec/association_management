@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <html>
 <head>
@@ -41,8 +42,10 @@
 <div id="container">
     <div id="content">
 
+    <security:authorize access="hasAnyRole('BOARD_MEMBER')">
         <input type="button" value="Novi događaj" onclick="window.location.href='showFormForAdd'; return false;"
                class="add-button">
+    </security:authorize>
 
         <table>
             <tr>

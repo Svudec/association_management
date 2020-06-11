@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <html>
 <head>
@@ -41,14 +42,29 @@
 <div id="container">
     <div id="content">
 
-        <%--<input type="button" value="Novo okupljanje" onclick="window.location.href='showFormForAdd'; return false;"
-               class="add-button">--%>
+        <security:authorize access="hasAnyRole('BOARD_MEMBER')">
+            <form:form action="new" method="POST" modelAttribute="branch">
+
+                <form:select path="countryId" >
+                    <c:forEach var="country" items="${countries}">
+                        <form:option value="${country.id}">${country
+                        .name}</form:option>
+                    </c:forEach>
+                </form:select>
+                <form:input path="name" placeholder="Naziv ogranka"/>
+                <form:errors path="name" cssClass="error" />
+
+                <input type="submit" value="Dodaj" class="add-button"/>
+            </form:form>
+
+        </security:authorize>
 
         <table>
             <tr>
                 <th>Država</th>
                 <th>Ogranak</th>
                 <th>Organizirano događanja</th>
+                <th></th>
                 <th></th>
             </tr>
 
@@ -58,9 +74,9 @@
                     <c:param name="BranchId" value="${tempBranch.id}"/>
                 </c:url>
 
-                <%--<c:url var="membersLink" value="/gathering/members">
-                    <c:param name="GatheringId" value="${tempBranch.id}"/>
-                </c:url>--%>
+                <c:url var="deleteLink" value="/branch/delete">
+                    <c:param name="id" value="${tempBranch.id}"/>
+                </c:url>
 
                 <tr>
                     <td>
@@ -74,6 +90,11 @@
                     <td>
                         <a href="${eventsLink}">Događanja</a>
                     </td>
+                    <security:authorize access="hasAnyRole('BOARD_MEMBER')">
+                        <td>
+                            <a onclick="if (!(confirm('Izbrisat ćeš ogranak!'))) return false" href="${deleteLink}">Izbriši</a>
+                        </td>
+                    </security:authorize>
                 </tr>
 
             </c:forEach>

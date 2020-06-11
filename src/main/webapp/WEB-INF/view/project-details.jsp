@@ -73,9 +73,11 @@
 
 <div id="content">
 
+    <security:authorize access="hasAnyRole('BOARD_MEMBER')">
     <div>
         <button type="button" onclick="location.href='/sponsorship/new'" class="add-button">Dodaj</button>
     </div>
+    </security:authorize>
     <table>
         <tr>
             <th>Partner</th>
@@ -93,9 +95,11 @@
             <tr>
                 <td>${temp.partner.name}</td>
                 <td>${temp.value}</td>
+                <security:authorize access="hasAnyRole('BOARD_MEMBER')">
                 <td>
                 <a href="${sponsorshipLink}">Detalji</a>
                 </td>
+                </security:authorize>
             </tr>
 
         </c:forEach>
@@ -105,6 +109,7 @@
     <h3>Sudionici</h3>
     <div id="content2">
 
+        <security:authorize access="hasAnyRole('BOARD_MEMBER')">
         <form action="${pageContext.request.contextPath}/project/addParticipant" method="get">
             <select name="studentId">
                 <c:forEach var="tempStudent" items="${nonParticipants}">
@@ -115,6 +120,7 @@
 
             <input type="submit" value="Dodaj" class="add-button"/>
         </form>
+        </security:authorize>
 
         <table>
             <tr>
@@ -140,9 +146,11 @@
                     <td>${temp.surname}</td>
                     <td>${temp.faculty}</td>
                     <td>${temp.yearOfStudy}</td>
+                    <security:authorize access="hasAnyRole('BOARD_MEMBER')">
                     <td>
                         <a href="${detailsLink}">Otvori profil</a> | <a href="${removeParticipantLink}">Ukloni</a>
                     </td>
+                    </security:authorize>
                 </tr>
 
             </c:forEach>
@@ -182,7 +190,9 @@
                     </td>
                     <td>${receiptValues.get(tempReceipt.id)}</td>
                     <td>${tempReceipt.description}</td>
+                    <security:authorize access="hasAnyRole('BOARD_MEMBER')">
                     <td> <a onclick="if (!confirm('Izbrisat ćeš račun!')) return false" href="${deleteLink}">Izbriši</a> </td>
+                    </security:authorize>
                 </tr>
 
             </c:forEach>
