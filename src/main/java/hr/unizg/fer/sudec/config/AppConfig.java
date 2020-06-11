@@ -56,7 +56,7 @@ public class AppConfig implements WebMvcConfigurer {
         return viewResolver;
     }
 
-    //bean for security datasource
+    //bean for datasource
     @Bean
     public DataSource dataSource(){
 
@@ -70,9 +70,9 @@ public class AppConfig implements WebMvcConfigurer {
             throw new RuntimeException(e);
         }
 
-        dataSource.setJdbcUrl(env.getProperty("jdbc.url"));
-        dataSource.setUser(env.getProperty("jdbc.user"));
-        dataSource.setPassword(env.getProperty("jdbc.password"));
+        dataSource.setJdbcUrl(System.getenv("JDBC_DATABASE_URL"));
+        dataSource.setUser(System.getenv("JDBC_DATABASE_USERNAME"));
+        dataSource.setPassword(System.getenv("JDBC_DATABASE_PASSWORD"));
 
         //setting connection pool
         dataSource.setInitialPoolSize(Integer.parseInt((env.getProperty("connection.pool.initialPoolSize"))));
