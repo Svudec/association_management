@@ -55,7 +55,7 @@
 <br/>
 <div><h4>Međunarodna sfera</h4></div>
 <div>
-    <a href="${pageContext.request.contextPath}/event/list" class="homeButton">Internacionalna Putovanja</a>
+    <a href="${pageContext.request.contextPath}/event/list" class="homeButton">Internacionalna putovanja</a>
     <a href="${pageContext.request.contextPath}/branch/list" class="homeButton">Lokalni ogranci</a>
 </div>
 <br/>
