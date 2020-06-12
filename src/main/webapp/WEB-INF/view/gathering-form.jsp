@@ -123,8 +123,10 @@
 <div id="container2" style="${showReceipts}">
     <div id="content">
 
-        <input type="button" value="Napravi račun" onclick="location.href='${pageContext.request.contextPath}/receipt/showFormForAdd'"
-               class="add-button">
+        <security:authorize access="hasAnyRole('BOARD_MEMBER')">
+            <input type="button" value="Napravi račun" onclick="location.href='${pageContext.request.contextPath}/receipt/showFormForAdd'"
+                class="add-button">
+        </security:authorize>
 
         <table>
             <tr>
