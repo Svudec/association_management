@@ -12,4 +12,8 @@ Osnovni računi za login su:
     -za člana upravnog odbora:
                               -username: board
                               -password: 1234
+                              
+    -za administratora:
+                              -username: admin
+                              -password: 1234
 
