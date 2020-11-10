@@ -1,6 +1,8 @@
 # association_management
 Završni rad: Baza podataka i web aplikacija za udrugu
 
+Link na završni rad: https://drive.google.com/file/d/1H3c1sGgt7P9VDbDB6vDRMgmOf89NJuLE/view?usp=sharing
+
 Finalna verzija aplikacije je na: http://student-association-management.herokuapp.com/
 
 Osnovni računi za login su:
