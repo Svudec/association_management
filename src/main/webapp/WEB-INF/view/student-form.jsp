@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <title>Student</title>
@@ -44,19 +45,22 @@
         <h3>Student</h3>
 
         <div id="frm">
-        <form:form action="edit" modelAttribute="student" method="get">
 
-            <form:hidden path="id"/>
-            <input type="submit" value="Uredi" style="visibility: ${editButton}" class="add-button"/>
+            <security:authorize access="hasAnyRole('BOARD_MEMBER')">
+                <form:form action="edit" modelAttribute="student" method="get">
 
-        </form:form>
+                    <form:hidden path="id"/>
+                    <input type="submit" value="Uredi" style="visibility: ${editButton}" class="add-button"/>
 
-        <form:form action="delete" modelAttribute="student" method="get">
+                </form:form>
 
-            <form:hidden path="id"/>
-            <input onclick="if (!confirm('Izbrisat ćeš studenta!')) return false" type="submit" value="Izbriši" style="visibility: ${editButton}" class="add-button"/>
+                <form:form action="delete" modelAttribute="student" method="get">
 
-        </form:form>
+                    <form:hidden path="id"/>
+                    <input onclick="if (!confirm('Izbrisat ćeš studenta!')) return false" type="submit" value="Izbriši" style="visibility: ${editButton}" class="add-button"/>
+
+                </form:form>
+            </security:authorize>
         </div>
 
         <form:form action="save" modelAttribute="student" method="post">
